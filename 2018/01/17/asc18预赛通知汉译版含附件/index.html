@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://tannisi.github.io/2018/01/17/asc18预赛通知汉译版含附件/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="ASC学生超算竞赛（2018）预赛通知亲爱的参赛团队：    非常感谢你参加ASC18大学生超算竞赛，这篇文档将会提供此次比赛初赛的详细信息。1.关于这个初赛    在初赛中，每个注册队伍被要求去提交一系列文档包括一份提案，优化的源代码文件和输出文件（在附件A中有详细要求）。该提案需要用英语去写，并由ASC评估委员会审查。">
-<meta property="og:updated_time" content="2018-01-18T12:34:11.607Z">
+<meta property="og:updated_time" content="2018-01-18T12:35:47.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="asc18预赛通知汉译版含附件">
 <meta name="twitter:description" content="ASC学生超算竞赛（2018）预赛通知亲爱的参赛团队：    非常感谢你参加ASC18大学生超算竞赛，这篇文档将会提供此次比赛初赛的详细信息。1.关于这个初赛    在初赛中，每个注册队伍被要求去提交一系列文档包括一份提案，优化的源代码文件和输出文件（在附件A中有详细要求）。该提案需要用英语去写，并由ASC评估委员会审查。">
@@ -58,32 +58,10 @@
 
 
   
-  
-  <div class="site-header-image">
-    <img id="originBg" width="100%" alt="Hike News" src="">
-  </div>
-
-  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
-    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
-  </div>
-
-  <script>
-        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
-        var random = Math.floor((Math.random() * imgUrls.length ));
-        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-          document.getElementById("originBg").src=imgUrls[random];
-          document.getElementById("blurBg").src=imgUrls[random];
-        } else {
-          document.getElementById("originBg").src='/' + imgUrls[random];
-          document.getElementById("blurBg").src='/' + imgUrls[random];
-        }
-    </script>
-
-
 
 
 <header id="allheader" class="site-header" role="banner" 
-   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
+   >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -169,7 +147,76 @@
 <h3 id="二、团队介绍（5分）"><a href="#二、团队介绍（5分）" class="headerlink" title="二、团队介绍（5分）"></a>二、团队介绍（5分）</h3><p>1.简述你的团队的组建过程。<br>2.简述每个团队成员（包括团队的几组照片）。<br>3.你的团队的口号</p>
 <h3 id="三、技术提案要求（90分）"><a href="#三、技术提案要求（90分）" class="headerlink" title="三、技术提案要求（90分）"></a>三、技术提案要求（90分）</h3><p>1.你的HPC系统的设计（15分）<br>a)在3000瓦功率预算内，你的系统应该达到最佳的计算性能。<br>b）制定你的系统的软件和硬件配置和互联。描述功耗，评估性能，并分析你提出的架构的优缺点。<br>c）你的系统应当基于浪潮NF5280M5服务器。浪潮将向进入决赛的队伍提供下表中列出的组件（可能会更改配置）。其他组件（服务器本身除外）均可接受，但应该自行准备。例如，你可以更改建议配置中NF5280M5服务器和加速器的数量，硬盘和内存的类型以及以太网的类型。</p>
 <hr>
-<p>|    项目      |     名称      |                   配置                               |<br>|  服务器      | 浪潮NF5280M5  |   CPU： 英特尔至强金牌6132<em>2 , 2.6GHZ ， 14 core              |<br>|              |               |   内存： 16G</em>12 ， DDR4 ， 2666Mhz                           |<br>|              |               |   硬盘： 1T STAT * 1                                         |<br>|              |               |   功耗估算： 6132 TDP 140W （CPU）， memory 7.5W ，硬盘 10W   |<br>|   HCA卡      |     FDR       |   Infiniband Mellanox ConnectX-3 适配卡，单端口QSFP，FDR IB   |(主机通道适配卡)|               |   功耗估算： 9W (INfiniband 直译为无限带宽技术）              |<br>|    交换机    |千兆以太网交换机|   10/100/1000Mb/s， 24 端口以太网交换机                      |<br>|              |               |   功耗估算: 30W                                              |<br>|              | FDR-IB交换机  |    SwitchX FDR InfiniBand交换机，36个QSFP 端口                |<br>|              |               |    功耗估算： 130W                                           |<br>|     电缆     |  千兆CAT6电缆  |    CAT6铜缆 ， 蓝色 ， 3m                                    |<br>|              | Infiniband电缆 |   Infiniband FDR 光钎电缆，QSFP端口，配合Infiniband交换机使用 |<br>2.HPL 和 HPCG（15分）<br>    提案应当包括</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">项目</th>
+<th style="text-align:center">名称</th>
+<th style="text-align:right">配置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">服务器</td>
+<td style="text-align:center">浪潮NF5280M5</td>
+<td style="text-align:right">CPU： 英特尔至强金牌6132*2 , 2.6GHZ ， 14 core</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:right">内存： 16G*12 ， DDR4 ， 2666Mhz</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:right">硬盘： 1T STAT * 1</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:right">功耗估算： 6132 TDP 140W （CPU）， memory 7.5W ，硬盘 10W</td>
+</tr>
+<tr>
+<td style="text-align:left">HCA卡</td>
+<td style="text-align:center">FDR</td>
+<td style="text-align:right">Infiniband Mellanox ConnectX-3 适配卡，单端口QSFP，FDR IB</td>
+<td>(主机通道适配卡)</td>
+<td></td>
+<td>功耗估算： 9W (INfiniband 直译为无限带宽技术）</td>
+</tr>
+<tr>
+<td style="text-align:left">交换机</td>
+<td style="text-align:center">千兆以太网交换机</td>
+<td style="text-align:right">10/100/1000Mb/s， 24 端口以太网交换机</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:right">功耗估算: 30W</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">FDR-IB交换机</td>
+<td style="text-align:right">SwitchX FDR InfiniBand交换机，36个QSFP 端口</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center"></td>
+<td style="text-align:right">功耗估算： 130W</td>
+</tr>
+<tr>
+<td style="text-align:left">电缆</td>
+<td style="text-align:center">千兆CAT6电缆</td>
+<td style="text-align:right">CAT6铜缆 ， 蓝色 ， 3m</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:center">Infiniband电缆</td>
+<td style="text-align:right">Infiniband FDR 光钎电缆，QSFP端口，配合Infiniband交换机使用</td>
+</tr>
+</tbody>
+</table>
+<p>2.HPL 和 HPCG（15分）<br>    提案应当包括</p>
 
       
     </div>
@@ -294,9 +341,6 @@
 
 
     <!-- headerblur min height -->
-    
-      var headerblur = document.getElementById("header-blur");
-      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
