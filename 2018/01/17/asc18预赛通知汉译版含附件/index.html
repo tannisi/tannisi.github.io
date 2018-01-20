@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://tannisi.github.io/2018/01/17/asc18预赛通知汉译版含附件/7.png">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/17/asc18预赛通知汉译版含附件/8.png">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/17/asc18预赛通知汉译版含附件/9.png">
-<meta property="og:updated_time" content="2018-01-20T15:21:59.770Z">
+<meta property="og:updated_time" content="2018-01-20T15:25:06.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="asc18预赛通知汉译版含附件">
 <meta name="twitter:description" content="ASC学生超算竞赛（2018）预赛通知亲爱的参赛团队：    非常感谢你参加ASC18大学生超算竞赛，这篇文档将会提供此次比赛初赛的详细信息。1.关于这个初赛    在初赛中，每个注册队伍被要求去提交一系列文档包括一份提案，优化的源代码文件和输出文件（在附件A中有详细要求）。该提案需要用英语去写，并由ASC评估委员会审查。">
@@ -120,7 +120,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -512,11 +512,11 @@
 <p>文件夹的结构应该像这样:<br><img src="/2018/01/17/asc18预赛通知汉译版含附件/8.png" alt="文件夹结构"></p>
 <p>注意：<br>   1.每个团队只提交一个测试文件（output.json）和相应的源代码和模型。<br>   2.委员会可以运行提交的CNTK代码，以确保提交的测试结果的合法性和有效性。<br>   3.委员会将忽略任何不遵守规则的提交。请在提交前用评分脚本检查结果文件。</p>
 <h5 id="指标："><a href="#指标：" class="headerlink" title="指标："></a>指标：</h5><p>任务使用ROUGE-L作为排名模型质量的度量，并使用下面的代码来评分和输出ROUGE-L得分。</p>
-<p>根据研究论文(<a href="http://www.aclweb.org/anthology/W/W04/W04-1013.pdf)，ROUGE-L是基于最长公共子序列（LCS）的统计量.ROUGE-L首先找出最长的共同点" target="_blank" rel="noopener">http://www.aclweb.org/anthology/W/W04/W04-1013.pdf)，ROUGE-L是基于最长公共子序列（LCS）的统计量.ROUGE-L首先找出最长的共同点</a> 在长度为m的候选通道（X）与长度为n的参考通道（Y）之间的子序列（LCS）。</p>
+<p>根据研究论文(<a href="http://www.aclweb.org/anthology/W/W04/W04-1013.pdf" target="_blank" rel="noopener">http://www.aclweb.org/anthology/W/W04/W04-1013.pdf</a>) ,ROUGE-L是基于最长公共子序列(LCS)的统计量.ROUGE-L首先找出最长的共同点 在长度为m的候选通道（X）与长度为n的参考通道（Y）之间的子序列（LCS）。</p>
 <p><img src="/2018/01/17/asc18预赛通知汉译版含附件/9.png" alt="公式"></p>
 <p>注意当两条通道相同（X = Y）时，ROUGE-L为1，当LCS（X，Y）= 0时，ROUGE-L为零。</p>
 <h5 id="代码评分和输出指标"><a href="#代码评分和输出指标" class="headerlink" title="代码评分和输出指标"></a>代码评分和输出指标</h5><p><a href="https://msmarco.blob.core.windows.net/msmarco/ms_marco_eval.tar.gz" target="_blank" rel="noopener">https://msmarco.blob.core.windows.net/msmarco/ms_marco_eval.tar.gz</a></p>
-<h5 id="训练框架"><a href="#训练框架" class="headerlink" title="训练框架"></a>训练框架</h5><p>   您必须使用CNTK框架(<a href="https://github.com/Microsoft/CNTK)作为解决方案的深度学习部分。使用或依赖于任何其他深度学习框架将会放弃您的提交。" target="_blank" rel="noopener">https://github.com/Microsoft/CNTK)作为解决方案的深度学习部分。使用或依赖于任何其他深度学习框架将会放弃您的提交。</a><br>   要安装CNTK，请按照(<a href="https://docs.microsoft.com/en-us/cognitive-toolkit/setup-windows-python)中的说明进行操作。您可以简单地用“pip" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/cognitive-toolkit/setup-windows-python)中的说明进行操作。您可以简单地用“pip</a> install <cntk wheel="" path="">‘与之匹配的CNTK python滚轮 你的相应steup。（我认为这里的意思应该是用pip来自动安装合适的版本）。<br>   CNTK 文件：<a href="https://cntk.ai/pythondocs/" target="_blank" rel="noopener">https://cntk.ai/pythondocs/</a><br>   掌握基本的笔记教程，推进深入的学习任务：<a href="https://github.com/Microsoft/CNTK/tree/master/Tutorials" target="_blank" rel="noopener">https://github.com/Microsoft/CNTK/tree/master/Tutorials</a></cntk></p>
+<h5 id="训练框架"><a href="#训练框架" class="headerlink" title="训练框架"></a>训练框架</h5><p>   您必须使用CNTK框架(<a href="https://github.com/Microsoft/CNTK" target="_blank" rel="noopener">https://github.com/Microsoft/CNTK</a>) 作为解决方案的深度学习部分。使用或依赖于任何其他深度学习框架将会放弃您的提交。<br>   要安装CNTK，请按照(<a href="https://docs.microsoft.com/en-us/cognitive-toolkit/setup-windows-python" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/cognitive-toolkit/setup-windows-python</a>) 中的说明进行操作。您可以简单地用“pip install <cntk wheel="" path="">‘与之匹配的CNTK python滚轮 你的相应steup。（我认为这里的意思应该是用pip来自动安装合适的版本）。<br>   CNTK 文件：<a href="https://cntk.ai/pythondocs/" target="_blank" rel="noopener">https://cntk.ai/pythondocs/</a><br>   掌握基本的笔记教程，推进深入的学习任务：<a href="https://github.com/Microsoft/CNTK/tree/master/Tutorials" target="_blank" rel="noopener">https://github.com/Microsoft/CNTK/tree/master/Tutorials</a></cntk></p>
 <h5 id="相关的文本处理教程："><a href="#相关的文本处理教程：" class="headerlink" title="相关的文本处理教程："></a>相关的文本处理教程：</h5><p>   1.语言理解的简单例子：<a href="https://github.com/Microsoft/CNTK/blob/master/Tutorials/CNTK_202_Language_Understanding.ipynb" target="_blank" rel="noopener">https://github.com/Microsoft/CNTK/blob/master/Tutorials/CNTK_202_Language_Understanding.ipynb</a><br>   2.序列将一个句子从一种语言转换为另一种语言的例子：<a href="https://github.com/Microsoft/CNTK/blob/master/Tutorials/CNTK_204_Sequence_To_Sequence.ipynb" target="_blank" rel="noopener">https://github.com/Microsoft/CNTK/blob/master/Tutorials/CNTK_204_Sequence_To_Sequence.ipynb</a><br>   3.用LSTM进行深层结构语义建模：<a href="https://github.com/Microsoft/CNTK/blob/master/Tutorials/CNTK_303_Deep_Structured_Semantic_Modeling_with_LSTM_Networks.ipynb" target="_blank" rel="noopener">https://github.com/Microsoft/CNTK/blob/master/Tutorials/CNTK_303_Deep_Structured_Semantic_Modeling_with_LSTM_Networks.ipynb</a></p>
 <h5 id="基线代码"><a href="#基线代码" class="headerlink" title="基线代码"></a>基线代码</h5><p>这里是MS宏数据集的CNTK基线训练代码：<a href="https://github.com/Microsoft/CNTK/tree/nikosk/bidaf/Examples/Text/BidirectionalAttentionFlow/msmarco" target="_blank" rel="noopener">https://github.com/Microsoft/CNTK/tree/nikosk/bidaf/Examples/Text/BidirectionalAttentionFlow/msmarco</a></p>
 <p>上面的训练代码是用Python编写的，它包含转换器脚本，它将MSMARCO数据库转换为可由CNTK阅读器使用的CTF CNTK格式（您可以编写自己的Python代码来读取数据并将其提供给教练，但速度会更慢 ），以及端到端的培训脚本。</p>
@@ -570,7 +570,7 @@
 <nav id="article-nav">
   
     <a href="/2018/01/18/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           Hello World
@@ -580,7 +580,7 @@
   
   
     <a href="/2018/01/14/操作系统结构简述/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">操作系统结构简述</div>
     </a>
   
