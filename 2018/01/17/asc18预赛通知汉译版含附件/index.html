@@ -25,7 +25,9 @@
 <meta property="og:image" content="https://tannisi.github.io/2018/01/17/asc18预赛通知汉译版含附件/5.png">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/17/asc18预赛通知汉译版含附件/6.png">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/17/asc18预赛通知汉译版含附件/7.png">
-<meta property="og:updated_time" content="2018-01-20T04:58:47.462Z">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/17/asc18预赛通知汉译版含附件/8.png">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/17/asc18预赛通知汉译版含附件/9.png">
+<meta property="og:updated_time" content="2018-01-20T11:12:17.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="asc18预赛通知汉译版含附件">
 <meta name="twitter:description" content="ASC学生超算竞赛（2018）预赛通知亲爱的参赛团队：    非常感谢你参加ASC18大学生超算竞赛，这篇文档将会提供此次比赛初赛的详细信息。1.关于这个初赛    在初赛中，每个注册队伍被要求去提交一系列文档包括一份提案，优化的源代码文件和输出文件（在附件A中有详细要求）。该提案需要用英语去写，并由ASC评估委员会审查。">
@@ -68,10 +70,32 @@
 
 
   
+  
+  <div class="site-header-image">
+    <img id="originBg" width="100%" alt="Hike News" src="">
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
+  </div>
+
+  <script>
+        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("originBg").src=imgUrls[random];
+          document.getElementById("blurBg").src=imgUrls[random];
+        } else {
+          document.getElementById("originBg").src='/' + imgUrls[random];
+          document.getElementById("blurBg").src='/' + imgUrls[random];
+        }
+    </script>
+
+
 
 
 <header id="allheader" class="site-header" role="banner" 
-   >
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -96,7 +120,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -458,7 +482,56 @@
 <p>结果提交</p>
 <p>A：每个团队都应该提交一个名为output.json的文件，该文件包含Test.Set上每个描述查询的答案（段落）。测试结果应该使用JSON，并遵循以下格式：</p>
 <p><img src="/2018/01/17/asc18预赛通知汉译版含附件/7.png" alt="json格式"></p>
-<p>翻译：</p>
+<p>翻译：{“询问”：“化石燃料有什么好处”，“查询_ID”：0，“查询类型”：“描述”，“答案”：[“使用化石燃料最大的好处是它们可以储存简单，方便运输。因此大量的煤炭储备从煤矿被运送到远离煤矿的产业。”]}</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:right">定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">查询</td>
+<td style="text-align:right">问题查询与测试集中的查询相同</td>
+</tr>
+<tr>
+<td style="text-align:left">查询ID</td>
+<td style="text-align:right">应该与Test Set中的query_id相同</td>
+</tr>
+<tr>
+<td style="text-align:left">查询类型</td>
+<td style="text-align:right">可选的</td>
+</tr>
+<tr>
+<td style="text-align:left">答案</td>
+<td style="text-align:right">应该只包含一个由您的算法输出的最佳答案</td>
+</tr>
+</tbody>
+</table>
+<p>B：对于初始阶段和最终阶段，每个团队还应该提交一个包含CNTK代码和模型的文件夹，以便重现测试结果。</p>
+<p>文件夹的结构应该像这样:<br><img src="/2018/01/17/asc18预赛通知汉译版含附件/8.png" alt="文件夹结构"></p>
+<p>注意：<br>   1.每个团队只提交一个测试文件（output.json）和相应的源代码和模型。<br>   2.委员会可以运行提交的CNTK代码，以确保提交的测试结果的合法性和有效性。<br>   3.委员会将忽略任何不遵守规则的提交。请在提交前用评分脚本检查结果文件。</p>
+<p>指标：<br>任务使用ROUGE-L作为排名模型质量的度量，并使用下面的代码来评分和输出ROUGE-L得分。</p>
+<p>根据研究论文（<a href="http://www.aclweb.org/anthology/W/W04/W04-1013.pdf），ROUGE-L是基于最长公共子序列（LCS）的统计量.ROUGE-L首先找出最长的共同点" target="_blank" rel="noopener">http://www.aclweb.org/anthology/W/W04/W04-1013.pdf），ROUGE-L是基于最长公共子序列（LCS）的统计量.ROUGE-L首先找出最长的共同点</a> 在长度为m的候选通道（X）与长度为n的参考通道（Y）之间的子序列（LCS）。</p>
+<p><img src="/2018/01/17/asc18预赛通知汉译版含附件/9.png" alt="公式"></p>
+<p>注意当两条通道相同（X = Y）时，ROUGE-L为1，当LCS（X，Y）= 0时，ROUGE-L为零。</p>
+<p>代码评分和输出指标<br><a href="https://msmarco.blob.core.windows.net/msmarco/ms_marco_eval.tar.gz" target="_blank" rel="noopener">https://msmarco.blob.core.windows.net/msmarco/ms_marco_eval.tar.gz</a></p>
+<p>训练框架</p>
+<pre><code>您必须使用CNTK框架（https://github.com/Microsoft/CNTK）作为解决方案的深度学习部分。使用或依赖于任何其他深度学习框架将会放弃您的提交。
+要安装CNTK，请按照https://docs.microsoft.com/en-us/cognitive-toolkit/setup-windows-python中的说明进行操作。您可以简单地用“pip install &lt;cntk wheel path&gt;&apos;与之匹配的CNTK python滚轮 你的相应steup。（我认为这里的意思应该是用pip来自动安装合适的版本）。
+CNTK 文件：https://cntk.ai/pythondocs/
+掌握基本的笔记教程，推进深入的学习任务：https://github.com/Microsoft/CNTK/tree/master/Tutorials
+</code></pre><p>相关的文本处理教程：</p>
+<pre><code>1.语言理解的简单例子：https://github.com/Microsoft/CNTK/blob/master/Tutorials/CNTK_202_language_Understanding.ipynb
+2.序列将一个句子从一种语言转换为另一种语言的例子：https://github.com/Microsoft/CNTK/blob/master/Tutorials/CNTK_204_Sequence_To_Sequence.ipynb
+3.用LSTM进行深层结构语义建模：https://github.com/Microsoft/CNTK/blob/master/Tutorials/CNTK_303_Deep_Structured_Semantic_Modeling_with_LSTM_Netwoks.ipynb
+</code></pre><p>基线代码</p>
+<p>这里是MS宏数据集的CNTK基线训练代码：<a href="https://github.com/Microsoft/CNTK/tree/nikosk/bidaf/Examples/Text/BidrectionalAttentionFlow/msmarco" target="_blank" rel="noopener">https://github.com/Microsoft/CNTK/tree/nikosk/bidaf/Examples/Text/BidrectionalAttentionFlow/msmarco</a></p>
+<p>上面的训练代码是用Python编写的，它包含转换器脚本，它将MSMARCO数据库转换为可由CNTK阅读器使用的CTF CNTK格式（您可以编写自己的Python代码来读取数据并将其提供给教练，但速度会更慢 ），以及端到端的培训脚本。</p>
+<p>硬件要求</p>
+<p>强烈建议在GPU平台上运行训练代码。</p>
+<p>有任何相关的问题，请联系techsupport@asc-events.org</p>
 
       
     </div>
@@ -505,7 +578,7 @@
 <nav id="article-nav">
   
     <a href="/2018/01/18/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
           Hello World
@@ -515,7 +588,7 @@
   
   
     <a href="/2018/01/14/操作系统结构简述/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">操作系统结构简述</div>
     </a>
   
@@ -583,6 +656,9 @@
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
