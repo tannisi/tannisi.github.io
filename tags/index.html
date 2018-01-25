@@ -54,10 +54,32 @@
 
 
   
+  
+  <div class="site-header-image">
+    <img id="originBg" width="100%" alt="Hike News" src="">
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
+  </div>
+
+  <script>
+        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("originBg").src=imgUrls[random];
+          document.getElementById("blurBg").src=imgUrls[random];
+        } else {
+          document.getElementById("originBg").src='/' + imgUrls[random];
+          document.getElementById("blurBg").src='/' + imgUrls[random];
+        }
+    </script>
+
+
 
 
 <header id="allheader" class="site-header" role="banner" 
-   >
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -121,11 +143,11 @@
             
                 <a href="#问题解决方案" title="问题解决方案" rel="1">问题解决方案</a>
             
-                <a href="#hexo+github" title="hexo+github" rel="1">hexo+github</a>
-            
                 <a href="#操作系统结构 单体系统 层次式系统 微内核 客户端-服务器模式 虚拟机 外核" title="操作系统结构 单体系统 层次式系统 微内核 客户端-服务器模式 虚拟机 外核" rel="1">操作系统结构 单体系统 层次式系统 微内核 客户端-服务器模式 虚拟机 外核</a>
             
                 <a href="#计算机网络" title="计算机网络" rel="1">计算机网络</a>
+            
+                <a href="#hexo+github" title="hexo+github" rel="1">hexo+github</a>
             
         </div> 
         -->
@@ -555,6 +577,9 @@
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
