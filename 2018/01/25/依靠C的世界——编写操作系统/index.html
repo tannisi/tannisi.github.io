@@ -11,18 +11,18 @@
   
   
   
-  <meta name="description" content="操作系统通常是由许多程序员写成的，包括很多部分的大型C（有时是C++）程序。 C语言   在C中基本数据类型是整数（包括短整数和长整数）、字符和浮点数等。使用数组、结构体和联合，可以构造组合数据类型。C语言中的控制语句与Java类似，包括if、、switch、for以及while等语句。在这两个语言中，函数和参数大致相同。   一项C语言中有而Java和Python中没有的特点是显式指针。指">
+  <meta name="description" content="操作系统通常是由许多程序员写成的，包括很多部分的大型C（有时是C++）程序。 C语言   在C中基本数据类型是整数（包括短整数和长整数）、字符和浮点数等。使用数组、结构体和联合，可以构造组合数据类型。C语言中的控制语句与Java类似，包括if、、switch、for以及while等语句。在这两个语言中，函数和参数大致相同。">
 <meta name="keywords" content="简介编写操作系统的环境">
 <meta property="og:type" content="article">
 <meta property="og:title" content="依靠C的世界——编写操作系统">
 <meta property="og:url" content="https://tannisi.github.io/2018/01/25/依靠C的世界——编写操作系统/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
-<meta property="og:description" content="操作系统通常是由许多程序员写成的，包括很多部分的大型C（有时是C++）程序。 C语言   在C中基本数据类型是整数（包括短整数和长整数）、字符和浮点数等。使用数组、结构体和联合，可以构造组合数据类型。C语言中的控制语句与Java类似，包括if、、switch、for以及while等语句。在这两个语言中，函数和参数大致相同。   一项C语言中有而Java和Python中没有的特点是显式指针。指">
+<meta property="og:description" content="操作系统通常是由许多程序员写成的，包括很多部分的大型C（有时是C++）程序。 C语言   在C中基本数据类型是整数（包括短整数和长整数）、字符和浮点数等。使用数组、结构体和联合，可以构造组合数据类型。C语言中的控制语句与Java类似，包括if、、switch、for以及while等语句。在这两个语言中，函数和参数大致相同。">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/25/依靠C的世界——编写操作系统/1.jpg">
-<meta property="og:updated_time" content="2018-01-26T04:04:15.709Z">
+<meta property="og:updated_time" content="2018-01-26T04:05:41.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="依靠C的世界——编写操作系统">
-<meta name="twitter:description" content="操作系统通常是由许多程序员写成的，包括很多部分的大型C（有时是C++）程序。 C语言   在C中基本数据类型是整数（包括短整数和长整数）、字符和浮点数等。使用数组、结构体和联合，可以构造组合数据类型。C语言中的控制语句与Java类似，包括if、、switch、for以及while等语句。在这两个语言中，函数和参数大致相同。   一项C语言中有而Java和Python中没有的特点是显式指针。指">
+<meta name="twitter:description" content="操作系统通常是由许多程序员写成的，包括很多部分的大型C（有时是C++）程序。 C语言   在C中基本数据类型是整数（包括短整数和长整数）、字符和浮点数等。使用数组、结构体和联合，可以构造组合数据类型。C语言中的控制语句与Java类似，包括if、、switch、for以及while等语句。在这两个语言中，函数和参数大致相同。">
 <meta name="twitter:image" content="https://tannisi.github.io/2018/01/25/依靠C的世界——编写操作系统/1.jpg">
 <meta name="twitter:creator" content="@true">
 <link rel="publisher" href="true">
@@ -165,7 +165,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>   操作系统通常是由许多程序员写成的，包括很多部分的大型C（有时是C++）程序。</p>
-<h2 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h2><p>   在C中基本数据类型是整数（包括短整数和长整数）、字符和浮点数等。使用数组、结构体和联合，可以构造组合数据类型。C语言中的控制语句与Java类似，包括if、、switch、for以及while等语句。在这两个语言中，函数和参数大致相同。<br>   一项C语言中有而Java和Python中没有的特点是<u>显式指针</u>。指针是一种指向（即包含对象的地址）一个变量或数据结构的变量。C语言中没有内建字符串、线程、包、类、对象、类型安全以及垃圾回收等。<u>最后一个是操作系统的“淋浴器塞子”。在C中分配的存储空间或者是静态的，或者是程序员明确分配和释放的，通常使用malloc以及free库函数。正是由于后面的这个性质——由程序员控制所有内存——而且是明确的指针，使得C语言対编写操作程序而言非常有吸引力。</u>从一定程度上来说，操作系统实际上是一个实时操作系统，甚至通用系统也是实时系统。当中断发生时，操作系统可能只有若干微秒去完成特定的操作，否则会丢失关键的信息。在任意时刻启动垃圾回收功能是不可接受的。<br><a id="more"></a></p>
+<h2 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h2><p>   在C中基本数据类型是整数（包括短整数和长整数）、字符和浮点数等。使用数组、结构体和联合，可以构造组合数据类型。C语言中的控制语句与Java类似，包括if、、switch、for以及while等语句。在这两个语言中，函数和参数大致相同。<br><a id="more"></a><br>   一项C语言中有而Java和Python中没有的特点是<u>显式指针</u>。指针是一种指向（即包含对象的地址）一个变量或数据结构的变量。C语言中没有内建字符串、线程、包、类、对象、类型安全以及垃圾回收等。<u>最后一个是操作系统的“淋浴器塞子”。在C中分配的存储空间或者是静态的，或者是程序员明确分配和释放的，通常使用malloc以及free库函数。正是由于后面的这个性质——由程序员控制所有内存——而且是明确的指针，使得C语言対编写操作程序而言非常有吸引力。</u>从一定程度上来说，操作系统实际上是一个实时操作系统，甚至通用系统也是实时系统。当中断发生时，操作系统可能只有若干微秒去完成特定的操作，否则会丢失关键的信息。在任意时刻启动垃圾回收功能是不可接受的。</p>
 <h2 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h2><p>   一个操作系统项目通常包括多个目录，每个目录都含有许多.c文件，这些文件中存有系统某个部分的代码，而一些.h头文件则包含供一个或多个代码文件使用的声明及定义。头文件还可以包含简单的宏，宏允许程序员命名常数宏可以附带参数。头文件汉可以包含条件编译，例如：</p>
 <pre><code>#ifdef X86
 intel_int_ack();
@@ -173,7 +173,7 @@ intel_int_ack();
 </code></pre><p>   如果宏X86有定义，而不是其他，则编译进对Intel_int_ack函数的调用。为了分隔与结构有关的代码，大量使用了条件编译，这样只有当系统在X86上编译时，一些特定的代码才会被插入，其他的代码仅当系统在SPARC等机器上编译时才会插入。通过使用#include指令，一个.c文件体可以含有一个或多个头文件。</p>
 <h2 id="大型编程项目"><a href="#大型编程项目" class="headerlink" title="大型编程项目"></a>大型编程项目</h2><p>   为了构建操作系统，每个.c被C编译器编译成一个目标文件。目标文件使用后缀.o，含有目标机器的二进制代码。随后它们可以直接在CPU上运行。在C的世界里，没有类似于Java字节代码的东西。<br>    补充：（Java 字节码（英语：Java bytecode）是Java虚拟机执行的一种指令格式。大多数操作码都是一个字节长，而有些操作需要参数，导致了有一些多字节的操作码。而且并不是所有可能的256个操作码都被使用；其中有51个操作码被保留做将来使用。除此之外，原始Java平台开发商，Sun Microsystems系统，额外保留了3个代码永久不使用。）</p>
 <h3 id="C预处理器-C编译器"><a href="#C预处理器-C编译器" class="headerlink" title="C预处理器+C编译器"></a>C预处理器+C编译器</h3><p>   C编译器的第一道称为C预处理器。在它读入每个.C文件时，每当遇到一个#include命令，就取来该名称的头文件，并加以处理、扩展宏、处理条件编译（以及其他事务），然后将结果传递给编译器的下一道，仿佛它们原先就包含在该文件中一样。</p>
-<h3 id="make程序"><a href="#make程序" class="headerlink" title="make程序"></a>make程序</h3><p>   由于操作系统是非常庞大的，每当文件修改后就重新编译时无法忍受的。另一方面，改变了用在成千上万文件中的一个关键头文件，确实需要重新编译这些文件。没有一定的协助，想要记录哪个目标文件和哪个头文件相关是完全不可行的。<br>   <span style="border-bottom:2px dashed yellow;">在UNIX系统中，有个名为make的程序，它读入Makefile文件，该Makefile说明哪个文件与哪个文件相关。make的作用是，在构建操作系统二进制编码时，检查此刻需要哪个目标文件，而且对于每个文件，检查自从上次目标文件创建之后是否有任何它依赖的文件（代码和头文件）已经被修改了。如果有，目标文件需要重新编译。在make确定了哪个.o文件需要重新编译后，他调用C编译器重新编译这些文件，这样就把编译的次数降到了最低限度！</span></p>
+<h3 id="make程序"><a href="#make程序" class="headerlink" title="make程序"></a>make程序</h3><p>   由于操作系统是非常庞大的，每当文件修改后就重新编译时无法忍受的。另一方面，改变了用在成千上万文件中的一个关键头文件，确实需要重新编译这些文件。没有一定的协助，想要记录哪个目标文件和哪个头文件相关是完全不可行的。<br>   <span style="border-bottom:2px dashed red;">在UNIX系统中，有个名为make的程序，它读入Makefile文件，该Makefile说明哪个文件与哪个文件相关。make的作用是，在构建操作系统二进制编码时，检查此刻需要哪个目标文件，而且对于每个文件，检查自从上次目标文件创建之后是否有任何它依赖的文件（代码和头文件）已经被修改了。如果有，目标文件需要重新编译。在make确定了哪个.o文件需要重新编译后，他调用C编译器重新编译这些文件，这样就把编译的次数降到了最低限度！</span></p>
 <h3 id="linker程序形成可执行文件a-out文件"><a href="#linker程序形成可执行文件a-out文件" class="headerlink" title="linker程序形成可执行文件a.out文件"></a>linker程序形成可执行文件a.out文件</h3><p>   一旦所有的.o文件就绪，这些文件就被传递给称为linker的程序，将其组合成一个可执行的二进制文件。此时，任何被调用的库函数到包含在内，函数之间的引用都已解决，而机器地址也已经按需分配完毕。在linker完成之后，得到一个可执行程序，在UNIX中传统上称为<u>a.out文件</u>。<br>该过程的各个部分如下图所示：<br><img src="/2018/01/25/依靠C的世界——编写操作系统/1.jpg" alt="编译C和头文件来创建可执行文件的过程"></p>
 <h2 id="运行模型"><a href="#运行模型" class="headerlink" title="运行模型"></a>运行模型</h2><p>   在操作系统二进制代码链接完成后，计算机就可以重新启动，新的操作系统开始运行。一旦运行，系统会自动调入那些没有静态包括在二进制代码中的模块，如设备驱动和文件系统。在运行过程中，操作系统可能有若干段组成，<u>有文本段(程序代码)、数据段和栈堆段</u>。文本段通常是不可改变的，在运行过程中不可修改。数据段开始时有一定的大小，并用确定的值进行初始化，但是随后就被修改了，其大小随需要增长。栈堆段被初始化为空，但是随着对函数的调用和从函数返回，栈堆段时时刻刻在增长和缩小。<span style="border-bottom:2px dashed red;">通常文本段放置在接近内存底部的位置，数据段在其上面，这样可以向上增长。而栈堆段处于高处的虚拟地址，具有向下增长的能力，不过不同系统的工作方式各有差别。</span><br>   在所有情形下，操作系统代码都是直接在硬件上执行的，不用解释器，也不是即时翻译，如Java通常做的那样。</p>
 <p>ACM               <a href="https://www.acm.org/" target="_blank" rel="noopener">https://www.acm.org/</a><br>IEEE计算机协会     <a href="https://www.computer.org/" target="_blank" rel="noopener">https://www.computer.org/</a><br>USENIX            <a href="https://www.usenix.org/" target="_blank" rel="noopener">https://www.usenix.org/</a></p>
