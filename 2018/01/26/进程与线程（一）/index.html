@@ -11,14 +11,19 @@
   
   
   
-  <meta name="keywords" content="进程与线程">
+  <meta name="description" content="操作系统中最核心的概念是进程：这是对正在运行程序的一个抽象。操作系统的其他所有内容都是围绕着进程的概念展开的。   即使可以使用的CPU只有一个，但他们也具有支持（伪）并发操作的能力，它们将一个单独的CPU变换成多个虚拟的CPU。可以说：没有进程的抽象，现代计算将不复存在。">
+<meta name="keywords" content="进程与线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进程与线程（一）">
 <meta property="og:url" content="https://tannisi.github.io/2018/01/26/进程与线程（一）/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
-<meta property="og:updated_time" content="2018-01-26T04:16:46.317Z">
+<meta property="og:description" content="操作系统中最核心的概念是进程：这是对正在运行程序的一个抽象。操作系统的其他所有内容都是围绕着进程的概念展开的。   即使可以使用的CPU只有一个，但他们也具有支持（伪）并发操作的能力，它们将一个单独的CPU变换成多个虚拟的CPU。可以说：没有进程的抽象，现代计算将不复存在。">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（一）/1.jpg">
+<meta property="og:updated_time" content="2018-01-26T07:48:32.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程与线程（一）">
+<meta name="twitter:description" content="操作系统中最核心的概念是进程：这是对正在运行程序的一个抽象。操作系统的其他所有内容都是围绕着进程的概念展开的。   即使可以使用的CPU只有一个，但他们也具有支持（伪）并发操作的能力，它们将一个单独的CPU变换成多个虚拟的CPU。可以说：没有进程的抽象，现代计算将不复存在。">
+<meta name="twitter:image" content="https://tannisi.github.io/2018/01/26/进程与线程（一）/1.jpg">
 <meta name="twitter:creator" content="@true">
 <link rel="publisher" href="true">
   
@@ -159,7 +164,10 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>   操作系统中最核心的概念是<u>进程</u>：这是对正在运行程序的一个抽象。操作系统的其他所有内容都是围绕着进程的概念展开的。<br>   即使可以使用的CPU只有一个，但他们也具有支持（伪）并发操作的能力，它们将一个单独的CPU变换成多个虚拟的CPU。可以说：<span style="border-bottom:2px dashed red;">没有进程的抽象，现代计算将不复存在。</span><br><a id="more"></a></p>
+<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>   在任何多道程序设计系统中，CPU由一个进程快速切换至另一个进程，使每个进程各运行几十或几百毫秒。严格地说，在某一个瞬间，CPU只能运行一个进程。但在一秒钟内，它可能运行多个进程，这样就产生并行的错觉。有时人们所说的伪并行就是指这种情形，以此来区分多处理器系统（该系统有两个或多个CPU共享一个物理内存）的真正硬件并行。</p>
+<h2 id="进程模型"><a href="#进程模型" class="headerlink" title="进程模型"></a>进程模型</h2><p>   在进程模型中，所有可运行的软件，通常也包括操作系统，被组织成若干顺序进程，简称“进程”。一个进程就是一个正在执行程序的实例，包括程序计数器、寄存器和变量的当前值。从概念上说，每个进程有它自己的虚拟CPU。当然实际上真正的CPU在各个进程之间来回切换。这种快速切换，被称为<u>多道程序设计</u>。<br>   在下图（a）中可以看到，在一台多道程序计算机的内存中有四道程序。在下图（b）中，这4道程序被抽象为4个各自拥有自己控制流程（即每个程序自己的逻辑程序计数器）的进程，并且每个程序都独立地运行。当然实际上只有一个物理程序计数器，所以在每个程序运行时，它的逻辑程序计数器被装入实际的程序计数器中。当该程序执行结束（或暂停执行）时，物理程序计数器被保存在内存中该进程的逻辑程序计数器中。在下图c中可以看到，在观察足够长的一顿时间后，所有的程序都运行了，但在任何一个给定的瞬间仅有一个进程真正在运行。<br><img src="/2018/01/26/进程与线程（一）/1.jpg" alt="(a)含有4道程序的多道程序(b)4个独立的顺序进程模型(c)在任意时刻仅有一个程序是活跃的"></p>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -230,7 +238,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav">None</ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程"><span class="nav-number">1.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程模型"><span class="nav-number">2.</span> <span class="nav-text">进程模型</span></a></li></ol>
     
     </div>
   </aside>
