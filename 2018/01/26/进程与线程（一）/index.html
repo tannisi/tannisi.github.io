@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="操作系统中最核心的概念是进程：这是对正在运行程序的一个抽象。操作系统的其他所有内容都是围绕着进程的概念展开的。   即使可以使用的CPU只有一个，但他们也具有支持（伪）并发操作的能力，它们将一个单独的CPU变换成多个虚拟的CPU。可以说：没有进程的抽象，现代计算将不复存在。">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（一）/1.jpg">
-<meta property="og:updated_time" content="2018-01-27T01:22:00.350Z">
+<meta property="og:updated_time" content="2018-01-27T04:33:16.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程与线程（一）">
 <meta name="twitter:description" content="操作系统中最核心的概念是进程：这是对正在运行程序的一个抽象。操作系统的其他所有内容都是围绕着进程的概念展开的。   即使可以使用的CPU只有一个，但他们也具有支持（伪）并发操作的能力，它们将一个单独的CPU变换成多个虚拟的CPU。可以说：没有进程的抽象，现代计算将不复存在。">
@@ -112,7 +112,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -167,7 +167,18 @@
         <p>   操作系统中最核心的概念是<span style="border-bottom:2px dashed red;">进程</span>：这是对正在运行程序的一个抽象。操作系统的其他所有内容都是围绕着进程的概念展开的。<br>   即使可以使用的CPU只有一个，但他们也具有支持（伪）并发操作的能力，它们将一个单独的CPU变换成多个虚拟的CPU。可以说：<span style="border-bottom:2px dashed red;">没有进程的抽象，现代计算将不复存在。</span><br><a id="more"></a></p>
 <h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>   在任何多道程序设计系统中，CPU由一个进程快速切换至另一个进程，使每个进程各运行几十或几百毫秒。严格地说，在某一个瞬间，CPU只能运行一个进程。但在一秒钟内，它可能运行多个进程，这样就产生并行的错觉。有时人们所说的伪并行就是指这种情形，以此来区分多处理器系统（该系统有两个或多个CPU共享一个物理内存）的真正硬件并行。</p>
 <h2 id="进程模型"><a href="#进程模型" class="headerlink" title="进程模型"></a>进程模型</h2><p>   在进程模型中，所有可运行的软件，通常也包括操作系统，被组织成若干顺序进程，简称“进程”。一个进程就是一个正在执行程序的实例，包括程序计数器、寄存器和变量的当前值。从概念上说，每个进程有它自己的虚拟CPU。当然实际上真正的CPU在各个进程之间来回切换。这种快速切换，被称为<span style="border-bottom:2px dashed red;">多道程序设计</span>。<br>   在下图（a）中可以看到，在一台多道程序计算机的内存中有四道程序。在下图（b）中，这4道程序被抽象为4个各自拥有自己控制流程（即每个程序自己的逻辑程序计数器）的进程，并且每个程序都独立地运行。当然实际上只有一个物理程序计数器，所以在每个程序运行时，它的逻辑程序计数器被装入实际的程序计数器中。当该程序执行结束（或暂停执行）时，物理程序计数器被保存在内存中该进程的逻辑程序计数器中。在下图c中可以看到，在观察足够长的一顿时间后，所有的程序都运行了，但在任何一个给定的瞬间仅有一个进程真正在运行。<br><img src="/2018/01/26/进程与线程（一）/1.jpg" alt="(a)含有4道程序的多道程序(b)4个独立的顺序进程模型(c)在任意时刻仅有一个程序是活跃的"><br>   由于CPU在各进程之间来回快速切换，所以每个进程执行器运算的速度是不确定的。而且当同一进程再次运行时，其运算速度通常不可再现。所以在对进程编程时决不能对时序做任何想当然的假设。然而，通常大多数进程并不受CPU多道程序设计或其它进程相对速度的影响。<br>   <span style="border-bottom:2px dashed red;">进程和程序间的区别是非常微妙的，但非常重要。</span>用一个比喻可以很容易理解这一点：想象有一位计算机科学家在位他的女儿烘制蛋糕。他有做生日蛋糕的食谱，厨房里有所需要的原料。则做蛋糕的食谱就是程序（即用适当形式描述的算法），计算机科学家就是CPU，厨房里的原料就是输入数据。<span style="border-bottom:2px dashed red;">进程就是厨师阅读食谱、取来原料以及烘制蛋糕等一系列动作的综合。</span><br>   关键思想：<span style="border-bottom:2px dashed red;">一个进程是某种类型的一个活动，它有程序、输入、输出以及状态。单个处理器可以被若干进程共享，它使用某种调度算法决定何时停止一个进程的工作，并转而为另一个进程提供服务。</span><br>   值得注意的是,<span style="border-bottom:2px dashed red;">如果一个程序运行了两遍，则算作两个进程。</span></p>
-<h2 id="进程的创建"><a href="#进程的创建" class="headerlink" title="进程的创建"></a>进程的创建</h2>
+<h2 id="进程的创建"><a href="#进程的创建" class="headerlink" title="进程的创建"></a>进程的创建</h2><p>   在通用操作系统中，需要有某种方法在运行时按需要创建或撤销进程，现在开始考察这个问题。<br>   4种主要事件会导致进程的创建：<br>（1）系统初始化<br>（2）正在运行的程序执行了创建进程的系统调用<br>（3）用户请求创建一个新的进程<br>（4）一个批处理作业的初始化</p>
+<ul>
+<li>启动操作系统时，通常会创建若干个进程。其中有些是前台进程，也就是同用户（人类）交互并且替他们完成工作的那些进程。其他的是后台进程，这些进程与特定的用户没有关系，相反却具有某些专门的功能。<span style="border-bottom:2px dashed red;">停留在后台处理诸如电子邮件、web页面、新闻、打印之类的活动的进程称为守护进程。</span>在大型系统中有很多守护进程。在UNIX中，可以用ps程序列出正在运行的进程；在Windows中，可使用任务管理器。</li>
+<li>一个正在运行的进程经常发出系统调用，以便创建一个或多个新进程协助其工作。在所要从事的工作可以很容易的划分出成个若干相关的但没有相互作用的进程时，创建新的进程就特别有效果。</li>
+<li>在交互式系统中，键入一个命令或点击一个图标就可以启动一个程序。这两个动作中的任何一个都会创建一个新的进程，并在其中运行所选择的程序。在基于命令行的UNIX系统中运行程序X，新的进程会从该进程接管它的窗口。</li>
+<li>最后一种创建进程的情形仅在大型机的批处理系统中应用。用户在这种系统中提交批处理作业。在操作系统认为有资源可运行另一个作业时，它会创建一个新的进程，并运行其输入队列中的下一个作业。<br>从技术上看，在以上所有的情形中，新进程都是由于一个已经存在的进程执行了一个用于创建进程的系统调用而创建的。这个进程所做的工作是，执行一个用来创建进程的系统调用。这个系统调用通知操作系统创建一个新进程，并且直接或间接地指定在该进程中运行的程序。<br><span style="border-bottom:2px dashed red;">在UNIX系统中，只有一个系统调用可以用来创建新的进程：fork。这个系统调用会创建一个与调用进程相同的副本。在调用了fork之后，这两个进程（父进程和子进程）拥有相同的内存映像、同样的环境字符串和同样的打开文件。这就是全部情形。通常子进程接着执行execve或一个类似的系统调用，已修改其内存映像并运行一个新的程序。之所以要安排两步建立进程，是为了在fork之后但在execve之前允许该子进程处理描述其文件描述符，这样就可以完成对标准输入文件、标准输出文件和标准错误文件的重定向。</span><br>在Windows中情形正好相反，一个Win32函数调用CreateProcess（该调用有10个参数）既处理进程的创建，也负责把正确的程序装入新的进程。除了CreatProcess，Win32中有大约100个其他的函数用于处理进程的管理、同步以及相关的事务。<br>在UNIX和Windows中，进程创建之后，父进程和子进程各拥有不同的地址空间。如果其中某个进程在地址空间中修改了一个字，这个修改对其他进程而言是不可见的。<span style="border-bottom:2px dashed red;">在UNIX中，子进程的初始地址空间是个父进程的一个副本，但是这里涉及两个不同的地址空间，不可写的内存区是共享的。</span>某些UNIX的实现使程序正文在两者之间共享，因为它不能被修改。或者，子进程共享父进程的所有内存，但这种情况先内存通过<span style="border-bottom:2px dashed red;">写实复制</span>共享，这意味着一旦两者之一想要修改部分内存 ，则这块内存<span style="border-bottom:2px dashed red;">首先被明确地复制，以确保修改发生在私有内存区域。再次强调，可写的内存是不可以共享的。</span>但是对于一个新创建的进程而言，确实有可能共享其创建者的其他资源，例如打开的文件等。<span style="border-bottom:2px dashed red;">在Windows中，从一开始父进程的地址空间和子进程的地址空间就不同。</span><h2 id="进程的终止"><a href="#进程的终止" class="headerlink" title="进程的终止"></a>进程的终止</h2>新的进程的终止，通常由下列条件引起：<br>（1）正常退出（自愿的）<br>（2）出错退出（自愿的）<br>（3）严重错误（非自愿的）<br>（4）被其他进程杀死（非自愿的）</li>
+<li>多数进程是由于完成了它们的工作而终止。当编译器完成了所给定程序的编译之后，编译器执行一个系统调用，通知操作系统它的工作已经完成。在UNIX中该调用是exit，而在Windows中，相关的调用是ExitProcess。</li>
+<li>第二个原因是：进程发现了严重错误。<span style="border-bottom:2px dashed red;">在给出了错误参数时，面向屏幕的交互进程通常并不退出。相反，这些程序会弹出一个对话框，并要求用户再试一次。</span></li>
+<li>第三个原因：由进程引起的错误，通常是由于程序中的错误所致。例如执行了一条非法指令、引用不存在的内存、除数为0等。有些系统中（如UNIX），进程可以通知操作系统，它希望自行处理某些类型的错误，在这类错误中，进程会收到信号（被中断），而不是在这类错误出现时终止。</li>
+<li>第四个原因：某个进程执行一个系统调用通知操作系统杀死某个其他的进程。在UNIX中这个系统调用是kill，在Win32中对应的函数是TerminateProcess。在这两种情形中，“杀手”都必须获得确定的授权以便进行动作。（在Linux中一般要赋予root权限，才能执行kill操作）<h2 id="进程的层次结构"><a href="#进程的层次结构" class="headerlink" title="进程的层次结构"></a>进程的层次结构</h2></li>
+</ul>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -213,7 +224,7 @@
 <nav id="article-nav">
   
     <a href="/2018/01/26/进程与线程（二）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           进程与线程（二）
@@ -223,7 +234,7 @@
   
   
     <a href="/2018/01/26/现代操作系统学习小结/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">现代操作系统学习小结</div>
     </a>
   
@@ -238,7 +249,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程"><span class="nav-number">1.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程模型"><span class="nav-number">2.</span> <span class="nav-text">进程模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的创建"><span class="nav-number">3.</span> <span class="nav-text">进程的创建</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程"><span class="nav-number">1.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程模型"><span class="nav-number">2.</span> <span class="nav-text">进程模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的创建"><span class="nav-number">3.</span> <span class="nav-text">进程的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的终止"><span class="nav-number">4.</span> <span class="nav-text">进程的终止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的层次结构"><span class="nav-number">5.</span> <span class="nav-text">进程的层次结构</span></a></li></ol>
     
     </div>
   </aside>
