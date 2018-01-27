@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="操作系统中最核心的概念是进程：这是对正在运行程序的一个抽象。操作系统的其他所有内容都是围绕着进程的概念展开的。   即使可以使用的CPU只有一个，但他们也具有支持（伪）并发操作的能力，它们将一个单独的CPU变换成多个虚拟的CPU。可以说：没有进程的抽象，现代计算将不复存在。">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（一）/1.jpg">
-<meta property="og:updated_time" content="2018-01-27T04:33:16.088Z">
+<meta property="og:updated_time" content="2018-01-27T06:09:58.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程与线程（一）">
 <meta name="twitter:description" content="操作系统中最核心的概念是进程：这是对正在运行程序的一个抽象。操作系统的其他所有内容都是围绕着进程的概念展开的。   即使可以使用的CPU只有一个，但他们也具有支持（伪）并发操作的能力，它们将一个单独的CPU变换成多个虚拟的CPU。可以说：没有进程的抽象，现代计算将不复存在。">
@@ -176,7 +176,7 @@
 <li>多数进程是由于完成了它们的工作而终止。当编译器完成了所给定程序的编译之后，编译器执行一个系统调用，通知操作系统它的工作已经完成。在UNIX中该调用是exit，而在Windows中，相关的调用是ExitProcess。</li>
 <li>第二个原因是：进程发现了严重错误。<span style="border-bottom:2px dashed red;">在给出了错误参数时，面向屏幕的交互进程通常并不退出。相反，这些程序会弹出一个对话框，并要求用户再试一次。</span></li>
 <li>第三个原因：由进程引起的错误，通常是由于程序中的错误所致。例如执行了一条非法指令、引用不存在的内存、除数为0等。有些系统中（如UNIX），进程可以通知操作系统，它希望自行处理某些类型的错误，在这类错误中，进程会收到信号（被中断），而不是在这类错误出现时终止。</li>
-<li>第四个原因：某个进程执行一个系统调用通知操作系统杀死某个其他的进程。在UNIX中这个系统调用是kill，在Win32中对应的函数是TerminateProcess。在这两种情形中，“杀手”都必须获得确定的授权以便进行动作。（在Linux中一般要赋予root权限，才能执行kill操作）<h2 id="进程的层次结构"><a href="#进程的层次结构" class="headerlink" title="进程的层次结构"></a>进程的层次结构</h2></li>
+<li>第四个原因：某个进程执行一个系统调用通知操作系统杀死某个其他的进程。在UNIX中这个系统调用是kill，在Win32中对应的函数是TerminateProcess。在这两种情形中，“杀手”都必须获得确定的授权以便进行动作。（在Linux中一般要赋予root权限，才能执行kill操作）<h2 id="进程的层次结构"><a href="#进程的层次结构" class="headerlink" title="进程的层次结构"></a>进程的层次结构</h2>某些系统中，当进程创建了另一个进程后，父进程和子进程就以某种形式继续保持关联。子进程自身可以创建更多的进程，组成一个进程的层次结构。进程只有一个父进程，但是可以有零个、一个、两个或多个子进程。<br>在UNIX中，进程和它的所有子进程以及后裔共同组成一个进程组。当用户从键盘发出一个信号时，该信号被送给当前与键盘相关的进程组中的所有成员（它们通常是在当前窗口创建的所有活动进程）。每个进程可以分别捕获该信号、忽略该信号或采取默认的动作，即被该信号杀死。<br>考虑UNIX系统在启动时如何初始化自己。<span style="border-bottom:2px dashed red;">一个称为init的特殊进程出现在启动映像中，当它开始运行时，读入一个说明终端数量的文件。接着，为每个终端创建一个新进程。这些进程等待用户登录。如果有一个用户登录成功，该登陆进程就执行一个shell准备接收命令。</span>所接收的命令会启动更多的进程，以此类推，这样整个系统中，所有的进程都属于以init为根的一棵树。<br>相反，在Windows中没有进程层次的概念，所有的进程地位都是相同的。唯一类似于进程层次的暗示是在创建进程的时候，父进程得到一个特别的令牌<span style="border-bottom:2px dashed red;">（称为句柄）</span>,该句柄可以用来控制子进程。但是，它有权把这个令牌传送给某个其他的进程，这样就不存在进程层次了。在UNIX中，进程就不能剥夺其子进程的“继承权”。<h2 id="进程的状态"><a href="#进程的状态" class="headerlink" title="进程的状态"></a>进程的状态</h2></li>
 </ul>
 
       
@@ -249,7 +249,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程"><span class="nav-number">1.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程模型"><span class="nav-number">2.</span> <span class="nav-text">进程模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的创建"><span class="nav-number">3.</span> <span class="nav-text">进程的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的终止"><span class="nav-number">4.</span> <span class="nav-text">进程的终止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的层次结构"><span class="nav-number">5.</span> <span class="nav-text">进程的层次结构</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#进程"><span class="nav-number">1.</span> <span class="nav-text">进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程模型"><span class="nav-number">2.</span> <span class="nav-text">进程模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的创建"><span class="nav-number">3.</span> <span class="nav-text">进程的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的终止"><span class="nav-number">4.</span> <span class="nav-text">进程的终止</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的层次结构"><span class="nav-number">5.</span> <span class="nav-text">进程的层次结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程的状态"><span class="nav-number">6.</span> <span class="nav-text">进程的状态</span></a></li></ol>
     
     </div>
   </aside>
