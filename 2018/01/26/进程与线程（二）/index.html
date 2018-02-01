@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/1.jpg">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/2.jpg">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/3.jpg">
-<meta property="og:updated_time" content="2018-02-01T04:09:40.288Z">
+<meta property="og:updated_time" content="2018-02-01T04:12:10.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程与线程（二）">
 <meta name="twitter:description" content="线程   在传统操作系统中，每个进程有一个地址空间和一个控制线程。事实上这几乎就是进程的定义。不过经常存在在同一个地址空间中准并行运行多个控制线程的情形，这些线程就像分离的进程一样（共享地址空间除外）。 线程的使用   原因：（1）主要原因：在许多应用中同时发生着多种活动。其中某些活动随着时间的推移会被阻塞。通过将这些应用程序分解成可以准并行运行的多个顺序线程，程序设计模型就会变得很简单。【只是在">
@@ -64,10 +64,32 @@
 
 
   
+  
+  <div class="site-header-image">
+    <img id="originBg" width="100%" alt="Hike News" src="">
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
+  </div>
+
+  <script>
+        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("originBg").src=imgUrls[random];
+          document.getElementById("blurBg").src=imgUrls[random];
+        } else {
+          document.getElementById("originBg").src='/' + imgUrls[random];
+          document.getElementById("blurBg").src='/' + imgUrls[random];
+        }
+    </script>
+
+
 
 
 <header id="allheader" class="site-header" role="banner" 
-   >
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -92,7 +114,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -145,7 +167,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>   在传统操作系统中，每个进程有一个地址空间和一个控制线程。事实上这几乎就是进程的定义。不过经常存在在同一个地址空间中准并行运行多个控制线程的情形，这些线程就像分离的进程一样（共享地址空间除外）。</p>
-<h3 id="线程的使用"><a href="#线程的使用" class="headerlink" title="线程的使用"></a>线程的使用</h3><p>   原因：<br>（1）主要原因：在许多应用中同时发生着多种活动。其中某些活动随着时间的推移会被阻塞。通过将这些应用程序分解成可以准并行运行的多个顺序线程，程序设计模型就会变得很简单。<br><span style="border-bottom:2px dashed red;">【只是在有了多线程的概念之后，我们才加入了一种新的元素：并行实体拥有共享同一个地址空间和所有可用数据的能力。】</span><br><a id="more"></a><br>（2）由于线程比进程更轻量级，所以它们比进城更容易（更快）创建，也更容易撤销。在许多系统中，创建一个线程较创建一个进程要快10~100倍。在有大量线程需要动态和快速修改时，具有这一特性是非常有用的。<br>（3）有关性能方面，如果多个线程都是CPU密集型的，那么并不能获得性能上的增强，但是如果存在着大量的计算和大量的I/O处理，拥有多个线程允许这些活动彼此重叠进行，从而会加快应用程序执行的速度。<br><span style="border-bottom:2px dashed red;">在多CPU系统中，多线程是有益的，在这样的系统中，真正的并行有了实现的可能。</span><br>下面我举个例子来说明引入多线程的好处：<br>   <span style="border-bottom:2px dashed blue;">假设用户正在写一本书。如果整本书是个文件，那么只要一个命令就可已完成全部的替换处理。相反，如果一本书分成了300个文件，那么就必须分别对每个文件进行编辑。现在考虑，如果有一个用户突然在一个有800页的文件的第一页上删掉了一个语句之后，会发生什么情形。在检查了所修改的页面并确认正确之后，这个用户现在打算接着在第600页上进行进行另一个修改，被强制对整本书的前600页重新进行格式处理，</span><span style="border-bottom:2px dashed red;">这是因为在排列该页前面的所有页之前，字处理软件并不知道第600页的第一行应该在哪里。而在第600页的页面可以真正在屏幕上显示出来之前，计算机可能要拖延相当一段时间，从而令用户不甚满意。</span><span style="border-bottom:2px dashed blue;">这时，多线程可以在这里发挥作用。假设字处理软件被编写成含有两个线程的程序。一个线程与用户交互，而另一个在后台重新进行格式处理。一旦在第一页中的语句被删除掉，交互线程就立即通知格式化线程对整本书重新进行处理。同时，交互线程继续监控键盘和鼠标，并相应诸如滚动第1页之类的简单命令，此刻，另一个线程正在后台疯狂的运算，如果有点运气的话，重新格式化会在用户请求查看第600页之前完成，这样，第600页页面就立即可以在屏幕上显示出来。</span><br>   <span style="border-bottom:2px dashed blue;">我们可以在增加一个线程。许多字处理软件都有每隔若干分钟自动在磁盘上保存整个文件的特点，用于避免由于程序崩溃、系统崩溃或电源故障而造成用户一整天的工作丢失的情况。第三个线程可以用于处理磁盘备份，而不必干扰其他两个进程。</span><br>拥有三个线程的情形如下图所示：<br><img src="/2018/01/26/进程与线程（二）/1.jpg" alt="有三个线程的字处理软件"><br>   很显然，在这里用三个不同的进程是不能工作的，这是因为三个进程都需要对同一个文件进行操作。由于多个线程可以共享公共内存，所以通过用三个线程替代三个进程，使得他们可以访问同一个正在编辑的文件，而三个进程是做不到的。<br>   现在考虑另一个多线程发挥作用的例子：一个万维网服务器。对页面的请求发送给服务器，而所请求的页面发送给客户机。在多数web站点上，某些页面较其他页面相比，有更多的访问。例如，对Sony主页的访问就远远超过对深藏在页面树里的任何特定摄像机的技术说明书页面的访问。利用这一事实，web服务器可以把获得大量访问的页面集合保存在内存中，避免到磁盘去调入这些页面，从而改善性能。这样的一种页面集合称为<span style="border-bottom:2px dashed red;">高速缓存</span>.<br><img src="/2018/01/26/进程与线程（二）/2.jpg" alt="有三个线程的字处理软件"></p>
+<h3 id="线程的使用"><a href="#线程的使用" class="headerlink" title="线程的使用"></a>线程的使用</h3><p>   原因：<br>（1）主要原因：在许多应用中同时发生着多种活动。其中某些活动随着时间的推移会被阻塞。通过将这些应用程序分解成可以准并行运行的多个顺序线程，程序设计模型就会变得很简单。<br><span style="border-bottom:2px dashed red;">【只是在有了多线程的概念之后，我们才加入了一种新的元素：并行实体拥有共享同一个地址空间和所有可用数据的能力。】</span><br><a id="more"></a><br>（2）由于线程比进程更轻量级，所以它们比进城更容易（更快）创建，也更容易撤销。在许多系统中，创建一个线程较创建一个进程要快10~100倍。在有大量线程需要动态和快速修改时，具有这一特性是非常有用的。<br>（3）有关性能方面，如果多个线程都是CPU密集型的，那么并不能获得性能上的增强，但是如果存在着大量的计算和大量的I/O处理，拥有多个线程允许这些活动彼此重叠进行，从而会加快应用程序执行的速度。<br><span style="border-bottom:2px dashed red;">在多CPU系统中，多线程是有益的，在这样的系统中，真正的并行有了实现的可能。</span><br>下面我举个例子来说明引入多线程的好处：<br>   <span style="border-bottom:2px dashed green;">假设用户正在写一本书。如果整本书是个文件，那么只要一个命令就可已完成全部的替换处理。相反，如果一本书分成了300个文件，那么就必须分别对每个文件进行编辑。现在考虑，如果有一个用户突然在一个有800页的文件的第一页上删掉了一个语句之后，会发生什么情形。在检查了所修改的页面并确认正确之后，这个用户现在打算接着在第600页上进行进行另一个修改，被强制对整本书的前600页重新进行格式处理，</span><span style="border-bottom:2px dashed red;">这是因为在排列该页前面的所有页之前，字处理软件并不知道第600页的第一行应该在哪里。而在第600页的页面可以真正在屏幕上显示出来之前，计算机可能要拖延相当一段时间，从而令用户不甚满意。</span><span style="border-bottom:2px dashed blue;">这时，多线程可以在这里发挥作用。假设字处理软件被编写成含有两个线程的程序。一个线程与用户交互，而另一个在后台重新进行格式处理。一旦在第一页中的语句被删除掉，交互线程就立即通知格式化线程对整本书重新进行处理。同时，交互线程继续监控键盘和鼠标，并相应诸如滚动第1页之类的简单命令，此刻，另一个线程正在后台疯狂的运算，如果有点运气的话，重新格式化会在用户请求查看第600页之前完成，这样，第600页页面就立即可以在屏幕上显示出来。</span><br>   <span style="border-bottom:2px dashed green;">我们可以在增加一个线程。许多字处理软件都有每隔若干分钟自动在磁盘上保存整个文件的特点，用于避免由于程序崩溃、系统崩溃或电源故障而造成用户一整天的工作丢失的情况。第三个线程可以用于处理磁盘备份，而不必干扰其他两个进程。</span><br>拥有三个线程的情形如下图所示：<br><img src="/2018/01/26/进程与线程（二）/1.jpg" alt="有三个线程的字处理软件"><br>   很显然，在这里用三个不同的进程是不能工作的，这是因为三个进程都需要对同一个文件进行操作。由于多个线程可以共享公共内存，所以通过用三个线程替代三个进程，使得他们可以访问同一个正在编辑的文件，而三个进程是做不到的。<br>   现在考虑另一个多线程发挥作用的例子：一个万维网服务器。对页面的请求发送给服务器，而所请求的页面发送给客户机。在多数web站点上，某些页面较其他页面相比，有更多的访问。例如，对Sony主页的访问就远远超过对深藏在页面树里的任何特定摄像机的技术说明书页面的访问。利用这一事实，web服务器可以把获得大量访问的页面集合保存在内存中，避免到磁盘去调入这些页面，从而改善性能。这样的一种页面集合称为<span style="border-bottom:2px dashed red;">高速缓存</span>.<br><img src="/2018/01/26/进程与线程（二）/2.jpg" alt="有三个线程的字处理软件"></p>
 <h4 id="web服务器的3种设计方案"><a href="#web服务器的3种设计方案" class="headerlink" title="web服务器的3种设计方案"></a>web服务器的3种设计方案</h4><p>   一种组织web服务器的方式如上图所示，在这里，一个称为<span style="border-bottom:2px dashed red;">分派程序</span>的线程从网络中读入工作请求。在检查请求之后，分派线程挑选一个空转的（即被阻塞的）工作线程，提交请求，通常是在每个线程所配有的某个专门的字中写入一个消息指针。接着分派线程唤醒睡眠的工作线程，将它从阻塞状态转为就绪状态。<br>   在工作线程被唤醒之后，它检查有关的请求是否在web高速页面缓存之中，这个高速缓存是所有线程都可以访问的。如果没有，该线程开始<span style="border-bottom:2px dashed red;">一个从磁盘调入页面的read操作</span>并且阻塞直到该磁盘操作完成。当上述线程阻塞在磁盘操作上时，为了完成更多的工作，分派线程可能挑选另一个线程运行，也可能把另一个当前就绪的工作线程投入运行。<br>   <span style="border-bottom:2px dashed red;">这种模型允许把服务器编写为顺序线程的一个集合</span>。<br>   在分配线程的程序中包含一个无限循环，该循环用来获得工作请求并把工作请求派给工作线程。每个工作线程的代码包含一个从分派线程接受的请求，并且检查web高速缓存中是否存在所需页面的无限循环如果存在，就将该页面返回给客户机，接着该工作线程阻塞，等待一个新的请求。如果没有，工作线程就从磁盘调入该页面，将该页面返回给客户机，然后该工作线程阻塞，等待一个新的请求。<br>   下图给出了有关代码的大致框架（TRUE=1，buf和page分别是保存工作请求和web页面的相应结构）：<br><img src="/2018/01/26/进程与线程（二）/3.jpg" alt="有三个线程的字处理软件"></p>
 
       
@@ -194,7 +216,7 @@
   
   
     <a href="/2018/01/26/进程与线程（一）/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">进程与线程（一）</div>
     </a>
   
@@ -262,6 +284,9 @@
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
