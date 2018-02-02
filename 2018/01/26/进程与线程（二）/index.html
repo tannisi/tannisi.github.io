@@ -22,7 +22,10 @@
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/2.jpg">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/3.jpg">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/4.jpg">
-<meta property="og:updated_time" content="2018-02-02T03:42:05.551Z">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/5.jpg">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/6.jpg">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/7.jpg">
+<meta property="og:updated_time" content="2018-02-02T04:48:38.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程与线程（二）">
 <meta name="twitter:description" content="线程   在传统操作系统中，每个进程有一个地址空间和一个控制线程。事实上这几乎就是进程的定义。不过经常存在在同一个地址空间中准并行运行多个控制线程的情形，这些线程就像分离的进程一样（共享地址空间除外）。 线程的使用   原因：（1）主要原因：在许多应用中同时发生着多种活动。其中某些活动随着时间的推移会被阻塞。通过将这些应用程序分解成可以准并行运行的多个顺序线程，程序设计模型就会变得很简单。【只是在">
@@ -65,10 +68,32 @@
 
 
   
+  
+  <div class="site-header-image">
+    <img id="originBg" width="100%" alt="Hike News" src="">
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
+  </div>
+
+  <script>
+        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("originBg").src=imgUrls[random];
+          document.getElementById("blurBg").src=imgUrls[random];
+        } else {
+          document.getElementById("originBg").src='/' + imgUrls[random];
+          document.getElementById("blurBg").src='/' + imgUrls[random];
+        }
+    </script>
+
+
 
 
 <header id="allheader" class="site-header" role="banner" 
-   >
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -93,7 +118,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -158,7 +183,13 @@
 <p>   如果可以使用read系统调用的非阻塞版本，还存在第三种可能的设计。在请求到来时，这个唯一的线程对请求进行考察。如果该请求能够在高速缓存中得到满足，那么一切都好，如果不能，则启动一个非阻塞的磁盘操作 。<br>   服务器在表格中记录当前请求的状态，然后去处理下一个事件。下一个事件可能是一个新工作的请求，或是对磁盘先前操作的回答。如果是新工作的请求，就开始工作。如果是磁盘的回答，就从表格中取出对应的消息，并处理该回答，对于非阻塞磁盘I/O而言，这种回答多数会以信号或中断的形式出现。<br>   在这种设计中，每次服务器从为某个请求工作的状态切换到另一个状态时，都必须显示地保存或重新装入相应的计算状态。事实上，我们以一种困难的方式模拟了线程及其堆栈。这里，每个计算都有一个被保存的状态，存在一个会发生且使得相关状态发生改变的事件集合，我们把这类设计称为<span style="border-bottom:2px dashed red;">有限状态机</span>。</p>
 <p>下图给出了上述模式的总结：<br><img src="/2018/01/26/进程与线程（二）/4.jpg" alt="构造服务器的三种方法"></p>
 <p>   <span style="border-bottom:2px dashed red;">多线程提供了一种解决方案，有关的进程可以用一个输入线程、一个处理线程和一个输出线程构造。输入线程把数据读入到到输入缓冲区中；处理线程从输入缓冲区中取出数据，处理数据，并把结果放到输出缓冲区中；输出线程把这些结果写到磁盘上。按照这种工作方式，输入、处理和输出可以全部同时进行。当然这种模型只有当系统调用只阻塞调用线程而不是阻塞整个进程时，才能正常工作。</span></p>
-<h3 id="经典的现场模型"><a href="#经典的现场模型" class="headerlink" title="经典的现场模型"></a>经典的现场模型</h3>
+<h3 id="经典的现场模型"><a href="#经典的现场模型" class="headerlink" title="经典的现场模型"></a>经典的现场模型</h3><p>   进程模型基于两种独立的概念：资源分组处理与执行。有时将这两种概念分开会更好，于是引入了“线程”这一概念。<br>    <span style="border-bottom:2px dashed red;">理解进程的一个角度是，用某种方法把相关资源集中在一起。进程有存放程序正文和数据以及其他资源的地址空间。这些资源中包括打开的文件、子进程、即将发生的定时器、信号处理程序、账号信息等。把它们都放到进程中可以更容易管理。</span><br>   另一个概念是进程拥有一个可以执行的线程，简称为线程。在线程中有一个程序计数器，用来记录接着要执行哪一条指令。线程拥有寄存器，用来保存线程当前的工作变量。线程还拥有一个堆栈用来记录执行历史，其中每一帧保存了一个已调用的但是还没有从中返回的的过程。<br>    <span style="border-bottom:2px dashed red;">尽管线程必须在某个进程中执行，但是线程和它的进程是不同的概念，并且可以分别处理。进程用于把资源集中到一起，而线程则是在CPU上被调度执行的实体。</span><br>   在同一个线程中并行运行多个进程，是对在同一台计算机上并行运行多个进程的模拟。在前一种情形下，多个线程共享同一个地址空间和其他资源。而在后一种情形中，多个进程共享物理内存、磁盘打印机和其他资源。</p>
+<p>   由于线程具有进程的某些性质，所以有时被称为“轻量级进程”。</p>
+<p>   在下图a中可以看到三个传统的进程。每个进程有自己的地址空间和单个控制线程。每个线程都在不同的地址空间中运行。在图b中，可以看到一个进程带有三个控制线程。这三个线程全部在相同的地址空间中运行。<br><img src="/2018/01/26/进程与线程（二）/5.jpg" alt="a）三个进程，每个进程有一个线程 b）一个进程带三个线程"></p>
+<p>   进程中的不同线程不像不同进程之间那样存在很大的独立性。所有的线程都有完全一致的地址空间，这就意味着他们也共享同样的全局变量。由于各个线程都可以访问进程地址空间中的每一个内存地址，所以一个线程可以读、写或甚至清除另一个线程的堆栈。<span style="border-bottom:2px dashed red;">线程之间是没有保护的<br>。原因是：1）不可能 2）也没有必要 。这与不同进程是有差别的。不同的进程会来自不同的用户，它们彼此之间可能有敌意，一个进程总是由某个用户所拥有该用户创建多个线程应该是为了它们之间的合作而不是彼此间争斗。除了共享地址空间外，所有线程还共享同一个打开文件集、子进程、定时器以及相关信号等。</span></p>
+<p>在下图中：第一列给出了在一个进程中所有线程共享的内容，第二列给出了每个线程自己的内容。<br><img src="/2018/01/26/进程与线程（二）/6.jpg" alt=""></p>
+<p>   线程概念试图实现的是，共享一组资源的的多个线程的执行能力，以便这些线程可以为完成某一任务而共同工作。<br>   和传统进程一样（即只有一个线程的进程），线程可以出于若干种状态的任何一个：运行、阻塞、就绪或终止。线程之间的转换和进程之间的转换是一样的。<br><img src="/2018/01/26/进程与线程（二）/7.jpg" alt="每个线程有其自己的堆栈"><br>   每个线程都有其自己的堆栈，如上图所示。</p>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -205,7 +236,7 @@
   
   
     <a href="/2018/01/26/进程与线程（一）/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">进程与线程（一）</div>
     </a>
   
@@ -273,6 +304,9 @@
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
