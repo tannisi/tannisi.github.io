@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/5.jpg">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/6.jpg">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/7.jpg">
-<meta property="og:updated_time" content="2018-02-02T10:40:16.208Z">
+<meta property="og:updated_time" content="2018-02-02T11:14:28.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程与线程（二）">
 <meta name="twitter:description" content="线程   在传统操作系统中，每个进程有一个地址空间和一个控制线程。事实上这几乎就是进程的定义。不过经常存在在同一个地址空间中准并行运行多个控制线程的情形，这些线程就像分离的进程一样（共享地址空间除外）。 线程的使用   原因：（1）主要原因：在许多应用中同时发生着多种活动。其中某些活动随着时间的推移会被阻塞。通过将这些应用程序分解成可以准并行运行的多个顺序线程，程序设计模型就会变得很简单。【只是在">
@@ -196,7 +196,43 @@
 <p>当一个线程完成工作后，可以通过调用一个库过程（如thread_exit）退出，该进程接着消失，不再可调度。在某些线程系统中，通过调用一个过程(如：thread_join)一个线程可以等待一个特定的线程退出。这个过程阻塞调用线程直到那个特定线程退出。</p>
 <p>   thread_yield：<br>另一个常见的线程调用是thread_yield，它允许线程自动放弃CPU从而让另一个线程运行。这样一个调用是很重要的，因为不同于进程，<span style="border-bottom:2px dashed red;">（线程库）无法利用时针中断强制线程让出CPU</span>，所以设法使线程行为高尚起来并且随着时间的推移自动交出CPU，以便让其他进程有机会运行，就变得非常重要。有的调用允许某个线程等待另一个线程完成某些任务，或等待一个线程宣称它已经完成了有关的工作等。</p>
 <p>   线程所带来的一些问题：<br>1）.如果父进程拥有多个线程，那么它的子进程也应该拥有这些线程吗？如果不是，则该子进程可能会工作不正常，因为在该子进程中的线程都是绝对必要的。<br>2）.如果子进程拥有了与父进程一样多的线程，如果父进程在read调用上被阻塞了会发生什么情况？<br>3）.还有一类问题和线程共享许多数据结构的事实有关等</p>
-<h3 id="POSIX线程"><a href="#POSIX线程" class="headerlink" title="POSIX线程"></a>POSIX线程</h3>
+<h3 id="POSIX线程"><a href="#POSIX线程" class="headerlink" title="POSIX线程"></a>POSIX线程</h3><p>   IEEE定义的线程包叫做pthread。大部分UNIX系统都支持该标准。这个标准定义了超过60个系统调用。所有pthread线程都有某些特性。每个都含有一个标识符、一组寄存器（包括 程序计数器）和一组存储在结构中的属性。这些属性包括堆栈大小、调度参数以及其他线程需要的项目。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">线程调用</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">pthread_create</td>
+<td style="text-align:right">常见一个新线程</td>
+</tr>
+<tr>
+<td style="text-align:left">pthread_exit</td>
+<td style="text-align:right">结束调用的线程</td>
+</tr>
+<tr>
+<td style="text-align:left">pthread_join</td>
+<td style="text-align:right">等待一个特定的线程退出</td>
+</tr>
+<tr>
+<td style="text-align:left">pthread_yield</td>
+<td style="text-align:right">释放CPU来运行另一个线程</td>
+</tr>
+<tr>
+<td style="text-align:left">pthread_attr_init</td>
+<td style="text-align:right">创建并初始化一个线程的属性结构</td>
+</tr>
+<tr>
+<td style="text-align:left">pthread_attr_destory</td>
+<td style="text-align:right">删除一个线程的属性结构</td>
+</tr>
+</tbody>
+</table>
+<pre><code>一些pthread的函数调用
+</code></pre>
       
     </div>
     <footer class="entry-meta entry-footer">
