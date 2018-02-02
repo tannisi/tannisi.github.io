@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/5.jpg">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/6.jpg">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/7.jpg">
-<meta property="og:updated_time" content="2018-02-02T11:14:28.237Z">
+<meta property="og:updated_time" content="2018-02-02T11:48:06.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程与线程（二）">
 <meta name="twitter:description" content="线程   在传统操作系统中，每个进程有一个地址空间和一个控制线程。事实上这几乎就是进程的定义。不过经常存在在同一个地址空间中准并行运行多个控制线程的情形，这些线程就像分离的进程一样（共享地址空间除外）。 线程的使用   原因：（1）主要原因：在许多应用中同时发生着多种活动。其中某些活动随着时间的推移会被阻塞。通过将这些应用程序分解成可以准并行运行的多个顺序线程，程序设计模型就会变得很简单。【只是在">
@@ -232,7 +232,40 @@
 </tbody>
 </table>
 <pre><code>一些pthread的函数调用
-</code></pre>
+</code></pre><p>   创建一个新线程需要使用pthread_create调用。新创建的线程的线程标识符会作为函数值返回。这种调用有意看起来很像fork系统调用，其中线程标识符起着PID的作用，而这么做的目的主要是为了标识在其他调用中引用的线程。<br>   当一个线程完成分配给它的工作后，可以通过调用pthread_exit来终止，这个调用终止线程并释放它的栈。<br>   像pthread_join、pthread_yield的作用前面已经介绍了。</p>
+<p>   最下面的两个线程调用是处理属性的。pthread_attr_init建立关联一个线程的属性结构并初始化成默认值。这些值（例如优先级）可以通过修改属性结构中的域值来改变。<br>   pthread_attr_destory删除一个线程的属性结构，释放它占用的内存。它不会影响调用它的线程。这些线程会继续存在。</p>
+<p>   为了更好地了解pthread是如何工作的，考虑下面的例子。</p>
+<pre><code>#include&lt;pthread.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+
+#define NUMBER_OF_THREADS  10
+
+void *print_hello_world(void *tid)
+{
+    /*本函数输出线程的标识符，然后退出。 */
+    printf(&quot;Hello World.Greetings from thread %d\n&quot;,tid);
+    pthread_exit(NULL);
+}
+
+int main(int argc,char *argv[])
+{
+    /*主程序创建10个线程然后退出。 */
+    pthread_t threads[NUMBER_OF_THREADS];
+    int status,i;
+
+    for(i=0;i&lt;NUMBER_OF_THREADS;i++){
+        printf(&quot;Main here,Create thread %d\n&quot;);
+        status = pthread_create(&amp;threads[i],NULL,print_hello_world),(void *)i);
+
+        if(status != 0){
+            printf(&quot;Oops.pthread_create returned error code %d\n&quot;,status);
+            exit(-1);
+        }
+    }
+    exit(NULL);
+}
+</code></pre><h3 id="在用户空间中实现线程"><a href="#在用户空间中实现线程" class="headerlink" title="在用户空间中实现线程"></a>在用户空间中实现线程</h3>
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -294,7 +327,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程"><span class="nav-number">1.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的使用"><span class="nav-number">1.1.</span> <span class="nav-text">线程的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#web服务器的3种设计方案"><span class="nav-number">1.1.1.</span> <span class="nav-text">web服务器的3种设计方案</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#经典的线程模型"><span class="nav-number">1.2.</span> <span class="nav-text">经典的线程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POSIX线程"><span class="nav-number">1.3.</span> <span class="nav-text">POSIX线程</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程"><span class="nav-number">1.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的使用"><span class="nav-number">1.1.</span> <span class="nav-text">线程的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#web服务器的3种设计方案"><span class="nav-number">1.1.1.</span> <span class="nav-text">web服务器的3种设计方案</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#经典的线程模型"><span class="nav-number">1.2.</span> <span class="nav-text">经典的线程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POSIX线程"><span class="nav-number">1.3.</span> <span class="nav-text">POSIX线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在用户空间中实现线程"><span class="nav-number">1.4.</span> <span class="nav-text">在用户空间中实现线程</span></a></li></ol></li></ol>
     
     </div>
   </aside>
