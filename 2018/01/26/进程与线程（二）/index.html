@@ -25,7 +25,9 @@
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/5.jpg">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/6.jpg">
 <meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/7.jpg">
-<meta property="og:updated_time" content="2018-02-02T11:48:06.997Z">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/8.jpg">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/26/进程与线程（二）/9.jpg">
+<meta property="og:updated_time" content="2018-02-03T04:07:32.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进程与线程（二）">
 <meta name="twitter:description" content="线程   在传统操作系统中，每个进程有一个地址空间和一个控制线程。事实上这几乎就是进程的定义。不过经常存在在同一个地址空间中准并行运行多个控制线程的情形，这些线程就像分离的进程一样（共享地址空间除外）。 线程的使用   原因：（1）主要原因：在许多应用中同时发生着多种活动。其中某些活动随着时间的推移会被阻塞。通过将这些应用程序分解成可以准并行运行的多个顺序线程，程序设计模型就会变得很简单。【只是在">
@@ -68,32 +70,10 @@
 
 
   
-  
-  <div class="site-header-image">
-    <img id="originBg" width="100%" alt="Hike News" src="">
-  </div>
-
-  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
-    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
-  </div>
-
-  <script>
-        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
-        var random = Math.floor((Math.random() * imgUrls.length ));
-        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-          document.getElementById("originBg").src=imgUrls[random];
-          document.getElementById("blurBg").src=imgUrls[random];
-        } else {
-          document.getElementById("originBg").src='/' + imgUrls[random];
-          document.getElementById("blurBg").src='/' + imgUrls[random];
-        }
-    </script>
-
-
 
 
 <header id="allheader" class="site-header" role="banner" 
-   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
+   >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -265,7 +245,17 @@ int main(int argc,char *argv[])
     }
     exit(NULL);
 }
-</code></pre><h3 id="在用户空间中实现线程"><a href="#在用户空间中实现线程" class="headerlink" title="在用户空间中实现线程"></a>在用户空间中实现线程</h3>
+</code></pre><p>   这里主程序在宣布它的意图之后，循环NUMBER_OF_THREADS次，每次创建一个新的线程。如果线程创建失败，会打印出一条错误信息然后退出。在创建完所有线程之后，主程序退出。当创建一个线程时，它打印一条一行的发布信息，然后退出。这些不同信息交错的顺序是不确定的并且可能在连续运行程序的情况下发生变化。</p>
+<h3 id="在用户空间中实现线程"><a href="#在用户空间中实现线程" class="headerlink" title="在用户空间中实现线程"></a>在用户空间中实现线程</h3><p>   把整个线程包放在用户空间中，内核对线程一无所知。从内核角度考虑，就是按正常的方式管理，即单线程进程。（即进程表在内核中，线程表在用户空间中。）</p>
+<p>在用户空间中实现线程的优点：</p>
+<p>（1）.<span style="border-bottom:2px dashed red;">用户级线程包可以在不支持线程的操作系统上实现。</span>通过这一方法，可以使用函数库实现线程。所有的这类实现都有同样的通用结构。如图一（a）所示，线程在一个运行时系统的上层运行，该运行时系统是一个管理线程的过程的集合。<br><img src="/2018/01/26/进程与线程（二）/8.jpg" alt="图一（a）用户级线程包 （b）由内核管理的线程包"><br>   在用户管理线程时每个进程需要有其专用的线程表，用来跟踪该进程中的线程。这些表和内核中的进程表类似，不过它们仅仅记录各个线程的属性，如每个线程的程序计数器、堆栈指针、寄存器和状态等。该线程表由运行时系统管理，当一个线程转换到就绪状态或阻塞状态时，在该线程表中存放重新启动该线程所需的信息，与内核在进程表中存放进程的信息完全一样。<br>（2）.<span style="border-bottom:2px dashed red;">进行类似于这样的线程切换至少比陷入内核要快一个数量级（或许更多），这是使用用户级线程包的极大的优点。</span><br>（3）.<span style="border-bottom:2px dashed red;">保存该线程状态的过程和调度程序都只是本地过程，所以启动它们比进行内核调用效率更高。</span><br>（4）.<span style="border-bottom:2px dashed red;">不需要陷入内核，不需要上下文切换，也不需要对内存高速缓存进行刷新，这就使得线程调度非常快捷。</span><br>（5）.<span style="border-bottom:2px dashed red;">它允许每个线程有自己的调度算法。</span><br>（6）.<span style="border-bottom:2px dashed red;">具有较好的可扩展性，这是因为在内核空间中内核线程需要一些固定表格空间和堆栈空间，如果内核线程的数量非常大，就会出现问题。</span></p>
+<p>在用户空间中实现线程的问题：</p>
+<p>（1）.<span style="border-bottom:2px dashed blue;">如何实现阻塞调用</span>使用线程的一个主要目标是，首先要允许每个线程使用阻塞调用，但是还要避免被阻塞的线程影响其他的线程。有了阻塞系统调用，这个目标不是轻易能够实现的。<br>对于上述问题的解决：1. 系统调用可以全部改成非阻塞的，但是这需要修改操作系统 2. 如果某个调用会阻塞，就会提前通知。其过程为首先进行select调用，然后只有在安全的情形下（即不会阻塞）才进行read调用。如果read调用会被阻塞，有关的调用就不进行，代之运行另一个线程。到了下次有关的运行系统取得控制权之后，就可以再次检查看看现在进行read调用是否安全。在系统调用周围从事检查的这类代码称为包装器。<br>（2）.<span style="border-bottom:2px dashed blue;">缺页中断问题</span>，如果某个程序调用或者跳转到了一条不在内存的指令上，就会发生页面故障，而操作系统将到磁盘上取回这个丢失的指令（和该指令的“邻居们 ”），这就称为“页面故障”。<br>（3）.<span style="border-bottom:2px dashed blue;">如果一个线程开始运行那么在该进程中的其他线程就不能运行，除非第一个线程自动调用CPU。<br>其可能的解决方案是：让运行时系统请求每秒一次的时钟信号（中断），但是这样对程序是生硬的和无序的。不可能总是高频率地发生周期性的时钟中断，即使可能总的开销也是可观的。而且线程也可能需要时钟中断，这就会扰乱运行时系统使用的时钟。<br>（4）.<span style="border-bottom:2px dashed blue;">程序员通常在经常发生线程阻塞的应用中才希望使用多个线程。</span>对于那些基本上是CPU密集型（一些进程绝大多数时间在计算上，称为计算密集型（也称CPU密集型））而且极少有阻塞的应用程序而言，就没必要使用多线程了。</span></p>
+<h3 id="在内核中实现线程"><a href="#在内核中实现线程" class="headerlink" title="在内核中实现线程"></a>在内核中实现线程</h3><p>   不需要运行时系统，而且每个进程中也没有线程表。在内核中有用来记录系统中所有线程的线程表。当某个线程希望创建一个新线程或撤销一个已有线程时，它进行一个系统调用，这个系统调用通过对线程表的更新完成线程创建或撤销工作。（即进程表和线程表都在内核中）如图一（b）所示。</p>
+<p>（1）.<span style="border-bottom:2px dashed red;">所有能够阻塞线程的操作都以系统调用的形式实现</span>，这与运行时系统过程相比，代价是相当客观的。当一个线程阻塞时，内核根据其选择，可以运行同一个进程中的另一个线程（若有一个就绪的线程）或者运行另一个进程的线程。而在用户级线程中，运行时系统始终运行自己进程中的线程，直到内核剥夺它的CPU（或者没有可运行的线程存在了）为止。<br>（2）.<span style="border-bottom:2px dashed red;">在内核中创建或撤销线程的代价比较大。可以采用回收线程的方法解决：当某个线程被撤销时，就把它标识为不可运行，但是其内核数据没有受到影响。稍后再创建一个新线程时，就重新启动某个旧线程，从而节省开销。<br>（3）.<span style="border-bottom:2px dashed red;">内核线程不需要任何新的、非阻塞系统调用。</span>这样做的缺点是系统调用的代价比较大，所以如果线程的操作（创建、终止等）比较多，就会造成很大的开销。</span></p>
+<p>使用内核线程带来的问题：1. 当一个多线程进程创建新的进程时会发生什么？ 2. 如果两个或多个线程注册了相同的信号，会发生什么？ 等等。</p>
+<h3 id="混合实现"><a href="#混合实现" class="headerlink" title="混合实现"></a>混合实现</h3><p><span style="border-bottom:2px dashed red;">一种方法是使用内核级线程，然后将用户级线程与某些或者全部内核线程多路复用起来。</span>如下图所示。<br><img src="/2018/01/26/进程与线程（二）/9.jpg" alt="用户级线程与内核线程多路复用"><br>    优点：编程人员可以决定用多少个内核级线程和多少个用户级线程彼此多路复用。这一模型带来最大的灵活度。</p>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -327,7 +317,7 @@ int main(int argc,char *argv[])
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程"><span class="nav-number">1.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的使用"><span class="nav-number">1.1.</span> <span class="nav-text">线程的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#web服务器的3种设计方案"><span class="nav-number">1.1.1.</span> <span class="nav-text">web服务器的3种设计方案</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#经典的线程模型"><span class="nav-number">1.2.</span> <span class="nav-text">经典的线程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POSIX线程"><span class="nav-number">1.3.</span> <span class="nav-text">POSIX线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在用户空间中实现线程"><span class="nav-number">1.4.</span> <span class="nav-text">在用户空间中实现线程</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程"><span class="nav-number">1.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的使用"><span class="nav-number">1.1.</span> <span class="nav-text">线程的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#web服务器的3种设计方案"><span class="nav-number">1.1.1.</span> <span class="nav-text">web服务器的3种设计方案</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#经典的线程模型"><span class="nav-number">1.2.</span> <span class="nav-text">经典的线程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POSIX线程"><span class="nav-number">1.3.</span> <span class="nav-text">POSIX线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在用户空间中实现线程"><span class="nav-number">1.4.</span> <span class="nav-text">在用户空间中实现线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在内核中实现线程"><span class="nav-number">1.5.</span> <span class="nav-text">在内核中实现线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混合实现"><span class="nav-number">1.6.</span> <span class="nav-text">混合实现</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -380,9 +370,6 @@ int main(int argc,char *argv[])
 
 
     <!-- headerblur min height -->
-    
-      var headerblur = document.getElementById("header-blur");
-      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
