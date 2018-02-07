@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://tannisi.github.io/2018/02/07/linux运维学习一/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="Linux运维学习一、shell脚本   当命令或程序语句不在命令行下执行，而是通过一个程序文件来执行时，该程序就被称为shell脚本。">
-<meta property="og:updated_time" content="2018-02-07T05:13:15.678Z">
+<meta property="og:updated_time" content="2018-02-07T05:15:27.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维学习一">
 <meta name="twitter:description" content="Linux运维学习一、shell脚本   当命令或程序语句不在命令行下执行，而是通过一个程序文件来执行时，该程序就被称为shell脚本。">
@@ -194,9 +194,9 @@ exit 1
 #!/usr/bin/perl         #&lt;==Perl语言解释器
 #!/usr/bin/env python   #&lt;==python语言解释器
 </code></pre><p>如果在脚本开头的第一行不指定解释器，那么就要用对应的解释器来执行脚本。这样才能确保脚本正确执行。例如：<br>如果是shell脚本，就用bash test.sh执行test.sh<br>如果是Python脚本，就用python test.py执行test.py<br>如果是expect脚本，就用expect test.exp执行test.exp<br>（5）脚本注释<br>在shell脚本中，跟在#后面的内容表示注释，用来对脚本进行注释说明。</p>
-<h3 id="五、shell脚本的执行通常采用以下几种方式："><a href="#五、shell脚本的执行通常采用以下几种方式：" class="headerlink" title="五、shell脚本的执行通常采用以下几种方式："></a>五、shell脚本的执行通常采用以下几种方式：</h3><p>（1）bash script-name 或 sh script-name：这是当脚本文件本身没有可执行权限（即文件权限属性x位为-号）时常用的方法，或者脚本文件开头没有指定解释器时需要使用的方法。<br>（2）path/script-name 或 ./script-name ：指在当前路径下执行脚本（脚本需要有执行权限），然后就直接应用了。（可以使用chmod命令来变更文件或目录的权限。权限的表示法如下：<br>        u User，即文件或目录的拥有者；<br>        g Group，即文件或目录的所属群组；<br>        o Other，除了文件或目录拥有者或所属群组之外，其他用户皆属于这个范围；<br>        a All，即全部的用户，包含拥有者，所属群组以及其他用户；<br>        r 读取权限，数字代号为“4”;<br>        w 写入权限，数字代号为“2”；<br>        x 执行或切换权限，数字代号为“1”；</p>
+<h3 id="五、shell脚本的执行通常采用以下几种方式："><a href="#五、shell脚本的执行通常采用以下几种方式：" class="headerlink" title="五、shell脚本的执行通常采用以下几种方式："></a>五、shell脚本的执行通常采用以下几种方式：</h3><p>（1）bash script-name 或 sh script-name：这是当脚本文件本身没有可执行权限（即文件权限属性x位为-号）时常用的方法，或者脚本文件开头没有指定解释器时需要使用的方法。<br>（2）path/script-name 或 ./script-name ：指在当前路径下执行脚本（脚本需要有执行权限），然后就直接应用了。可以使用chmod命令来变更文件或目录的权限。权限的表示法如下：<br>        u User，即文件或目录的拥有者；<br>        g Group，即文件或目录的所属群组；<br>        o Other，除了文件或目录拥有者或所属群组之外，其他用户皆属于这个范围；<br>        a All，即全部的用户，包含拥有者，所属群组以及其他用户；<br>        r 读取权限，数字代号为“4”;<br>        w 写入权限，数字代号为“2”；<br>        x 执行或切换权限，数字代号为“1”；</p>
 <pre><code>- 不具任何权限，数字代号为“0”；
-s 特殊功能说明：变更文件或目录的权限。）
+s 特殊功能说明：变更文件或目录的权限。
 </code></pre><p>（3）source script-name 或 . script-name ：这种方法通常是使用source或“.”读入或加载指定的shell脚本文件，然后依次执行指定的shell脚本文件中的所有语句。这些语句将在当前父shell脚本father.sh进程中运行（其他几种模式都会启动新的进程执行子脚本）。因此，使用source或“.”可以将son.sh自身脚本中的变量值或函数等的返回值传递到当前父shell脚本father.sh中使用。<br>（4）sh&lt;script-name或cat script-name|sh：这种方法将所有的字符串拼接为命令的形式，然后经由管道交给bash操作的案例。</p>
 <h3 id="六、给test-sh添加可执行权限"><a href="#六、给test-sh添加可执行权限" class="headerlink" title="六、给test.sh添加可执行权限."></a>六、给test.sh添加可执行权限.</h3><p>   命令如下：chmod u+x test.sh  然后test.sh就拥有了可执行权限了。可以使用上面的第二种方法了。即：. /test.sh</p>
 <h3 id="七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中，"><a href="#七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中，" class="headerlink" title="七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中，"></a>七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中，</h3><pre><code>$ echo &apos;userdir=`pwd`&apos; &gt;testsource.sh
