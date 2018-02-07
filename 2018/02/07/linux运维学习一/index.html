@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://tannisi.github.io/2018/02/07/linux运维学习一/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="Linux运维学习一、shell脚本   当命令或程序语句不在命令行下执行，而是通过一个程序文件来执行时，该程序就被称为shell脚本。">
-<meta property="og:updated_time" content="2018-02-07T05:11:53.098Z">
+<meta property="og:updated_time" content="2018-02-07T05:13:15.678Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维学习一">
 <meta name="twitter:description" content="Linux运维学习一、shell脚本   当命令或程序语句不在命令行下执行，而是通过一个程序文件来执行时，该程序就被称为shell脚本。">
@@ -60,32 +60,10 @@
 
 
   
-  
-  <div class="site-header-image">
-    <img id="originBg" width="100%" alt="Hike News" src="">
-  </div>
-
-  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
-    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
-  </div>
-
-  <script>
-        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
-        var random = Math.floor((Math.random() * imgUrls.length ));
-        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-          document.getElementById("originBg").src=imgUrls[random];
-          document.getElementById("blurBg").src=imgUrls[random];
-        } else {
-          document.getElementById("originBg").src='/' + imgUrls[random];
-          document.getElementById("blurBg").src='/' + imgUrls[random];
-        }
-    </script>
-
-
 
 
 <header id="allheader" class="site-header" role="banner" 
-   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
+   >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -198,7 +176,8 @@ exit 1
 <pre><code>- 不具任何权限，数字代号为“0”；
 s 特殊功能说明：变更文件或目录的权限。）
 </code></pre><p>（3）source script-name 或 . script-name ：这种方法通常是使用source或“.”读入或加载指定的shell脚本文件，然后依次执行指定的shell脚本文件中的所有语句。这些语句将在当前父shell脚本father.sh进程中运行（其他几种模式都会启动新的进程执行子脚本）。因此，使用source或“.”可以将son.sh自身脚本中的变量值或函数等的返回值传递到当前父shell脚本father.sh中使用。<br>（4）sh&lt;script-name或cat script-name|sh：这种方法将所有的字符串拼接为命令的形式，然后经由管道交给bash操作的案例。</p>
-<h3 id="六、给test-sh添加可执行权限，命令如下：chmod-u-x-test-sh-然后test-sh就拥有了可执行权限了。可以使用上面的第二种方法了。即：-test-sh"><a href="#六、给test-sh添加可执行权限，命令如下：chmod-u-x-test-sh-然后test-sh就拥有了可执行权限了。可以使用上面的第二种方法了。即：-test-sh" class="headerlink" title="六、给test.sh添加可执行权限，命令如下：chmod u+x test.sh  然后test.sh就拥有了可执行权限了。可以使用上面的第二种方法了。即：. /test.sh"></a>六、给test.sh添加可执行权限，命令如下：chmod u+x test.sh  然后test.sh就拥有了可执行权限了。可以使用上面的第二种方法了。即：. /test.sh</h3><h3 id="七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中，"><a href="#七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中，" class="headerlink" title="七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中，"></a>七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中，</h3><pre><code>$ echo &apos;userdir=`pwd`&apos; &gt;testsource.sh
+<h3 id="六、给test-sh添加可执行权限"><a href="#六、给test-sh添加可执行权限" class="headerlink" title="六、给test.sh添加可执行权限."></a>六、给test.sh添加可执行权限.</h3><p>   命令如下：chmod u+x test.sh  然后test.sh就拥有了可执行权限了。可以使用上面的第二种方法了。即：. /test.sh</p>
+<h3 id="七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中，"><a href="#七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中，" class="headerlink" title="七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中，"></a>七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中，</h3><pre><code>$ echo &apos;userdir=`pwd`&apos; &gt;testsource.sh
 $ cat testsource.sh
 userdir=`pwd`
 $ sh testsource.sh #&lt;==采用sh命令执行脚本
@@ -278,7 +257,7 @@ I am a good boy
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux运维学习"><span class="nav-number">1.</span> <span class="nav-text">Linux运维学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、shell脚本"><span class="nav-number">1.1.</span> <span class="nav-text">一、shell脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、清除-var-log下messages日志文件的简单命令脚本"><span class="nav-number">1.2.</span> <span class="nav-text">二、清除/var/log下messages日志文件的简单命令脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、shell脚本语言是弱类型语言（无需定义变量的类型即可使用），在UNIX-LINUX中主要有两大类shell：Bourne-shell-和-C-shell"><span class="nav-number">1.3.</span> <span class="nav-text">三、shell脚本语言是弱类型语言（无需定义变量的类型即可使用），在UNIX/LINUX中主要有两大类shell：Bourne shell 和 C shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、shell脚本的建立"><span class="nav-number">1.4.</span> <span class="nav-text">四、shell脚本的建立</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、shell脚本的执行通常采用以下几种方式："><span class="nav-number">1.5.</span> <span class="nav-text">五、shell脚本的执行通常采用以下几种方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、给test-sh添加可执行权限，命令如下：chmod-u-x-test-sh-然后test-sh就拥有了可执行权限了。可以使用上面的第二种方法了。即：-test-sh"><span class="nav-number">1.6.</span> <span class="nav-text">六、给test.sh添加可执行权限，命令如下：chmod u+x test.sh  然后test.sh就拥有了可执行权限了。可以使用上面的第二种方法了。即：. /test.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中，"><span class="nav-number">1.7.</span> <span class="nav-text">七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、采用第四种方法来实践："><span class="nav-number">1.8.</span> <span class="nav-text">八、采用第四种方法来实践：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九、shell脚本开发的基本规范及习惯。"><span class="nav-number">1.9.</span> <span class="nav-text">九、shell脚本开发的基本规范及习惯。</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux运维学习"><span class="nav-number">1.</span> <span class="nav-text">Linux运维学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、shell脚本"><span class="nav-number">1.1.</span> <span class="nav-text">一、shell脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、清除-var-log下messages日志文件的简单命令脚本"><span class="nav-number">1.2.</span> <span class="nav-text">二、清除/var/log下messages日志文件的简单命令脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、shell脚本语言是弱类型语言（无需定义变量的类型即可使用），在UNIX-LINUX中主要有两大类shell：Bourne-shell-和-C-shell"><span class="nav-number">1.3.</span> <span class="nav-text">三、shell脚本语言是弱类型语言（无需定义变量的类型即可使用），在UNIX/LINUX中主要有两大类shell：Bourne shell 和 C shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、shell脚本的建立"><span class="nav-number">1.4.</span> <span class="nav-text">四、shell脚本的建立</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、shell脚本的执行通常采用以下几种方式："><span class="nav-number">1.5.</span> <span class="nav-text">五、shell脚本的执行通常采用以下几种方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、给test-sh添加可执行权限"><span class="nav-number">1.6.</span> <span class="nav-text">六、给test.sh添加可执行权限.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中，"><span class="nav-number">1.7.</span> <span class="nav-text">七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、采用第四种方法来实践："><span class="nav-number">1.8.</span> <span class="nav-text">八、采用第四种方法来实践：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九、shell脚本开发的基本规范及习惯。"><span class="nav-number">1.9.</span> <span class="nav-text">九、shell脚本开发的基本规范及习惯。</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -331,9 +310,6 @@ I am a good boy
 
 
     <!-- headerblur min height -->
-    
-      var headerblur = document.getElementById("header-blur");
-      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
