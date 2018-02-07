@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://tannisi.github.io/2018/02/07/linux运维学习一/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="Linux运维学习一、shell脚本   当命令或程序语句不在命令行下执行，而是通过一个程序文件来执行时，该程序就被称为shell脚本。">
-<meta property="og:updated_time" content="2018-02-07T05:15:27.740Z">
+<meta property="og:updated_time" content="2018-02-07T05:17:15.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维学习一">
 <meta name="twitter:description" content="Linux运维学习一、shell脚本   当命令或程序语句不在命令行下执行，而是通过一个程序文件来执行时，该程序就被称为shell脚本。">
@@ -110,7 +110,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -194,18 +194,29 @@ exit 1
 #!/usr/bin/perl         #&lt;==Perl语言解释器
 #!/usr/bin/env python   #&lt;==python语言解释器
 </code></pre><p>如果在脚本开头的第一行不指定解释器，那么就要用对应的解释器来执行脚本。这样才能确保脚本正确执行。例如：<br>如果是shell脚本，就用bash test.sh执行test.sh<br>如果是Python脚本，就用python test.py执行test.py<br>如果是expect脚本，就用expect test.exp执行test.exp<br>（5）脚本注释<br>在shell脚本中，跟在#后面的内容表示注释，用来对脚本进行注释说明。</p>
-<h3 id="五、shell脚本的执行通常采用以下几种方式："><a href="#五、shell脚本的执行通常采用以下几种方式：" class="headerlink" title="五、shell脚本的执行通常采用以下几种方式："></a>五、shell脚本的执行通常采用以下几种方式：</h3><p>（1）bash script-name 或 sh script-name：这是当脚本文件本身没有可执行权限（即文件权限属性x位为-号）时常用的方法，或者脚本文件开头没有指定解释器时需要使用的方法。<br>（2）path/script-name 或 ./script-name ：指在当前路径下执行脚本（脚本需要有执行权限），然后就直接应用了。可以使用chmod命令来变更文件或目录的权限。权限的表示法如下：<br>        u User，即文件或目录的拥有者；<br>        g Group，即文件或目录的所属群组；<br>        o Other，除了文件或目录拥有者或所属群组之外，其他用户皆属于这个范围；<br>        a All，即全部的用户，包含拥有者，所属群组以及其他用户；<br>        r 读取权限，数字代号为“4”;<br>        w 写入权限，数字代号为“2”；<br>        x 执行或切换权限，数字代号为“1”；</p>
-<pre><code>- 不具任何权限，数字代号为“0”；
+<h3 id="五、shell脚本的执行通常采用以下几种方式："><a href="#五、shell脚本的执行通常采用以下几种方式：" class="headerlink" title="五、shell脚本的执行通常采用以下几种方式："></a>五、shell脚本的执行通常采用以下几种方式：</h3><p>（1）bash script-name 或 sh script-name：这是当脚本文件本身没有可执行权限（即文件权限属性x位为-号）时常用的方法，或者脚本文件开头没有指定解释器时需要使用的方法。<br>（2）path/script-name 或 ./script-name ：指在当前路径下执行脚本（脚本需要有执行权限），然后就直接应用了。可以使用chmod命令来变更文件或目录的权限。权限的表示法如下:</p>
+<pre><code>u User，即文件或目录的拥有者；
+g Group，即文件或目录的所属群组；
+o Other，除了文件或目录拥有者或所属群组之外，其他用户皆属于这个范围；
+a All，即全部的用户，包含拥有者，所属群组以及其他用户；
+r 读取权限，数字代号为“4”;
+w 写入权限，数字代号为“2”；
+x 执行或切换权限，数字代号为“1”；
+- 不具任何权限，数字代号为“0”；
 s 特殊功能说明：变更文件或目录的权限。
 </code></pre><p>（3）source script-name 或 . script-name ：这种方法通常是使用source或“.”读入或加载指定的shell脚本文件，然后依次执行指定的shell脚本文件中的所有语句。这些语句将在当前父shell脚本father.sh进程中运行（其他几种模式都会启动新的进程执行子脚本）。因此，使用source或“.”可以将son.sh自身脚本中的变量值或函数等的返回值传递到当前父shell脚本father.sh中使用。<br>（4）sh&lt;script-name或cat script-name|sh：这种方法将所有的字符串拼接为命令的形式，然后经由管道交给bash操作的案例。</p>
 <h3 id="六、给test-sh添加可执行权限"><a href="#六、给test-sh添加可执行权限" class="headerlink" title="六、给test.sh添加可执行权限."></a>六、给test.sh添加可执行权限.</h3><p>   命令如下：chmod u+x test.sh  然后test.sh就拥有了可执行权限了。可以使用上面的第二种方法了。即：. /test.sh</p>
-<h3 id="七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中，"><a href="#七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中，" class="headerlink" title="七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中，"></a>七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中，</h3><pre><code>$ echo &apos;userdir=`pwd`&apos; &gt;testsource.sh
+<h3 id="七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中"><a href="#七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中" class="headerlink" title="七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中."></a>七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中.</h3><pre><code>$ echo &apos;userdir=`pwd`&apos; &gt;testsource.sh
 $ cat testsource.sh
 userdir=`pwd`
 $ sh testsource.sh #&lt;==采用sh命令执行脚本
 $ echo $userdir
         #&lt;==此处为空并没有出现当前路径/home/tianhao/shellscript
-</code></pre><p>通过sh或bash命令执行过的脚本，若在脚本结束之后在当前shell窗口中查看usedir变量的值，会发现值是空的。如果以同样的步骤改用source或“.”执行，然后看userdir变量的值。<br>    $ source testsource.sh<br>    $ echo $userdir<br>    /home/tianhao/shellscript<br>结论：通过source或“.”加载执行过的脚本，由于是在当前shell中执行脚本，因此在脚本结束之后，脚本中的<br>变量（包括函数）值在当前shell中仍然存在，而sh和bash执行脚本都会启动新的子shell执行，执行完后退回<br>到父shell。因此，变量（包括函数）值等无法保留。在进行shell脚本开发时，如果脚本中有引用或执行其他<br>脚本的内容或配置文件的需求时，最好用“.”或source先加载该脚本或配置文件，处理完之后，再将他们加载到<br>脚本的下面，就可以调用source加载的脚本及配置文件中的变量及函数等内容了。</p>
+</code></pre><p>通过sh或bash命令执行过的脚本，若在脚本结束之后在当前shell窗口中查看usedir变量的值，会发现值是空的。如果以同样的步骤改用source或“.”执行，然后看userdir变量的值。</p>
+<pre><code>$ source testsource.sh
+$ echo $userdir
+/home/tianhao/shellscript
+</code></pre><p>结论：通过source或“.”加载执行过的脚本，由于是在当前shell中执行脚本，因此在脚本结束之后，脚本中的<br>变量（包括函数）值在当前shell中仍然存在，而sh和bash执行脚本都会启动新的子shell执行，执行完后退回<br>到父shell。因此，变量（包括函数）值等无法保留。在进行shell脚本开发时，如果脚本中有引用或执行其他<br>脚本的内容或配置文件的需求时，最好用“.”或source先加载该脚本或配置文件，处理完之后，再将他们加载到<br>脚本的下面，就可以调用source加载的脚本及配置文件中的变量及函数等内容了。</p>
 <h3 id="八、采用第四种方法来实践："><a href="#八、采用第四种方法来实践：" class="headerlink" title="八、采用第四种方法来实践："></a>八、采用第四种方法来实践：</h3><pre><code>$ cat test.sh
 !#/bin/bash
 echo &quot;I am a good boy&quot;
@@ -264,7 +275,7 @@ I am a good boy
   
   
     <a href="/2018/02/03/进程与线程（三）/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">进程与线程（三）</div>
     </a>
   
@@ -279,7 +290,7 @@ I am a good boy
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux运维学习"><span class="nav-number">1.</span> <span class="nav-text">Linux运维学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、shell脚本"><span class="nav-number">1.1.</span> <span class="nav-text">一、shell脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、清除-var-log下messages日志文件的简单命令脚本"><span class="nav-number">1.2.</span> <span class="nav-text">二、清除/var/log下messages日志文件的简单命令脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、shell脚本语言是弱类型语言（无需定义变量的类型即可使用），在UNIX-LINUX中主要有两大类shell：Bourne-shell-和-C-shell"><span class="nav-number">1.3.</span> <span class="nav-text">三、shell脚本语言是弱类型语言（无需定义变量的类型即可使用），在UNIX/LINUX中主要有两大类shell：Bourne shell 和 C shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、shell脚本的建立"><span class="nav-number">1.4.</span> <span class="nav-text">四、shell脚本的建立</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、shell脚本的执行通常采用以下几种方式："><span class="nav-number">1.5.</span> <span class="nav-text">五、shell脚本的执行通常采用以下几种方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、给test-sh添加可执行权限"><span class="nav-number">1.6.</span> <span class="nav-text">六、给test.sh添加可执行权限.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中，"><span class="nav-number">1.7.</span> <span class="nav-text">七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、采用第四种方法来实践："><span class="nav-number">1.8.</span> <span class="nav-text">八、采用第四种方法来实践：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九、shell脚本开发的基本规范及习惯。"><span class="nav-number">1.9.</span> <span class="nav-text">九、shell脚本开发的基本规范及习惯。</span></a></li></ol></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux运维学习"><span class="nav-number">1.</span> <span class="nav-text">Linux运维学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、shell脚本"><span class="nav-number">1.1.</span> <span class="nav-text">一、shell脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、清除-var-log下messages日志文件的简单命令脚本"><span class="nav-number">1.2.</span> <span class="nav-text">二、清除/var/log下messages日志文件的简单命令脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、shell脚本语言是弱类型语言（无需定义变量的类型即可使用），在UNIX-LINUX中主要有两大类shell：Bourne-shell-和-C-shell"><span class="nav-number">1.3.</span> <span class="nav-text">三、shell脚本语言是弱类型语言（无需定义变量的类型即可使用），在UNIX/LINUX中主要有两大类shell：Bourne shell 和 C shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、shell脚本的建立"><span class="nav-number">1.4.</span> <span class="nav-text">四、shell脚本的建立</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、shell脚本的执行通常采用以下几种方式："><span class="nav-number">1.5.</span> <span class="nav-text">五、shell脚本的执行通常采用以下几种方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、给test-sh添加可执行权限"><span class="nav-number">1.6.</span> <span class="nav-text">六、给test.sh添加可执行权限.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中"><span class="nav-number">1.7.</span> <span class="nav-text">七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#八、采用第四种方法来实践："><span class="nav-number">1.8.</span> <span class="nav-text">八、采用第四种方法来实践：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#九、shell脚本开发的基本规范及习惯。"><span class="nav-number">1.9.</span> <span class="nav-text">九、shell脚本开发的基本规范及习惯。</span></a></li></ol></li></ol>
     
     </div>
   </aside>
