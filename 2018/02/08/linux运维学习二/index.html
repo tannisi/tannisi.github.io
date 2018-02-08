@@ -11,17 +11,17 @@
   
   
   
-  <meta name="description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。 $ oldboy=&amp;apos;I am a boy&amp;apos; $ echo $oldboy I am a boy">
+  <meta name="description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
 <meta name="keywords" content="Linuxshell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux运维学习二">
 <meta property="og:url" content="https://tannisi.github.io/2018/02/08/linux运维学习二/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
-<meta property="og:description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。 $ oldboy=&amp;apos;I am a boy&amp;apos; $ echo $oldboy I am a boy">
-<meta property="og:updated_time" content="2018-02-08T02:46:38.936Z">
+<meta property="og:description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
+<meta property="og:updated_time" content="2018-02-08T02:53:41.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维学习二">
-<meta name="twitter:description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。 $ oldboy=&amp;apos;I am a boy&amp;apos; $ echo $oldboy I am a boy">
+<meta name="twitter:description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
 <meta name="twitter:creator" content="@true">
 <link rel="publisher" href="true">
   
@@ -60,10 +60,32 @@
 
 
   
+  
+  <div class="site-header-image">
+    <img id="originBg" width="100%" alt="Hike News" src="">
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
+  </div>
+
+  <script>
+        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("originBg").src=imgUrls[random];
+          document.getElementById("blurBg").src=imgUrls[random];
+        } else {
+          document.getElementById("originBg").src='/' + imgUrls[random];
+          document.getElementById("blurBg").src='/' + imgUrls[random];
+        }
+    </script>
+
+
 
 
 <header id="allheader" class="site-header" role="banner" 
-   >
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -88,7 +110,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -141,16 +163,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="十、变量"><a href="#十、变量" class="headerlink" title="十、变量"></a>十、变量</h3><h4 id="变量的赋值方式："><a href="#变量的赋值方式：" class="headerlink" title="变量的赋值方式："></a>变量的赋值方式：</h4><pre><code>先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。
-$ oldboy=&apos;I am a boy&apos;
-$ echo $oldboy
-I am a boy
 </code></pre><a id="more"></a>
-<h4 id="shell变量的特性"><a href="#shell变量的特性" class="headerlink" title="shell变量的特性"></a>shell变量的特性</h4><p>   默认情况下，在bash shell中是不会区分变量的类型的。但是如果需要指定shell变量的类型，也可以使用declare显示定义变量的类型。</p>
+<pre><code>$ oldboy=&apos;I am a boy&apos;
+
+$ echo $oldboy
+
+I am a boy
+</code></pre><h4 id="shell变量的特性"><a href="#shell变量的特性" class="headerlink" title="shell变量的特性"></a>shell变量的特性</h4><p>   默认情况下，在bash shell中是不会区分变量的类型的。但是如果需要指定shell变量的类型，也可以使用declare显示定义变量的类型。</p>
 <h4 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h4><p>   分为两类：环境变量（全局变量）和普通变量（局部变量）<br>环境变量（全局变量），可以在创建它们的shell及其派生出来的的任意子进程shell中使用，环境变量又可分为自定义环境变量和bash内置的环境变量。<br>普通变量（局部变量）只能在创建他们的shell函数或shell脚本中使用。普通变量一般由开发者在开发脚本程序时创建 。</p>
 <h3 id="十一、环境变量"><a href="#十一、环境变量" class="headerlink" title="十一、环境变量"></a>十一、环境变量</h3><h4 id="环境变量定义"><a href="#环境变量定义" class="headerlink" title="环境变量定义"></a>环境变量定义</h4><p>   环境变量一般是指用export内置命令导出的变量，用于定义shell的运行环境，保证shell命令的正确执行。shell通过环境变量来确定登录用户名、命令路径、终端类型、登录目录等，所有的环境变量都是系统全局变量，可用于所有的子进程中，这包括编辑器、shell 脚本和各类应用。<br>   环境变量可以在命令行中设置和创建，但用户退出命令行时这些变量值就会丢失，因此，如果希望永久保存环境变量，可在用户家目录下的.bash_profile或.bashrc（非用户登录模式特有，例如远程ssh）文件中，或者全局配置/etc/bashrc（非用户登录模式特有，例如远程ssh）或/etc/profile文件中定义。在将环境变量放入上述的文件中后，每次用户登录时这些变量都将被初始化。<br>   按照系统规范，所有环境变量的名字均采用大写形式。在将环境变量应用于用户进程程序之前，都应该用export命令导出定义，例如：正确的环境变量定义方法为export OLDGIRL=1。<br>   有一些环境变量，比如HOME、PATH、SHELL、UID、 USER等，在用户登录之前，就已经被/bin/login程序设置好了。通常环境变量被定义并保存在用户家目录下的.bash_profile文件或全局的配置文件/etc/profile中。<br>常见的环境变量：</p>
 <p> PATH： 决定了shell将到哪些目录中寻找命令或程序<br> ROOTPATH:  这个变量的功能和PATH相同，但它只罗列出超级用户（root）键入命令时所需检查的目录。<br> HOME：  当前用户主目录<br> USER:   查看当前的用户<br> LOGNAME： 查看当前用户的登录名。<br> UID： 当前用户的识别字，取值是由数位构成的字串。<br> SHELL：  是指当前用户用的是哪种Shell。<br> TERM ： 终端的类型。<br> PWD：   当前工作目录的绝对路径名，该变量的取值随cd命令的使用而变化。<br> MAIL： 是指当前用户的邮件存放目录。<br> HISTSIZE： 是指保存历史命令记录的条数<br> HOSTNAME： 是指主机的名称，许多应用程序如果要用到主机名的话，通常是从这个环境变量中来取得的。<br> PS1： 是基本提示符，对于root用户是#，对于普通用户是$，也可以使用一些更复杂的值。<br> PS2： 是附属提示符，默认是“&gt;”。可以通过修改此环境变量来修改当前的命令符，比如下列命令会将提示符<br>       修改成字符串“Hello,My NewPrompt :) ”。# PS1=” Hello,My NewPrompt :)”<br> IFS：   输入域分隔符。当shell读取输入时，用来分隔单词的一组字符，它们通常是空格、制表符和换行符。<br> _=：   上一条命令的最后一个参数</p>
-<p>   在查看设置的变量时，有三个命令可以显示变量的值：set、env和declare（替代早期的typeset）。set命令输出所有的变量，包括全局变量和局部变量；env命令只显示全局变量，declare命令输出所有的变量、函数、整数和已经导出的变量。set -o命令显示bash shell的所有参数配置信息。<br>    $ set -o|tail   #&lt;==tail输出输入文件的后10行<br>    $ set -o|head   #&lt;==head输出输入文件的前10行</p>
-<h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><p>如果要设置环境变量，就要在给变量赋值之后活在设置变量时使用export命令。（带-x选项的declare内置命令也可以完成同样的功能）。<br>export和declare命令的格式如下：<br>    1.export 变量名=value<br>    2.变量名=value ; export 变量名<br>    3.declare -x 变量名=value<br>下面是自定义全局环境变量的示例：<br>    $ grep OLD /etc/profile</p>
+<p>   在查看设置的变量时，有三个命令可以显示变量的值：set、env和declare（替代早期的typeset）。set命令输出所有的变量，包括全局变量和局部变量；env命令只显示全局变量，declare命令输出所有的变量、函数、整数和已经导出的变量。set -o命令显示bash shell的所有参数配置信息。<br>    $ set -o|tail   #&lt;==tail输出输入文件的后10行</p>
+<pre><code>$ set -o|head   #&lt;==head输出输入文件的前10行
+</code></pre><h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><p>如果要设置环境变量，就要在给变量赋值之后活在设置变量时使用export命令。（带-x选项的declare内置命令也可以完成同样的功能）。<br>export和declare命令的格式如下：<br>    1.export 变量名=value<br>    2.变量名=value ; export 变量名<br>    3.declare -x 变量名=value<br>下面是自定义全局环境变量的示例：<br>    $ grep OLD /etc/profile</p>
 <pre><code>$ export OLDBOY=&apos;oldboy&apos;   #&lt;==编辑/etc/profile,然后输出并保存
 
 $ source /etc/profile   #&lt;==执行使其生效
@@ -187,7 +212,9 @@ export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH:$HOME/bin
 
 export RESIN_HOME=/application/resin
 </code></pre><p>   上述的环境变量通常放在/etc/profile全局变量里。如果是写JAVA的脚本，那么最好是把上述Java环境配置放入脚本内重新定义，特别是作为定时任务执行的脚本。</p>
-<h4 id="显示与取消环境变量"><a href="#显示与取消环境变量" class="headerlink" title="显示与取消环境变量"></a>显示与取消环境变量</h4><p>1.通过echo或printf命令打印环境变量<br>常见的系统环境变量：<br>$HOME：用户登录时进入的目录<br>$UID：当前用户的UID（用户标识），相当于id-u<br>$PWD：当前工作目录的绝对路径名<br>$SHELL：当前shell<br>$USER：当前用户<br>   在写shell脚本时可以直接使用系统默认的环境变量，一般情况下是不需要重新定义的，在使用定时任务等执行shell脚本时建议在脚本中重新定义。<br>2.用env或set显示默认的环境变量<br>3.用unset消除本地变量和环境变量<br>    $ echo $USER</p>
+<h4 id="显示与取消环境变量"><a href="#显示与取消环境变量" class="headerlink" title="显示与取消环境变量"></a>显示与取消环境变量</h4><p>1.通过echo或printf命令打印环境变量<br>常见的系统环境变量：<br>$HOME：用户登录时进入的目录<br>$UID：当前用户的UID（用户标识），相当于id-u<br>$PWD：当前工作目录的绝对路径名<br>$SHELL：当前shell<br>$USER：当前用户<br>   在写shell脚本时可以直接使用系统默认的环境变量，一般情况下是不需要重新定义的，在使用定时任务等执行shell脚本时建议在脚本中重新定义。</p>
+<p>2.用env或set显示默认的环境变量</p>
+<p>3.用unset消除本地变量和环境变量<br>    $ echo $USER</p>
 <pre><code>boyboy
 
 $ unset USER
@@ -211,7 +238,7 @@ $ echo $USER
 <li>首先加载/etc/profile全局环境变量文件，这是Linux系统上默认的shell主环境变量，系统上每个用户登录时都会加载这个文件</li>
 <li>再执行/etc/profile.d目录下的脚本文件</li>
 <li>然后运行$HOME/.bash_profile(用户环境变量文件)，在这个文件中，又会去找$HOME/.bashrc(用户环境变量文件)，如果有则执行，如果没有，则不执行。在$HOME/.bashrc文件中又会去找/etc/bashrc(全局环境变量文件)，如果有则执行，如果没有则不执行。</li>
-<li>如果用户的shell不是在登录时启动的，那么这种非登录Shell只会加载$HOME/.bashrc(用户环境变量文件)，并会去找/etc/bashrc(全局环境变量文件)。因此若希望在非登录shell下也可读到设置的环境变的内容，就需要将变量设定等写入$HOME/.bashrc或者/etc/bashrc,而不是$HOME/.bash_profile或/etc/profile。</li>
+<li>如果用户的shell不是在登录时启动的，那么这种非登录Shell只会加载$HOME/.bashrc(用户环境变量文件)，<br>并会去找/etc/bashrc(全局环境变量文件)。因此若希望在非登录shell下也可读到设置的环境变的内容，就需<br>要将变量设定等写入$HOME/.bashrc或者/etc/bashrc,而不是$HOME/.bash_profile或/etc/profile。</li>
 </ul>
 <p>以上是在centos中的环境变量启动顺序，在ubuntu系统中：</p>
 <ul>
@@ -219,7 +246,7 @@ $ echo $USER
 <li>/etc/environment:在登录时操作系统使用的第二个文件，系统在读取你自己的profile前，设置环境文件的环境变量。</li>
 <li>/etc/bashrc:为每一个运行bash shell的用户执行此文件。当bash shell被打开时，该文件被读取。</li>
 <li>~/.profile:在登录时用到的第三个文件是.profile文件，当用户登录时，该文件仅仅执行一次！默认情况下，执行用户目录下的.bashrc文件，每个用户都可使用该文件输入专用于自己使用的shell信息，修改后使用. .profile使生效。</li>
-<li>~/.bashrc:该文件包含专用于单个用户的bash shell的bash信息，当登录时以及每次打开新的shell时，该文件被读取。修改后使用source .bashrc 使生效。<br>  在ubuntu中设置环境变量：<br> 通常设置环境变量有三种方法：<br>（一）临时设置<br>  $PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH<br>（二）当前用户的全局设置<br>打开~/.bashrc，添加行：<br>  export PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH<br>使生效：<br>  source .bashrc<br>（三）所有用户的全局设置<br>  $ vim /etc/profile<br>在里面加入：<br>  export PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH<br>使生效<br>  source profile<br>测试：<br>  echo $PATH</li>
+<li>~/.bashrc:该文件包含专用于单个用户的bash shell的bash信息，当登录时以及每次打开新的shell时，该文件被读取。修改后使用source .bashrc 使生效。<br>  在ubuntu中设置环境变量：<br> 通常设置环境变量有三种方法：<br>（一）临时设置<br>  <code>$PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH</code><br>（二）当前用户的全局设置<br>打开~/.bashrc，添加行：<br>  <code>export PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH</code><br>使生效：<br>  <code>source .bashrc</code><br>（三）所有用户的全局设置<br>  <code>$ vim /etc/profile</code><br>在里面加入：<br>  <code>export PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH</code><br>使生效<br>  <code>source profile</code><br>测试：<br>  echo $PATH</li>
 </ul>
 
       
@@ -268,7 +295,7 @@ $ echo $USER
   
   
     <a href="/2018/02/07/linux运维学习一/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">linux运维学习一</div>
     </a>
   
@@ -336,6 +363,9 @@ $ echo $USER
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
