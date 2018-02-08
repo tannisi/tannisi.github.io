@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://tannisi.github.io/2018/02/08/网络层次结构/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="一、网络分层的原因网络通信面临的一些问题：硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序">
-<meta property="og:updated_time" content="2018-02-08T15:05:11.712Z">
+<meta property="og:updated_time" content="2018-02-08T15:15:12.060Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络层次结构">
 <meta name="twitter:description" content="一、网络分层的原因网络通信面临的一些问题：硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序">
@@ -163,38 +163,32 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="一、网络分层的原因"><a href="#一、网络分层的原因" class="headerlink" title="一、网络分层的原因"></a>一、网络分层的原因</h3><h4 id="网络通信面临的一些问题："><a href="#网络通信面临的一些问题：" class="headerlink" title="网络通信面临的一些问题："></a>网络通信面临的一些问题：</h4><p>硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序<br><a id="more"></a></p>
-<h4 id="假设：将所有工作分成面向应用与面向传输两部分"><a href="#假设：将所有工作分成面向应用与面向传输两部分" class="headerlink" title="假设：将所有工作分成面向应用与面向传输两部分"></a>假设：将所有工作分成面向应用与面向传输两部分</h4><hr>
-<h2 id="应用程序：QQ、微信、浏览器、播放器"><a href="#应用程序：QQ、微信、浏览器、播放器" class="headerlink" title="应用程序：QQ、微信、浏览器、播放器"></a>应用程序：QQ、微信、浏览器、播放器</h2><h2 id="物理连接：网卡等"><a href="#物理连接：网卡等" class="headerlink" title="物理连接：网卡等"></a>物理连接：网卡等</h2><p>这种方式的特点：* 应用程序完全了解本机网络连接的内部细节</p>
-<pre><code>* 应用程序直接通过网络连接与其它应用程序通信
-</code></pre><p>缺点：* 会造成大量的重复劳动</p>
-<pre><code>* 扩展性太差
-</code></pre><h4 id="现在：将面向传输功能进一步细分为通信软件和物理连接"><a href="#现在：将面向传输功能进一步细分为通信软件和物理连接" class="headerlink" title="现在：将面向传输功能进一步细分为通信软件和物理连接"></a>现在：将面向传输功能进一步细分为通信软件和物理连接</h4><hr>
-<h2 id="应用程序：QQ、微信、浏览器、播放器-1"><a href="#应用程序：QQ、微信、浏览器、播放器-1" class="headerlink" title="应用程序：QQ、微信、浏览器、播放器"></a>应用程序：QQ、微信、浏览器、播放器</h2><h2 id="通信软件：-起到“承上启下”的作用"><a href="#通信软件：-起到“承上启下”的作用" class="headerlink" title="通信软件： 起到“承上启下”的作用"></a>通信软件： 起到“承上启下”的作用</h2><h2 id="物理连接：网卡等-1"><a href="#物理连接：网卡等-1" class="headerlink" title="物理连接：网卡等"></a>物理连接：网卡等</h2><p>采用包交换机制在系统中增加若干中间层（主要是网络层），使应用程序不<br>直接处理硬件连接<br>这种设计的好处是：* 开发新应用只要遵守通信软件提供的接口即可实现<br>                    通信功能</p>
-<pre><code>* 出现新网卡时只需扩展通信软件上层应用即可使用
-   新网卡
-</code></pre><h4 id="网络之所以使用层次结构的原因："><a href="#网络之所以使用层次结构的原因：" class="headerlink" title="网络之所以使用层次结构的原因："></a>网络之所以使用层次结构的原因：</h4><p>（1）出于复杂问题的解决需要<br>（2）系统功能的扩展性需要</p>
-<h3 id="二、网络的层次结构"><a href="#二、网络的层次结构" class="headerlink" title="二、网络的层次结构"></a>二、网络的层次结构</h3><h4 id="层次结构的两大特点："><a href="#层次结构的两大特点：" class="headerlink" title="层次结构的两大特点："></a>层次结构的两大特点：</h4><ul>
-<li>层次性：发送方—（由高到低）单向依赖<pre><code>接收方—（由低到高）单向依赖
-</code></pre></li>
-<li>结构性：上层起着隐藏下层细节和统一下层差异的作用<h4 id="网络体系结构：网络通信功能的层次构成、各层的通信协议规范和相邻层"><a href="#网络体系结构：网络通信功能的层次构成、各层的通信协议规范和相邻层" class="headerlink" title="网络体系结构：网络通信功能的层次构成、各层的通信协议规范和相邻层"></a>网络体系结构：网络通信功能的层次构成、各层的通信协议规范和相邻层</h4><pre><code>的接口协议规范的集合。
-</code></pre>   层次    协议      接口<br>每一层的目的都是向它上一层提供一定服务而把如何实现这一服务的细节对<br>上层加以屏蔽。<h4 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h4></li>
+<h4 id="假设："><a href="#假设：" class="headerlink" title="假设："></a>假设：</h4><p>   将所有工作分成面向应用与面向传输两部分<br>!———————————–!<br>应用程序：QQ、微信、浏览器、播放器<br>!———————————–!<br>物理连接：网卡等<br>!———————————–!<br>这种方式的特点：</p>
+<pre><code>* 应用程序完全了解本机网络连接的内部细节
+* 应用程序直接通过网络连接与其它应用程序通信
+</code></pre><p>缺点：</p>
+<pre><code>* 会造成大量的重复劳动
+* 扩展性太差
+</code></pre><h4 id="现在：将面向传输功能进一步细分为通信软件和物理连接"><a href="#现在：将面向传输功能进一步细分为通信软件和物理连接" class="headerlink" title="现在：将面向传输功能进一步细分为通信软件和物理连接"></a>现在：将面向传输功能进一步细分为通信软件和物理连接</h4><p>!————————————!<br>应用程序：QQ、微信、浏览器、播放器<br>!————————————!<br>通信软件： 起到“承上启下”的作用<br>!————————————!<br>物理连接：网卡等<br>!————————————!<br>采用包交换机制在系统中增加若干中间层（主要是网络层），使应用程序不<br>直接处理硬件连接<br>这种设计的好处是：</p>
+<ul>
+<li>开发新应用只要遵守通信软件提供的接口即可实现通信功能</li>
+<li>出现新网卡时只需扩展通信软件上层应用即可使用新网卡<h4 id="网络之所以使用层次结构的原因："><a href="#网络之所以使用层次结构的原因：" class="headerlink" title="网络之所以使用层次结构的原因："></a>网络之所以使用层次结构的原因：</h4>（1）出于复杂问题的解决需要<br>（2）系统功能的扩展性需要<h3 id="二、网络的层次结构"><a href="#二、网络的层次结构" class="headerlink" title="二、网络的层次结构"></a>二、网络的层次结构</h3><h4 id="层次结构的两大特点："><a href="#层次结构的两大特点：" class="headerlink" title="层次结构的两大特点："></a>层次结构的两大特点：</h4><ul>
+<li>层次性：<br>   发送方—（由高到低）单向依赖<br>   接收方—（由低到高）单向依赖</li>
+<li>结构性：上层起着隐藏下层细节和统一下层差异的作用<h4 id="网络体系结构："><a href="#网络体系结构：" class="headerlink" title="网络体系结构："></a>网络体系结构：</h4>网络通信功能的层次构成、各层的通信协议规范和相邻层的接口协议规范的集合。</li>
+<li>层次    </li>
+<li>协议      </li>
+<li>接口<br>每一层的目的都是向它上一层提供一定服务而把如何实现这一服务的细节对上层加以屏蔽。<h4 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h4></li>
 <li>协议就是一组规则和约定。</li>
 <li>计算机网络协议<br>系统：包括一个/多个实体、在物理上明显区分的主体<br>例如：主机、路由器、交换机、AP等<br>实体：系统中能够收发信息和处理信息的任何东西<br>例如：Email、ftp、www </li>
 <li>计算机网络协议：网络中两个实体之间控制数据通信的规则和约定的集合。<h4 id="计算机网络协议的要素"><a href="#计算机网络协议的要素" class="headerlink" title="计算机网络协议的要素"></a>计算机网络协议的要素</h4></li>
-<li>语法（数据结构、编码和信号电平等）：1.消息格式、编码2.HTML网页表示<pre><code>3.TCP报文格式
-</code></pre></li>
-<li>语义（用于协调和差错处理的控制信息）：1.双方“握手”控制信息2.TCP<pre><code>一方主动发出建立请求3.TCP另
-一方表态是否同意或拒绝连接
-</code></pre></li>
-<li>时序（传输速率匹配和事件先后顺序）：1.双方握手过程规定2.先和服务器<pre><code>建立TCP连接3.在请求某个HTML网页
-</code></pre><h4 id="层次结构的有关概念"><a href="#层次结构的有关概念" class="headerlink" title="层次结构的有关概念"></a>层次结构的有关概念</h4></li>
-<li>第n层协议：一台机器的第n层与另一台机器的的第n层进行通话采用的规则和<pre><code>约定。
-</code></pre></li>
+<li>语法（数据结构、编码和信号电平等）：1.消息格式、编码 2.HTML网页表示 3.TCP报文格式</li>
+<li>语义（用于协调和差错处理的控制信息）：1.双方“握手”控制信息2.TCP 一方主动发出建立请求3.TCP另一方表态是否同意或拒绝连接</li>
+<li>时序（传输速率匹配和事件先后顺序）：1.双方握手过程规定2.先和服务器建立TCP连接3.在请求某个HTML网页<h4 id="层次结构的有关概念"><a href="#层次结构的有关概念" class="headerlink" title="层次结构的有关概念"></a>层次结构的有关概念</h4></li>
+<li>第n层协议：一台机器的第n层与另一台机器的的第n层进行通话采用的规则和约定。</li>
 <li>对等实体：不同机器中组成相同协议层的实体</li>
 <li>接口：位于相邻层间，定义下层向上层提供的原语操作和服务</li>
 <li>协议栈：特定系统使用的一组协议<h4 id="计算机网络体系结构分层原则"><a href="#计算机网络体系结构分层原则" class="headerlink" title="计算机网络体系结构分层原则"></a>计算机网络体系结构分层原则</h4></li>
-<li>协议分层原则：目标机器第n层收到的对象应与源机器第n层发出的“对象”完<pre><code>全一致
-</code></pre></li>
+<li>协议分层原则：目标机器第n层收到的对象应与源机器第n层发出的“对象”完全一致</li>
 <li>协议栈 ：1.上层隐藏下层的细节 2.上层统一下层的差异 3.上层弥补下层的不足<h4 id="层次划分设计的问题"><a href="#层次划分设计的问题" class="headerlink" title="层次划分设计的问题"></a>层次划分设计的问题</h4></li>
 <li>标识接收方/发送方机制：机器上的进程需要某种手段标识它想和哪个进程通话</li>
 <li>数据传输规则：传输形式、数据的顺序、收发双方的同步。。。</li>
@@ -202,8 +196,7 @@
 <li>多路复用：下层可决定为多个上层通信使用同一个连接</li>
 <li>路由选择：在多条可能的路径中选定一条<h3 id="三、网络协议与服务"><a href="#三、网络协议与服务" class="headerlink" title="三、网络协议与服务"></a>三、网络协议与服务</h3><h4 id="服务提供者与服务使用者"><a href="#服务提供者与服务使用者" class="headerlink" title="服务提供者与服务使用者"></a>服务提供者与服务使用者</h4></li>
 <li>服务提供者：使用下层服务的实体<br>服务使用者：为上层提供服务的实体</li>
-<li>第N层实体：1.实现的功能为N+1层使用2.利用第N-1层来实现本层的功能<pre><code>3.既是第N+1层的服务提供者又是第N-1层服务用户
-</code></pre><h4 id="服务分类"><a href="#服务分类" class="headerlink" title="服务分类"></a>服务分类</h4>（1）面向连接</li>
+<li>第N层实体：1.实现的功能为N+1层使用2.利用第N-1层来实现本层的功能 3.既是第N+1层的服务提供者又是第N-1层服务用户<h4 id="服务分类"><a href="#服务分类" class="headerlink" title="服务分类"></a>服务分类</h4>（1）面向连接</li>
 <li>有连接服务/面向连接服务：1.类似于电话服务 2.本质上数据结构是一个管道</li>
 <li>其发送的形式有两种：1.报文序列：保持发送数据的边界 2.不保次发送数据的边界<br>（2）无连接</li>
 <li>无连接服务：1.类似于邮政服务 2.每次发送一个报文 3.每个报文都给出详细的目标地址信息</li>
@@ -213,31 +206,21 @@
 <li>参数：用来传递数据和控制信息</li>
 <li>国际上定义的4个原语：<br>1.Request：由服务使用者发出/要求服务做某种工作<br>2.Indication：由服务提供者发出/通知发生了某事件<br>3.Respone：由服务使用者发出/表示对某个事件的响应<br>4.Confirm：由服务提供者发出/报告事件的响应</li>
 <li>服务原语的时序性<h4 id="服务与协议是完全分离的"><a href="#服务与协议是完全分离的" class="headerlink" title="服务与协议是完全分离的"></a>服务与协议是完全分离的</h4></li>
-<li>服务（上下关系）：1.服务是各层向它的上层提供的一组原语（操作）<pre><code>2.服务定义了该层能为它的用户完成的操作
-3.服务只与两层之间的接口有关
-</code></pre></li>
-<li>协议（水平关系）：1.协议是一组规则<pre><code>2.决定同层对等实体交换帧、包和报文的格式和意义
-3.实体用协议来实现他们向上层提供的服务
-</code></pre><h3 id="四、网络标准与标准化组织"><a href="#四、网络标准与标准化组织" class="headerlink" title="四、网络标准与标准化组织"></a>四、网络标准与标准化组织</h3></li>
-<li>标准化是规模化的基础<br>优点：1.能保证设备/软件有一个大市场<pre><code>2.允许来自多个厂商产品的互通
-3.使用户在设备选择和使用中有更多的灵活性
-</code></pre></li>
+<li>服务（上下关系）：1.服务是各层向它的上层提供的一组原语（操作）2.服务定义了该层能为它的用户完成的操作 3.服务只与两层之间的接口有关</li>
+<li>协议（水平关系）：1.协议是一组规则 2.决定同层对等实体交换帧、包和报文的格式和意义 3.实体用协议来实现他们向上层提供的服务<h3 id="四、网络标准与标准化组织"><a href="#四、网络标准与标准化组织" class="headerlink" title="四、网络标准与标准化组织"></a>四、网络标准与标准化组织</h3></li>
+<li>标准化是规模化的基础<br>优点：1.能保证设备/软件有一个大市场 2.允许来自多个厂商产品的互通 3.使用户在设备选择和使用中有更多的灵活性</li>
 <li>标准及其分类<br>标准：标准是一组规定的规则、条件或要求</li>
 <li>一些有关的标准化组织<br>ITU ISO ANSI IEEE（制定通信和信息系统领域的标准）<br>因特网标准：IRTF IETF RFC<h3 id="五、TCP-IP模型及因特网"><a href="#五、TCP-IP模型及因特网" class="headerlink" title="五、TCP-IP模型及因特网"></a>五、TCP-IP模型及因特网</h3></li>
 <li>TCP是传输层的协议 IP是网络层的协议</li>
 <li>TCP/IP设计目标：1.互联网络 2.保护子网硬件 3.体系结构灵活 4.网络故障不能影响两端之间连接</li>
-<li>应用层<br>  传输层<br>网络层<br>主机-网络层————&gt;交换机、集线器、接入点<br>（802.3/802.11）</li>
-<li>主机-网络层<br>（1）主要功能：1.端系统与其所接网络之间的数据交换 2.特定软件取决于所用的网络类型<br>（2）设计优点：1.将网络访问功能隔离成一个单独层次 2.网络访问层之上的通信软件不必关心所用的网络类型<br>（3）又分为两层：* 物理层：1.设备与介质/网络之间的物理接口<pre><code>          2.规范传输介质特性，信号、数据率及相关方面
-* 网络访问层：1.主机与网络之间的数据交换
-              2.发送主机必须向网络提供目的主机的地址
-</code></pre></li>
-<li>网络互联层（互联协议：IP、ICMP、IGMP、ARP/RAPP、BGP/OSPF）<br>基本任务：1.采用存储-转发技术 2.提供Best-effort服务 3.处理来自传输层的报文发送请求（主机）<pre><code>4.处理入境数据包的转发（路由器） 5.处理ICMP报文
-</code></pre>*传输层（TCP/UDP）<br>（1）主要功能：1.提供端-端的数据传送服务<pre><code>2.为应用层隐藏底层网络的细节
-</code></pre>（2）TCP/IP在无连接的基本传送服务IP之上既提供了无连接服务，也提供了可靠的有连接服务<br>*应用层<br>应用层服务：1.虚拟终端（TELNET）协议<pre><code>2.文件传输协议（FTP）
-3.简单邮件传输协议（SMTP）
-4.域名服务（DNS）
-5.超文本传输协议（HTTP）
-</code></pre></li>
+<li>应用层<br>传输层<br>网络层<br>主机-网络层————&gt;交换机、集线器、接入点<br>（802.3/802.11）</li>
+<li>主机-网络层<br>（1）主要功能：1.端系统与其所接网络之间的数据交换 2.特定软件取决于所用的网络类型<br>（2）设计优点：1.将网络访问功能隔离成一个单独层次 2.网络访问层之上的通信软件不必关心所用的网络类型<br>（3）又分为两层：</li>
+<li>物理层：1.设备与介质/网络之间的物理接口 2.规范传输介质特性，信号、数据率及相关方面</li>
+<li>网络访问层：1.主机与网络之间的数据交换 2.发送主机必须向网络提供目的主机的地址</li>
+<li>网络互联层（互联协议：IP、ICMP、IGMP、ARP/RAPP、BGP/OSPF）<br>基本任务：1.采用存储-转发技术 2.提供Best-effort服务 3.处理来自传输层的报文发送请求（主机）<br>4.处理入境数据包的转发（路由器） 5.处理ICMP报文<br><em>传输层（TCP/UDP）<br>（1）主要功能：<br>1.提供端-端的数据传送服务<br>2.为应用层隐藏底层网络的细节<br>（2）TCP/IP在无连接的基本传送服务IP之上既提供了无连接服务，也提供了可靠的有连接服务
+</em>应用层<br>应用层服务：<br>1.虚拟终端（TELNET）协议<br>2.文件传输协议（FTP）<br>3.简单邮件传输协议（SMTP）<br>4.域名服务（DNS）<br>5.超文本传输协议（HTTP）</li>
+</ul>
+</li>
 </ul>
 
       
@@ -301,7 +284,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、网络分层的原因"><span class="nav-number">1.</span> <span class="nav-text">一、网络分层的原因</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网络通信面临的一些问题："><span class="nav-number">1.1.</span> <span class="nav-text">网络通信面临的一些问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设：将所有工作分成面向应用与面向传输两部分"><span class="nav-number">1.2.</span> <span class="nav-text">假设：将所有工作分成面向应用与面向传输两部分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用程序：QQ、微信、浏览器、播放器"><span class="nav-number"></span> <span class="nav-text">应用程序：QQ、微信、浏览器、播放器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#物理连接：网卡等"><span class="nav-number"></span> <span class="nav-text">物理连接：网卡等</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#现在：将面向传输功能进一步细分为通信软件和物理连接"><span class="nav-number">0.1.</span> <span class="nav-text">现在：将面向传输功能进一步细分为通信软件和物理连接</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用程序：QQ、微信、浏览器、播放器-1"><span class="nav-number"></span> <span class="nav-text">应用程序：QQ、微信、浏览器、播放器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通信软件：-起到“承上启下”的作用"><span class="nav-number"></span> <span class="nav-text">通信软件： 起到“承上启下”的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#物理连接：网卡等-1"><span class="nav-number"></span> <span class="nav-text">物理连接：网卡等</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网络之所以使用层次结构的原因："><span class="nav-number">0.1.</span> <span class="nav-text">网络之所以使用层次结构的原因：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、网络的层次结构"><span class="nav-number">1.</span> <span class="nav-text">二、网络的层次结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#层次结构的两大特点："><span class="nav-number">1.1.</span> <span class="nav-text">层次结构的两大特点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络体系结构：网络通信功能的层次构成、各层的通信协议规范和相邻层"><span class="nav-number">1.2.</span> <span class="nav-text">网络体系结构：网络通信功能的层次构成、各层的通信协议规范和相邻层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协议"><span class="nav-number">1.3.</span> <span class="nav-text">协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机网络协议的要素"><span class="nav-number">1.4.</span> <span class="nav-text">计算机网络协议的要素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#层次结构的有关概念"><span class="nav-number">1.5.</span> <span class="nav-text">层次结构的有关概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机网络体系结构分层原则"><span class="nav-number">1.6.</span> <span class="nav-text">计算机网络体系结构分层原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#层次划分设计的问题"><span class="nav-number">1.7.</span> <span class="nav-text">层次划分设计的问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、网络协议与服务"><span class="nav-number">2.</span> <span class="nav-text">三、网络协议与服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务提供者与服务使用者"><span class="nav-number">2.1.</span> <span class="nav-text">服务提供者与服务使用者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务分类"><span class="nav-number">2.2.</span> <span class="nav-text">服务分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何使用下层服务"><span class="nav-number">2.3.</span> <span class="nav-text">如何使用下层服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务与协议是完全分离的"><span class="nav-number">2.4.</span> <span class="nav-text">服务与协议是完全分离的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、网络标准与标准化组织"><span class="nav-number">3.</span> <span class="nav-text">四、网络标准与标准化组织</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、TCP-IP模型及因特网"><span class="nav-number">4.</span> <span class="nav-text">五、TCP-IP模型及因特网</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、网络分层的原因"><span class="nav-number">1.</span> <span class="nav-text">一、网络分层的原因</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网络通信面临的一些问题："><span class="nav-number">1.1.</span> <span class="nav-text">网络通信面临的一些问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#假设："><span class="nav-number">1.2.</span> <span class="nav-text">假设：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#现在：将面向传输功能进一步细分为通信软件和物理连接"><span class="nav-number">1.3.</span> <span class="nav-text">现在：将面向传输功能进一步细分为通信软件和物理连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络之所以使用层次结构的原因："><span class="nav-number">1.4.</span> <span class="nav-text">网络之所以使用层次结构的原因：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、网络的层次结构"><span class="nav-number">2.</span> <span class="nav-text">二、网络的层次结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#层次结构的两大特点："><span class="nav-number">2.1.</span> <span class="nav-text">层次结构的两大特点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络体系结构："><span class="nav-number">2.2.</span> <span class="nav-text">网络体系结构：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协议"><span class="nav-number">2.3.</span> <span class="nav-text">协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机网络协议的要素"><span class="nav-number">2.4.</span> <span class="nav-text">计算机网络协议的要素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#层次结构的有关概念"><span class="nav-number">2.5.</span> <span class="nav-text">层次结构的有关概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机网络体系结构分层原则"><span class="nav-number">2.6.</span> <span class="nav-text">计算机网络体系结构分层原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#层次划分设计的问题"><span class="nav-number">2.7.</span> <span class="nav-text">层次划分设计的问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、网络协议与服务"><span class="nav-number">3.</span> <span class="nav-text">三、网络协议与服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务提供者与服务使用者"><span class="nav-number">3.1.</span> <span class="nav-text">服务提供者与服务使用者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务分类"><span class="nav-number">3.2.</span> <span class="nav-text">服务分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何使用下层服务"><span class="nav-number">3.3.</span> <span class="nav-text">如何使用下层服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务与协议是完全分离的"><span class="nav-number">3.4.</span> <span class="nav-text">服务与协议是完全分离的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、网络标准与标准化组织"><span class="nav-number">4.</span> <span class="nav-text">四、网络标准与标准化组织</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、TCP-IP模型及因特网"><span class="nav-number">5.</span> <span class="nav-text">五、TCP-IP模型及因特网</span></a></li></ol>
     
     </div>
   </aside>
