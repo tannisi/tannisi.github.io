@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="十、变量变量的赋值方式   先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
 <meta property="og:image" content="https://tannisi.github.io/2018/02/08/linux运维学习二/1.jpg">
-<meta property="og:updated_time" content="2018-02-08T03:15:18.826Z">
+<meta property="og:updated_time" content="2018-02-08T03:17:05.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维学习二">
 <meta name="twitter:description" content="十、变量变量的赋值方式   先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
@@ -112,7 +112,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -242,7 +242,7 @@ $ echo $USER
 <li>/etc/environment:在登录时操作系统使用的第二个文件，系统在读取你自己的profile前，设置环境文件的环境变量。</li>
 <li>/etc/bashrc:为每一个运行bash shell的用户执行此文件。当bash shell被打开时，该文件被读取。</li>
 <li>~/.profile:在登录时用到的第三个文件是.profile文件，当用户登录时，该文件仅仅执行一次！默认情况下，执行用户目录下的.bashrc文件，每个用户都可使用该文件输入专用于自己使用的shell信息，修改后使用. .profile使生效。</li>
-<li>~/.bashrc:该文件包含专用于单个用户的bash shell的bash信息，当登录时以及每次打开新的shell时，该文件被读取。修改后使用source .bashrc 使生效。<br>  在ubuntu中设置环境变量：<br> 通常设置环境变量有三种方法：<br>（一）临时设置<br>  <code>$PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH</code><br>（二）当前用户的全局设置<br>打开~/.bashrc，添加行：<br>  <code>export PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH</code><br>使生效：<br>  <code>source .bashrc</code><br>（三）所有用户的全局设置<br>  <code>$ vim /etc/profile</code><br>在里面加入：<br>  <code>export PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH</code><br>使生效<br>  <code>source profile</code><br>测试：<br>  echo $PATH</li>
+<li>~/.bashrc:该文件包含专用于单个用户的bash shell的bash信息，当登录时以及每次打开新的shell时，该文件被读取。修改后使用source .bashrc 使生效。<br>  在ubuntu中设置环境变量：<br> 通常设置环境变量有三种方法：<br>（一）临时设置<br>  <code>$PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH</code><br>（二）当前用户的全局设置<br>打开~/.bashrc，添加行：<br>  <code>export PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH</code><br>使生效：<br>  <code>source .bashrc</code><br>（三）所有用户的全局设置<br>  <code>$ vim /etc/profile</code><br>在里面加入：<br>  <code>export PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH</code><br>使生效<br>  <code>source profile</code><br>测试：<br>  <code>echo $PATH</code></li>
 </ul>
 
       
@@ -291,7 +291,7 @@ $ echo $USER
   
   
     <a href="/2018/02/07/linux运维学习一/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">linux运维学习一</div>
     </a>
   
