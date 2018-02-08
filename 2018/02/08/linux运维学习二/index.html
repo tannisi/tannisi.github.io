@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://tannisi.github.io/2018/02/08/linux运维学习二/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="十、变量变量的赋值方式   先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
-<meta property="og:updated_time" content="2018-02-08T03:01:24.801Z">
+<meta property="og:updated_time" content="2018-02-08T03:02:52.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维学习二">
 <meta name="twitter:description" content="十、变量变量的赋值方式   先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
@@ -213,10 +213,12 @@ $ echo $USER
 <li>首先加载/etc/profile全局环境变量文件，这是Linux系统上默认的shell主环境变量，系统上每个用户登录时都会加载这个文件</li>
 <li>再执行/etc/profile.d目录下的脚本文件</li>
 <li>然后运行$HOME/.bash_profile(用户环境变量文件)，在这个文件中，又会去找$HOME/.bashrc(用户环境变量文件)，如果有则执行，如果没有，则不执行。在$HOME/.bashrc文件中又会去找/etc/bashrc(全局环境变量文件)，如果有则执行，如果没有则不执行。</li>
-<li><p>如果用户的shell不是在登录时启动的，那么这种非登录Shell只会加载$HOME/.bashrc(用户环境变量文件)<br>，并会去找/etc/bashrc(全局环境变量文件)。因此若希望在非登录shell下也可读到设置的环境变的内容，<br>就需要将变量设定等写入$HOME/.bashrc或者/etc/bashrc,而不是$HOME/.bash_profile或/etc/profile。<br>以上是在centos中的环境变量启动顺序，在ubuntu系统中：</p>
-</li>
-<li><p>/etc/profile：在登录时操作系统定制用户环境时使用的第一个文件，此文件为系统的每个用户设置环境信息。当用户第一次登录时，该文件被执行。</p>
-</li>
+<li>如果用户的shell不是在登录时启动的，那么这种非登录Shell只会加载$HOME/.bashrc(用户环境变量文件)<br>，并会去找/etc/bashrc(全局环境变量文件)。</li>
+<li>因此若希望在非登录shell下也可读到设置的环境变的内容，就需要将变量设定等写入$HOME/.bashrc<br>或者/etc/bashrc,而不是$HOME/.bash_profile或/etc/profile。</li>
+</ul>
+<p>以上是在centos中的环境变量启动顺序，在ubuntu系统中：</p>
+<ul>
+<li>/etc/profile：在登录时操作系统定制用户环境时使用的第一个文件，此文件为系统的每个用户设置环境信息。当用户第一次登录时，该文件被执行。</li>
 <li>/etc/environment:在登录时操作系统使用的第二个文件，系统在读取你自己的profile前，设置环境文件的环境变量。</li>
 <li>/etc/bashrc:为每一个运行bash shell的用户执行此文件。当bash shell被打开时，该文件被读取。</li>
 <li>~/.profile:在登录时用到的第三个文件是.profile文件，当用户登录时，该文件仅仅执行一次！默认情况下，执行用户目录下的.bashrc文件，每个用户都可使用该文件输入专用于自己使用的shell信息，修改后使用. .profile使生效。</li>
