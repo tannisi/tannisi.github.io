@@ -11,17 +11,17 @@
   
   
   
-  <meta name="description" content="一、网络分层的原因网络通信面临的一些问题：硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序 假设：将所有工作分成面向应用与面向传输两部分 应用程序：QQ、微信、浏览器、播放器物理连接：网卡等这种方式的特点：* 应用程序完全了解本机网络连接的内部细节 * 应用程序直接通过网络连接与其它应用程序通信 缺点：* 会造成大量的重复劳动 * 扩展性太差 现在：将面向传输功能进一步细分为通信软">
+  <meta name="description" content="一、网络分层的原因网络通信面临的一些问题：硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序">
 <meta name="keywords" content="网络层次结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络层次结构">
 <meta property="og:url" content="https://tannisi.github.io/2018/02/08/网络层次结构/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
-<meta property="og:description" content="一、网络分层的原因网络通信面临的一些问题：硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序 假设：将所有工作分成面向应用与面向传输两部分 应用程序：QQ、微信、浏览器、播放器物理连接：网卡等这种方式的特点：* 应用程序完全了解本机网络连接的内部细节 * 应用程序直接通过网络连接与其它应用程序通信 缺点：* 会造成大量的重复劳动 * 扩展性太差 现在：将面向传输功能进一步细分为通信软">
-<meta property="og:updated_time" content="2018-02-08T15:02:53.874Z">
+<meta property="og:description" content="一、网络分层的原因网络通信面临的一些问题：硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序">
+<meta property="og:updated_time" content="2018-02-08T15:05:11.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络层次结构">
-<meta name="twitter:description" content="一、网络分层的原因网络通信面临的一些问题：硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序 假设：将所有工作分成面向应用与面向传输两部分 应用程序：QQ、微信、浏览器、播放器物理连接：网卡等这种方式的特点：* 应用程序完全了解本机网络连接的内部细节 * 应用程序直接通过网络连接与其它应用程序通信 缺点：* 会造成大量的重复劳动 * 扩展性太差 现在：将面向传输功能进一步细分为通信软">
+<meta name="twitter:description" content="一、网络分层的原因网络通信面临的一些问题：硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序">
 <meta name="twitter:creator" content="@true">
 <link rel="publisher" href="true">
   
@@ -162,7 +162,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、网络分层的原因"><a href="#一、网络分层的原因" class="headerlink" title="一、网络分层的原因"></a>一、网络分层的原因</h3><h4 id="网络通信面临的一些问题："><a href="#网络通信面临的一些问题：" class="headerlink" title="网络通信面临的一些问题："></a>网络通信面临的一些问题：</h4><p>硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序</p>
+        <h3 id="一、网络分层的原因"><a href="#一、网络分层的原因" class="headerlink" title="一、网络分层的原因"></a>一、网络分层的原因</h3><h4 id="网络通信面临的一些问题："><a href="#网络通信面临的一些问题：" class="headerlink" title="网络通信面临的一些问题："></a>网络通信面临的一些问题：</h4><p>硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序<br><a id="more"></a></p>
 <h4 id="假设：将所有工作分成面向应用与面向传输两部分"><a href="#假设：将所有工作分成面向应用与面向传输两部分" class="headerlink" title="假设：将所有工作分成面向应用与面向传输两部分"></a>假设：将所有工作分成面向应用与面向传输两部分</h4><hr>
 <h2 id="应用程序：QQ、微信、浏览器、播放器"><a href="#应用程序：QQ、微信、浏览器、播放器" class="headerlink" title="应用程序：QQ、微信、浏览器、播放器"></a>应用程序：QQ、微信、浏览器、播放器</h2><h2 id="物理连接：网卡等"><a href="#物理连接：网卡等" class="headerlink" title="物理连接：网卡等"></a>物理连接：网卡等</h2><p>这种方式的特点：* 应用程序完全了解本机网络连接的内部细节</p>
 <pre><code>* 应用程序直接通过网络连接与其它应用程序通信
