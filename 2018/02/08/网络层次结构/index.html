@@ -6,16 +6,19 @@
   <title>网络层次结构 | 坦尼斯——龙枪——Linux技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="网络层次结构" />
+  
   
   
   
   <meta name="description" content="一、网络分层的原因网络通信面临的一些问题：硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序 假设：将所有工作分成面向应用与面向传输两部分 应用程序：QQ、微信、浏览器、播放器物理连接：网卡等这种方式的特点：* 应用程序完全了解本机网络连接的内部细节 * 应用程序直接通过网络连接与其它应用程序通信 缺点：* 会造成大量的重复劳动 * 扩展性太差 现在：将面向传输功能进一步细分为通信软">
+<meta name="keywords" content="网络层次结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络层次结构">
 <meta property="og:url" content="https://tannisi.github.io/2018/02/08/网络层次结构/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="一、网络分层的原因网络通信面临的一些问题：硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序 假设：将所有工作分成面向应用与面向传输两部分 应用程序：QQ、微信、浏览器、播放器物理连接：网卡等这种方式的特点：* 应用程序完全了解本机网络连接的内部细节 * 应用程序直接通过网络连接与其它应用程序通信 缺点：* 会造成大量的重复劳动 * 扩展性太差 现在：将面向传输功能进一步细分为通信软">
-<meta property="og:updated_time" content="2018-02-08T15:01:40.597Z">
+<meta property="og:updated_time" content="2018-02-08T15:02:53.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络层次结构">
 <meta name="twitter:description" content="一、网络分层的原因网络通信面临的一些问题：硬件故障、网络拥塞、包延迟、包丢失、数据损坏、数据重复、数据乱序 假设：将所有工作分成面向应用与面向传输两部分 应用程序：QQ、微信、浏览器、播放器物理连接：网卡等这种方式的特点：* 应用程序完全了解本机网络连接的内部细节 * 应用程序直接通过网络连接与其它应用程序通信 缺点：* 会造成大量的重复劳动 * 扩展性太差 现在：将面向传输功能进一步细分为通信软">
@@ -57,10 +60,32 @@
 
 
   
+  
+  <div class="site-header-image">
+    <img id="originBg" width="100%" alt="Hike News" src="">
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
+  </div>
+
+  <script>
+        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("originBg").src=imgUrls[random];
+          document.getElementById("blurBg").src=imgUrls[random];
+        } else {
+          document.getElementById("originBg").src='/' + imgUrls[random];
+          document.getElementById("blurBg").src='/' + imgUrls[random];
+        }
+    </script>
+
+
 
 
 <header id="allheader" class="site-header" role="banner" 
-   >
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -125,7 +150,10 @@
 	  <time datetime="2018-02-08T14:47:41.000Z" itemprop="datePublished">February 8, 2018</time>
 	</a>
 
-       
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/网络原理/">网络原理</a>
+ 
       
 	<span id="busuanzi_container_page_pv">
 	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
@@ -216,7 +244,13 @@
     </div>
     <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/网络原理/">网络原理</a>
+
       
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络层次结构/">网络层次结构</a></li></ul>
+
       
         
 	<div id="comment">
@@ -320,6 +354,9 @@
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
