@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>linux运维学习二 | 坦尼斯——龙枪——Linux技术博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Linuxshell" />
+  
+  
+  
+  
+  <meta name="description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。 $ oldboy=&amp;apos;I am a boy&amp;apos; $ echo $oldboy I am a boy">
+<meta name="keywords" content="Linuxshell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux运维学习二">
+<meta property="og:url" content="https://tannisi.github.io/2018/02/08/linux运维学习二/index.html">
+<meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
+<meta property="og:description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。 $ oldboy=&amp;apos;I am a boy&amp;apos; $ echo $oldboy I am a boy">
+<meta property="og:updated_time" content="2018-02-08T02:46:38.936Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux运维学习二">
+<meta name="twitter:description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。 $ oldboy=&amp;apos;I am a boy&amp;apos; $ echo $oldboy I am a boy">
+<meta name="twitter:creator" content="@true">
+<link rel="publisher" href="true">
+  
+    <link rel="alternate" href="/atom.xml" title="坦尼斯——龙枪——Linux技术博客" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/fashion.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" rel="home" >
+                <img style="margin-bottom: 10px;"  width="124px" height="124px" alt="Hike News" src=" /css/images/1961569634B65DDFE303419C0BDCE95F9CACEA223E.jpg">
+              </a>
+            
+          </h1>
+          
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-linux运维学习二" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      linux运维学习二
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/02/08/linux运维学习二/" class="article-date">
+	  <time datetime="2018-02-08T02:38:50.000Z" itemprop="datePublished">February 8, 2018</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Linux运维学习/">Linux运维学习</a>
+ 
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="十、变量"><a href="#十、变量" class="headerlink" title="十、变量"></a>十、变量</h3><h4 id="变量的赋值方式："><a href="#变量的赋值方式：" class="headerlink" title="变量的赋值方式："></a>变量的赋值方式：</h4><pre><code>先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。
+$ oldboy=&apos;I am a boy&apos;
+$ echo $oldboy
+I am a boy
+</code></pre><a id="more"></a>
+<h4 id="shell变量的特性"><a href="#shell变量的特性" class="headerlink" title="shell变量的特性"></a>shell变量的特性</h4><p>   默认情况下，在bash shell中是不会区分变量的类型的。但是如果需要指定shell变量的类型，也可以使用declare显示定义变量的类型。</p>
+<h4 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h4><p>   分为两类：环境变量（全局变量）和普通变量（局部变量）<br>环境变量（全局变量），可以在创建它们的shell及其派生出来的的任意子进程shell中使用，环境变量又可分为自定义环境变量和bash内置的环境变量。<br>普通变量（局部变量）只能在创建他们的shell函数或shell脚本中使用。普通变量一般由开发者在开发脚本程序时创建 。</p>
+<h3 id="十一、环境变量"><a href="#十一、环境变量" class="headerlink" title="十一、环境变量"></a>十一、环境变量</h3><h4 id="环境变量定义"><a href="#环境变量定义" class="headerlink" title="环境变量定义"></a>环境变量定义</h4><p>   环境变量一般是指用export内置命令导出的变量，用于定义shell的运行环境，保证shell命令的正确执行。shell通过环境变量来确定登录用户名、命令路径、终端类型、登录目录等，所有的环境变量都是系统全局变量，可用于所有的子进程中，这包括编辑器、shell 脚本和各类应用。<br>   环境变量可以在命令行中设置和创建，但用户退出命令行时这些变量值就会丢失，因此，如果希望永久保存环境变量，可在用户家目录下的.bash_profile或.bashrc（非用户登录模式特有，例如远程ssh）文件中，或者全局配置/etc/bashrc（非用户登录模式特有，例如远程ssh）或/etc/profile文件中定义。在将环境变量放入上述的文件中后，每次用户登录时这些变量都将被初始化。<br>   按照系统规范，所有环境变量的名字均采用大写形式。在将环境变量应用于用户进程程序之前，都应该用export命令导出定义，例如：正确的环境变量定义方法为export OLDGIRL=1。<br>   有一些环境变量，比如HOME、PATH、SHELL、UID、 USER等，在用户登录之前，就已经被/bin/login程序设置好了。通常环境变量被定义并保存在用户家目录下的.bash_profile文件或全局的配置文件/etc/profile中。<br>常见的环境变量：</p>
+<p> PATH： 决定了shell将到哪些目录中寻找命令或程序<br> ROOTPATH:  这个变量的功能和PATH相同，但它只罗列出超级用户（root）键入命令时所需检查的目录。<br> HOME：  当前用户主目录<br> USER:   查看当前的用户<br> LOGNAME： 查看当前用户的登录名。<br> UID： 当前用户的识别字，取值是由数位构成的字串。<br> SHELL：  是指当前用户用的是哪种Shell。<br> TERM ： 终端的类型。<br> PWD：   当前工作目录的绝对路径名，该变量的取值随cd命令的使用而变化。<br> MAIL： 是指当前用户的邮件存放目录。<br> HISTSIZE： 是指保存历史命令记录的条数<br> HOSTNAME： 是指主机的名称，许多应用程序如果要用到主机名的话，通常是从这个环境变量中来取得的。<br> PS1： 是基本提示符，对于root用户是#，对于普通用户是$，也可以使用一些更复杂的值。<br> PS2： 是附属提示符，默认是“&gt;”。可以通过修改此环境变量来修改当前的命令符，比如下列命令会将提示符<br>       修改成字符串“Hello,My NewPrompt :) ”。# PS1=” Hello,My NewPrompt :)”<br> IFS：   输入域分隔符。当shell读取输入时，用来分隔单词的一组字符，它们通常是空格、制表符和换行符。<br> _=：   上一条命令的最后一个参数</p>
+<p>   在查看设置的变量时，有三个命令可以显示变量的值：set、env和declare（替代早期的typeset）。set命令输出所有的变量，包括全局变量和局部变量；env命令只显示全局变量，declare命令输出所有的变量、函数、整数和已经导出的变量。set -o命令显示bash shell的所有参数配置信息。<br>    $ set -o|tail   #&lt;==tail输出输入文件的后10行<br>    $ set -o|head   #&lt;==head输出输入文件的前10行</p>
+<h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><p>如果要设置环境变量，就要在给变量赋值之后活在设置变量时使用export命令。（带-x选项的declare内置命令也可以完成同样的功能）。<br>export和declare命令的格式如下：<br>    1.export 变量名=value<br>    2.变量名=value ; export 变量名<br>    3.declare -x 变量名=value<br>下面是自定义全局环境变量的示例：<br>    $ grep OLD /etc/profile</p>
+<pre><code>$ export OLDBOY=&apos;oldboy&apos;   #&lt;==编辑/etc/profile,然后输出并保存
+
+$ source /etc/profile   #&lt;==执行使其生效
+
+$ echo $OLDBOY
+
+oldboy
+
+$ env|grep OLDBOY   #&lt;==查看定义结果
+
+OLDBOY=oldboy
+</code></pre><p>   下面来看看让环境变量永久生效的常用设置文件。<br>1）用户的环境变量配置<br>配置如下：<br>    $ ls /root/.bashrc   #&lt;==一定要在root权限下执行</p>
+<pre><code>/root/.bashrc
+
+$ ls /root/.bashrc_profile   #&lt;==在ubuntu中没有.bashrc_profile文件，有.profile文件
+
+/root/.bashrc_profile
+</code></pre><p>2）全局环境变量的配置<br>常见的全局环境变量的配置文件如下：<br>    /etc/profile</p>
+<pre><code>/etc/bashrc   #&lt;==推荐在此文件中优先设置
+
+/etc/profile.d/
+</code></pre><p>   若要在登录后初始化或显示加载内容，则把脚本文件放在/etc/profile.d/下即可（无需加执行权限）。<br>（2）设置登录提示的两种方式<br>第一种是在/etc/motd里增加提示的字符串，如下：<br>    $cat /etc/motd</p>
+<pre><code>welcome to linux shell training.
+</code></pre><p>则登陆后显示内容如下：<br>    Last login : Fri Nov 7 15 :36 : 56 2017 from 10.0.0.100</p>
+<pre><code>welcome to linux shell training
+</code></pre><p>第二种是在/etc/profile.d/下面增加如下脚本：<br>    $ cat /etc/profile.d/oldboy.sh</p>
+<pre><code>echo &quot;Here is a oldboy training&quot;
+</code></pre><p>登陆后显示的内容如下：<br>    Last login : Fri Nov 7 15 :36 : 56 2017 from 10.0.0.100</p>
+<pre><code>Here is a oldboy training
+</code></pre><p>以下是在生产场景下（在Java环境中），自定义环境变量的示例：<br>    export JAVA_HOME=/application/jdk</p>
+<pre><code>export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+
+export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH:$HOME/bin
+
+export RESIN_HOME=/application/resin
+</code></pre><p>   上述的环境变量通常放在/etc/profile全局变量里。如果是写JAVA的脚本，那么最好是把上述Java环境配置放入脚本内重新定义，特别是作为定时任务执行的脚本。</p>
+<h4 id="显示与取消环境变量"><a href="#显示与取消环境变量" class="headerlink" title="显示与取消环境变量"></a>显示与取消环境变量</h4><p>1.通过echo或printf命令打印环境变量<br>常见的系统环境变量：<br>$HOME：用户登录时进入的目录<br>$UID：当前用户的UID（用户标识），相当于id-u<br>$PWD：当前工作目录的绝对路径名<br>$SHELL：当前shell<br>$USER：当前用户<br>   在写shell脚本时可以直接使用系统默认的环境变量，一般情况下是不需要重新定义的，在使用定时任务等执行shell脚本时建议在脚本中重新定义。<br>2.用env或set显示默认的环境变量<br>3.用unset消除本地变量和环境变量<br>    $ echo $USER</p>
+<pre><code>boyboy
+
+$ unset USER
+
+$ echo $USER
+
+        #&lt;==此处为输出的空行，即消除了环境变量。
+</code></pre><p>环境变量知识小结：</p>
+<ul>
+<li>变量名通常要大写</li>
+<li>变量可以在自身的shell及子shell中使用</li>
+<li>常用export来定义环境变量</li>
+<li>执行env默认可以显示所有的环境变量名称及其对应的值</li>
+<li>输出时用“$变量名”，取消时用“unset变量名”</li>
+<li>书写crond定时任务时要注意，脚本要用到的环境变量最好先在所执行的shell脚本中重新定义</li>
+<li>如果希望环境变量永久生效，则可以将其放在用户环境变量文件或全局环境变量文件中。<h4 id="环境变量初始化与对应文件的生效顺序"><a href="#环境变量初始化与对应文件的生效顺序" class="headerlink" title="环境变量初始化与对应文件的生效顺序"></a>环境变量初始化与对应文件的生效顺序</h4> 在登录Linux系统并启动一个bash shell时，默认情况下bash会在系统环境文件中查找环境变量的设置。bash检查的环境变量文件的情况取决于系统运行shell的方式。系统运行shell的方式一般有3种：<br> 1)通过系统用户登录后默认运行的shell<br> 2）非登录交互式运行shell<br> 3）执行脚本运行非交互式shell<br>当用户登录Linux系统时，shell会作为登录shell启动。此时的登录shell加载环境变量的顺序。<br>/etc/profile————&gt; ~/.bash_profile ————&gt; 操作bash<br>   |                   |<br>   |                   |<br>   |                   ——————————&gt; ~/.bashrc<br>   |                                  | 方向向下<br>   ——&gt;/etc/profile.d/*.sh &lt;———— /etc/bashrc<pre><code>        |
+        |方向向下
+        |
+/etc/sysconfig/il8n
+</code></pre></li>
+<li>首先加载/etc/profile全局环境变量文件，这是Linux系统上默认的shell主环境变量，系统上每个用户登录时都会加载这个文件</li>
+<li>再执行/etc/profile.d目录下的脚本文件</li>
+<li>然后运行$HOME/.bash_profile(用户环境变量文件)，在这个文件中，又会去找$HOME/.bashrc(用户环境变量文件)，如果有则执行，如果没有，则不执行。在$HOME/.bashrc文件中又会去找/etc/bashrc(全局环境变量文件)，如果有则执行，如果没有则不执行。</li>
+<li>如果用户的shell不是在登录时启动的，那么这种非登录Shell只会加载$HOME/.bashrc(用户环境变量文件)，并会去找/etc/bashrc(全局环境变量文件)。因此若希望在非登录shell下也可读到设置的环境变的内容，就需要将变量设定等写入$HOME/.bashrc或者/etc/bashrc,而不是$HOME/.bash_profile或/etc/profile。</li>
+</ul>
+<p>以上是在centos中的环境变量启动顺序，在ubuntu系统中：</p>
+<ul>
+<li>/etc/profile：在登录时操作系统定制用户环境时使用的第一个文件，此文件为系统的每个用户设置环境信息。当用户第一次登录时，该文件被执行。</li>
+<li>/etc/environment:在登录时操作系统使用的第二个文件，系统在读取你自己的profile前，设置环境文件的环境变量。</li>
+<li>/etc/bashrc:为每一个运行bash shell的用户执行此文件。当bash shell被打开时，该文件被读取。</li>
+<li>~/.profile:在登录时用到的第三个文件是.profile文件，当用户登录时，该文件仅仅执行一次！默认情况下，执行用户目录下的.bashrc文件，每个用户都可使用该文件输入专用于自己使用的shell信息，修改后使用. .profile使生效。</li>
+<li>~/.bashrc:该文件包含专用于单个用户的bash shell的bash信息，当登录时以及每次打开新的shell时，该文件被读取。修改后使用source .bashrc 使生效。<br>  在ubuntu中设置环境变量：<br> 通常设置环境变量有三种方法：<br>（一）临时设置<br>  $PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH<br>（二）当前用户的全局设置<br>打开~/.bashrc，添加行：<br>  export PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH<br>使生效：<br>  source .bashrc<br>（三）所有用户的全局设置<br>  $ vim /etc/profile<br>在里面加入：<br>  export PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH<br>使生效<br>  source profile<br>测试：<br>  echo $PATH</li>
+</ul>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Linux运维学习/">Linux运维学习</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linuxshell/">Linuxshell</a></li></ul>
+
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/02/07/linux运维学习一/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">linux运维学习一</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#十、变量"><span class="nav-number">1.</span> <span class="nav-text">十、变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量的赋值方式："><span class="nav-number">1.1.</span> <span class="nav-text">变量的赋值方式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell变量的特性"><span class="nav-number">1.2.</span> <span class="nav-text">shell变量的特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量类型"><span class="nav-number">1.3.</span> <span class="nav-text">变量类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十一、环境变量"><span class="nav-number">2.</span> <span class="nav-text">十一、环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#环境变量定义"><span class="nav-number">2.1.</span> <span class="nav-text">环境变量定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置环境变量"><span class="nav-number">2.2.</span> <span class="nav-text">设置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示与取消环境变量"><span class="nav-number">2.3.</span> <span class="nav-text">显示与取消环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境变量初始化与对应文件的生效顺序"><span class="nav-number">2.4.</span> <span class="nav-text">环境变量初始化与对应文件的生效顺序</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 坦尼斯——龙枪——Linux技术博客 All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+</div>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
