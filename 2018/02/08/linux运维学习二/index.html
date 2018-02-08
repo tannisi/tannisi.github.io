@@ -18,10 +18,12 @@
 <meta property="og:url" content="https://tannisi.github.io/2018/02/08/linux运维学习二/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="十、变量变量的赋值方式   先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
-<meta property="og:updated_time" content="2018-02-08T03:03:55.568Z">
+<meta property="og:image" content="https://tannisi.github.io/2018/02/08/linux运维学习二/1.jpg">
+<meta property="og:updated_time" content="2018-02-08T03:15:18.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维学习二">
 <meta name="twitter:description" content="十、变量变量的赋值方式   先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
+<meta name="twitter:image" content="https://tannisi.github.io/2018/02/08/linux运维学习二/1.jpg">
 <meta name="twitter:creator" content="@true">
 <link rel="publisher" href="true">
   
@@ -227,11 +229,7 @@ $ echo $USER
 <li>执行env默认可以显示所有的环境变量名称及其对应的值</li>
 <li>输出时用“$变量名”，取消时用“unset变量名”</li>
 <li>书写crond定时任务时要注意，脚本要用到的环境变量最好先在所执行的shell脚本中重新定义</li>
-<li>如果希望环境变量永久生效，则可以将其放在用户环境变量文件或全局环境变量文件中。<h4 id="环境变量初始化与对应文件的生效顺序"><a href="#环境变量初始化与对应文件的生效顺序" class="headerlink" title="环境变量初始化与对应文件的生效顺序"></a>环境变量初始化与对应文件的生效顺序</h4> 在登录Linux系统并启动一个bash shell时，默认情况下bash会在系统环境文件中查找环境变量的设置。bash检查的环境变量文件的情况取决于系统运行shell的方式。系统运行shell的方式一般有3种：<br> 1)通过系统用户登录后默认运行的shell<br> 2）非登录交互式运行shell<br> 3）执行脚本运行非交互式shell<br>当用户登录Linux系统时，shell会作为登录shell启动。此时的登录shell加载环境变量的顺序。<br>/etc/profile————&gt; ~/.bash_profile ————&gt; 操作bash<br>   |                   |<br>   |                   |<br>   |                   ——————————&gt; ~/.bashrc<br>   |                                  | 方向向下<br>   ——&gt;/etc/profile.d/*.sh &lt;———— /etc/bashrc<pre><code>         | 
-         |方向向下
-         |
-/etc/sysconfig/il8n
-</code></pre></li>
+<li>如果希望环境变量永久生效，则可以将其放在用户环境变量文件或全局环境变量文件中。<h4 id="环境变量初始化与对应文件的生效顺序"><a href="#环境变量初始化与对应文件的生效顺序" class="headerlink" title="环境变量初始化与对应文件的生效顺序"></a>环境变量初始化与对应文件的生效顺序</h4> 在登录Linux系统并启动一个bash shell时，默认情况下bash会在系统环境文件中查找环境变量的设置。bash检查的环境变量文件的情况取决于系统运行shell的方式。系统运行shell的方式一般有3种：<br> 1)通过系统用户登录后默认运行的shell<br> 2）非登录交互式运行shell<br> 3）执行脚本运行非交互式shell<br>当用户登录Linux系统时，shell会作为登录shell启动。此时的登录shell加载环境变量的顺序。<br><img src="/2018/02/08/linux运维学习二/1.jpg" alt="登录shell读取环境变量文件的流程"></li>
 <li>首先加载/etc/profile全局环境变量文件，这是Linux系统上默认的shell主环境变量，系统上每个用户登录时都会加载这个文件</li>
 <li>再执行/etc/profile.d目录下的脚本文件</li>
 <li>然后运行$HOME/.bash_profile(用户环境变量文件)，在这个文件中，又会去找$HOME/.bashrc(用户环境变量文件)，如果有则执行，如果没有，则不执行。在$HOME/.bashrc文件中又会去找/etc/bashrc(全局环境变量文件)，如果有则执行，如果没有则不执行。</li>
