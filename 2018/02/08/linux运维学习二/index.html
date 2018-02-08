@@ -11,17 +11,17 @@
   
   
   
-  <meta name="description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
+  <meta name="description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
 <meta name="keywords" content="Linuxshell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux运维学习二">
 <meta property="og:url" content="https://tannisi.github.io/2018/02/08/linux运维学习二/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
-<meta property="og:description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
-<meta property="og:updated_time" content="2018-02-08T02:53:41.643Z">
+<meta property="og:description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
+<meta property="og:updated_time" content="2018-02-08T02:54:59.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维学习二">
-<meta name="twitter:description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
+<meta name="twitter:description" content="十、变量变量的赋值方式：先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
 <meta name="twitter:creator" content="@true">
 <link rel="publisher" href="true">
   
@@ -60,32 +60,10 @@
 
 
   
-  
-  <div class="site-header-image">
-    <img id="originBg" width="100%" alt="Hike News" src="">
-  </div>
-
-  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
-    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
-  </div>
-
-  <script>
-        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
-        var random = Math.floor((Math.random() * imgUrls.length ));
-        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-          document.getElementById("originBg").src=imgUrls[random];
-          document.getElementById("blurBg").src=imgUrls[random];
-        } else {
-          document.getElementById("originBg").src='/' + imgUrls[random];
-          document.getElementById("blurBg").src='/' + imgUrls[random];
-        }
-    </script>
-
-
 
 
 <header id="allheader" class="site-header" role="banner" 
-   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
+   >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -110,7 +88,7 @@
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
                     
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
                     
                       <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
                     
@@ -162,7 +140,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="十、变量"><a href="#十、变量" class="headerlink" title="十、变量"></a>十、变量</h3><h4 id="变量的赋值方式："><a href="#变量的赋值方式：" class="headerlink" title="变量的赋值方式："></a>变量的赋值方式：</h4><pre><code>先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上￥$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。
+        <h3 id="十、变量"><a href="#十、变量" class="headerlink" title="十、变量"></a>十、变量</h3><h4 id="变量的赋值方式："><a href="#变量的赋值方式：" class="headerlink" title="变量的赋值方式："></a>变量的赋值方式：</h4><pre><code>先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。
 </code></pre><a id="more"></a>
 <pre><code>$ oldboy=&apos;I am a boy&apos;
 
@@ -295,7 +273,7 @@ $ echo $USER
   
   
     <a href="/2018/02/07/linux运维学习一/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">linux运维学习一</div>
     </a>
   
@@ -363,9 +341,6 @@ $ echo $USER
 
 
     <!-- headerblur min height -->
-    
-      var headerblur = document.getElementById("header-blur");
-      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
