@@ -11,14 +11,17 @@
   
   
   
-  <meta name="keywords" content="Linuxshell">
+  <meta name="description" content="十三、shell中的特殊且重要的变量1.shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
+<meta name="keywords" content="Linuxshell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux运维学习三">
 <meta property="og:url" content="https://tannisi.github.io/2018/02/12/linux运维学习三/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
-<meta property="og:updated_time" content="2018-02-12T07:21:58.890Z">
+<meta property="og:description" content="十三、shell中的特殊且重要的变量1.shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
+<meta property="og:updated_time" content="2018-02-12T12:19:47.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维学习三">
+<meta name="twitter:description" content="十三、shell中的特殊且重要的变量1.shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
 <meta name="twitter:creator" content="@true">
 <link rel="publisher" href="true">
   
@@ -159,7 +162,38 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="十三、shell中的特殊且重要的变量"><a href="#十三、shell中的特殊且重要的变量" class="headerlink" title="十三、shell中的特殊且重要的变量"></a>十三、shell中的特殊且重要的变量</h3><p>1.shell中的特殊位置参数变量<br>   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。<br><a id="more"></a><br>                       常用的特殊位置参数变量表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">位置变量</th>
+<th style="text-align:right">作用说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$0</td>
+<td style="text-align:right">获取当前执行的shell脚本的文件名，如果执行脚本包含了路径，那么就包括脚本路径。</td>
+</tr>
+<tr>
+<td style="text-align:left">$n</td>
+<td style="text-align:right">获取当前执行的shell脚本的第n个参数值，n=1…9，当n为0时表示脚本的文件名；如果n大于9，则用大括号括起来，例如${10},接的参数以空格隔开</td>
+</tr>
+<tr>
+<td style="text-align:left">$#</td>
+<td style="text-align:right">获取当前执行的shell脚本后面接的 参数的总个数</td>
+</tr>
+<tr>
+<td style="text-align:left">$*</td>
+<td style="text-align:right">获取当前shell脚本所有传参的参数，不加引号和$@相同；如果给$<em>加上双引号，例如：“$</em>”，则表示将所有的参数是为单个字符串，相当于“$1 $2 $3”</td>
+</tr>
+<tr>
+<td style="text-align:left">$@</td>
+<td style="text-align:right">获取当前shell脚本所有传参的参数，不加引号和$<em>相同；如果给$@加上双引号，例如：“$@”，则表示将所有的参数视为不同的独立字符串，相当于“$1” “$2” “$3” “…”。这是将多参数传递给其他程序的最佳方式，因为它会保留所有的内嵌在每个参数里的任何空白。当“$@”和“$</em>”都加双引号时，两者是有区别的；都不加双引号时，两者无区别</td>
+</tr>
+</tbody>
+</table>
+
       
     </div>
     <footer class="entry-meta entry-footer">
@@ -221,7 +255,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav">None</ol>
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#十三、shell中的特殊且重要的变量"><span class="nav-number">1.</span> <span class="nav-text">十三、shell中的特殊且重要的变量</span></a></li></ol>
     
     </div>
   </aside>
