@@ -3,25 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>有关Ubuntu17.10中fcitx配置搜狗出错的解决方法 | 坦尼斯——龙枪——Linux技术博客</title>
+  <title>linux运维学习三 | 坦尼斯——龙枪——Linux技术博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="Ubuntu中文输入法解决" />
+  <meta name="keywords" content="Linuxshell" />
   
   
   
   
-  <meta name="description" content="问题描述   关于最近大家在使用Ubuntu系统时出现的fcitx出错的问题，我最近也遇到了，我使用的是Ubuntu17.10。我的问题是在将显卡由英伟达显卡切换到Intel显卡时，出现了fcitx图标，但是sogou输入法不能出现后选项。">
-<meta name="keywords" content="Ubuntu中文输入法解决">
+  <meta name="keywords" content="Linuxshell">
 <meta property="og:type" content="article">
-<meta property="og:title" content="有关Ubuntu17.10中fcitx配置搜狗出错的解决方法">
-<meta property="og:url" content="https://tannisi.github.io/2018/02/10/有关Ubuntu17-10中fcitx配置搜狗出错的解决方法/index.html">
+<meta property="og:title" content="linux运维学习三">
+<meta property="og:url" content="https://tannisi.github.io/2018/02/12/linux运维学习三/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
-<meta property="og:description" content="问题描述   关于最近大家在使用Ubuntu系统时出现的fcitx出错的问题，我最近也遇到了，我使用的是Ubuntu17.10。我的问题是在将显卡由英伟达显卡切换到Intel显卡时，出现了fcitx图标，但是sogou输入法不能出现后选项。">
-<meta property="og:updated_time" content="2018-02-10T03:50:55.145Z">
+<meta property="og:updated_time" content="2018-02-12T07:21:58.890Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="有关Ubuntu17.10中fcitx配置搜狗出错的解决方法">
-<meta name="twitter:description" content="问题描述   关于最近大家在使用Ubuntu系统时出现的fcitx出错的问题，我最近也遇到了，我使用的是Ubuntu17.10。我的问题是在将显卡由英伟达显卡切换到Intel显卡时，出现了fcitx图标，但是sogou输入法不能出现后选项。">
+<meta name="twitter:title" content="linux运维学习三">
 <meta name="twitter:creator" content="@true">
 <link rel="publisher" href="true">
   
@@ -130,7 +127,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-有关Ubuntu17-10中fcitx配置搜狗出错的解决方法" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-linux运维学习三" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -138,7 +135,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      有关Ubuntu17.10中fcitx配置搜狗出错的解决方法
+      linux运维学习三
     </h1>
   
 
@@ -146,13 +143,13 @@
     
     <div class="article-meta">
       
-	<a href="/2018/02/10/有关Ubuntu17-10中fcitx配置搜狗出错的解决方法/" class="article-date">
-	  <time datetime="2018-02-10T02:36:21.000Z" itemprop="datePublished">February 10, 2018</time>
+	<a href="/2018/02/12/linux运维学习三/" class="article-date">
+	  <time datetime="2018-02-12T07:20:53.000Z" itemprop="datePublished">February 12, 2018</time>
 	</a>
 
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Ubuntu问题/">Ubuntu问题</a>
+    <a class="article-category-link" href="/categories/Linux运维学习/">Linux运维学习</a>
  
       
 	<span id="busuanzi_container_page_pv">
@@ -162,36 +159,17 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>   关于最近大家在使用Ubuntu系统时出现的fcitx出错的问题，我最近也遇到了，我使用的是Ubuntu17.10。我的问题是在将显卡由英伟达显卡切换到Intel显卡时，出现了fcitx图标，但是sogou输入法不能出现后选项。<br><a id="more"></a></p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
-<li>方法一<br> 由于搜狗输入法的配置都在.config目录下，所以使用下列命令将Sogou有关的文件全部删除。<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">.config</span></span><br><span class="line">rm -r Sogou*</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>然后重装搜狗输入法，重新配置输入法：<br>1.在语言支持中将键盘输入法系统改为fcitx<br>2.使用im-config命令配置输入法，启用fcitx<br>3.打开fcitx配置，添加搜狗输入法。<br>4.然后注销用户，重新进入。</p>
-<ul>
-<li>方法二<br> 如果你使用的是googlepinyin，就是用下列命令：<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> <span class="string">.config/fcitx</span></span><br><span class="line">rm googlepinyin</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>删除掉fcitx配置中的Google拼音，然后重装即可：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install fcitx-googlepinyin</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><p>方法三<br> 重启搜狗输入法，使用下列命令：</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">killall fcitx</span></span><br><span class="line"><span class="attribute">killall sogou-qinpanel</span></span><br><span class="line"><span class="attribute">fcitx</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>方法四<br> 刚安装好的朋友如果无法使用，可以用下面的命令排除或检查修复安装依赖:</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install -f</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
+        
       
     </div>
     <footer class="entry-meta entry-footer">
       
 	<span class="ico-folder"></span>
-    <a class="article-category-link" href="/categories/Ubuntu问题/">Ubuntu问题</a>
+    <a class="article-category-link" href="/categories/Linux运维学习/">Linux运维学习</a>
 
       
   <span class="ico-tags"></span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu中文输入法解决/">Ubuntu中文输入法解决</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linuxshell/">Linuxshell</a></li></ul>
 
       
         
@@ -226,19 +204,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/02/12/linux运维学习三/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          linux运维学习三
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/02/08/网络层次结构/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/02/10/有关Ubuntu17-10中fcitx配置搜狗出错的解决方法/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">网络层次结构</div>
+      <div class="article-nav-title">有关Ubuntu17.10中fcitx配置搜狗出错的解决方法</div>
     </a>
   
 </nav>
@@ -252,7 +221,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">2.</span> <span class="nav-text">解决方法</span></a></li></ol>
+      <ol class="nav">None</ol>
     
     </div>
   </aside>
