@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="十、变量变量的赋值方式   先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
 <meta property="og:image" content="https://tannisi.github.io/2018/02/08/linux运维学习二/1.jpg">
-<meta property="og:updated_time" content="2018-02-12T06:01:44.584Z">
+<meta property="og:updated_time" content="2018-02-12T06:05:03.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维学习二">
 <meta name="twitter:description" content="十、变量变量的赋值方式   先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
@@ -62,32 +62,10 @@
 
 
   
-  
-  <div class="site-header-image">
-    <img id="originBg" width="100%" alt="Hike News" src="">
-  </div>
-
-  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
-    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
-  </div>
-
-  <script>
-        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
-        var random = Math.floor((Math.random() * imgUrls.length ));
-        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
-          document.getElementById("originBg").src=imgUrls[random];
-          document.getElementById("blurBg").src=imgUrls[random];
-        } else {
-          document.getElementById("originBg").src='/' + imgUrls[random];
-          document.getElementById("blurBg").src='/' + imgUrls[random];
-        }
-    </script>
-
-
 
 
 <header id="allheader" class="site-header" role="banner" 
-   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
+   >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -278,25 +256,26 @@ $ echo $USER
 <thead>
 <tr>
 <th style="text-align:left">名称</th>
+<th style="text-align:center"></th>
 <th style="text-align:right">解释</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">单引号</td>
-<td style="text-align:right">所见即所得，即输出时会将单引号内的所有内容都原样输出，或者描述为单引号里面看到的是什么就会输出什么，这称为强引用</td>
+<td style="text-align:center">所见即所得，即输出时会将单引号内的所有内容都原样输出，或者描述为单引号里面看到的是什么就会输出什么，这称为强引用</td>
 </tr>
 <tr>
 <td style="text-align:left">双引号(默认)</td>
-<td style="text-align:right">输出双引号内的所有内容；如果内容中有命令（要反引下）、变量、特殊转义符等，会先把变量 、命令、转义字符解析出结果，然后再输出最终的内容，推荐使用，这称为弱引用</td>
+<td style="text-align:center">输出双引号内的所有内容；如果内容中有命令（要反引下）、变量、特殊转义符等，会先把变量 、命令、转义字符解析出结果，然后再输出最终的内容，推荐使用，这称为弱引用</td>
 </tr>
 <tr>
 <td style="text-align:left">无引号</td>
-<td style="text-align:right">赋值时，若变量中有空格，则会造成赋值不完整。而在输出内容时，会将含有空格的字符串视为一个整体来输出；如果内容中有命令(要反引下)、变量等，则会先把变量、命令解析出结果，然后输出最终结果；如果字符串中带有空格等特殊字符，则有可能无法完整地输出，因此需要改加双引号。一般连续的字符串、数字、路径等可以不加任何引号进行赋值和输出，不过最好是用双引号替代无引号的情况，特别是对变量赋值时。</td>
+<td style="text-align:center">赋值时，若变量中有空格，则会造成赋值不完整。而在输出内容时，会将含有空格的字符串视为一个整体来输出；如果内容中有命令(要反引下)、变量等，则会先把变量、命令解析出结果，然后输出最终结果；如果字符串中带有空格等特殊字符，则有可能无法完整地输出，因此需要改加双引号。一般连续的字符串、数字、路径等可以不加任何引号进行赋值和输出，不过最好是用双引号替代无引号的情况，特别是对变量赋值时。</td>
 </tr>
 <tr>
 <td style="text-align:left">反引号</td>
-<td style="text-align:right">一般用于引用命令，执行的时候命令会被执行，相当于$()，赋值和输出时都要用反引号将命令引起来</td>
+<td style="text-align:center">一般用于引用命令，执行的时候命令会被执行，相当于$()，赋值和输出时都要用反引号将命令引起来</td>
 </tr>
 </tbody>
 </table>
@@ -425,9 +404,6 @@ $ echo $USER
 
 
     <!-- headerblur min height -->
-    
-      var headerblur = document.getElementById("header-blur");
-      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
