@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linuxshell," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="坦尼斯" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="十三、shell中的特殊且重要的变量shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
+<meta name="keywords" content="Linuxshell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux运维学习三">
+<meta property="og:url" content="https://tannisi.github.io/2018/02/12/linux运维学习三/index.html">
+<meta property="og:site_name" content="坦尼斯">
+<meta property="og:description" content="十三、shell中的特殊且重要的变量shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://tannisi.github.io/2018/02/12/linux运维学习三/1.jpg">
+<meta property="og:updated_time" content="2018-02-13T07:06:13.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux运维学习三">
+<meta name="twitter:description" content="十三、shell中的特殊且重要的变量shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
+<meta name="twitter:image" content="https://tannisi.github.io/2018/02/12/linux运维学习三/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://tannisi.github.io/2018/02/12/linux运维学习三/"/>
+
+
+
+
+
+  <title>linux运维学习三 | 坦尼斯</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">坦尼斯</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">默默地接受，并做了自己认为对的事</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tannisi.github.io/2018/02/12/linux运维学习三/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tannisi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坦尼斯">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">linux运维学习三</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-12T15:20:53+08:00">
+                2018-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维学习/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="十三、shell中的特殊且重要的变量"><a href="#十三、shell中的特殊且重要的变量" class="headerlink" title="十三、shell中的特殊且重要的变量"></a>十三、shell中的特殊且重要的变量</h3><h4 id="shell中的特殊位置参数变量"><a href="#shell中的特殊位置参数变量" class="headerlink" title="shell中的特殊位置参数变量"></a>shell中的特殊位置参数变量</h4><p>   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。<br><a id="more"></a><br>                       常用的特殊位置参数变量表</p>
+<p><img src="/2018/02/12/linux运维学习三/1.jpg" alt=""><br>（1）$1 $2 $9 $(10)…特殊变量实践<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="selector-tag">p</span>.sh</span><br><span class="line">echo $<span class="number">1</span>                    #&lt;==脚本功能是打印脚本传递的第一个参数的值</span><br><span class="line">sh <span class="selector-tag">p</span><span class="selector-class">.sh</span> oldboy             #&lt;==传入一个oldboy字符串参数，赋值给脚本中的$<span class="number">1</span></span><br><span class="line">oldboy                     #&lt;==把传入的oldboy参数赋值给脚本中的$<span class="number">1</span>并传出，因此输出结果为oldboy</span><br><span class="line">sh <span class="selector-tag">p</span><span class="selector-class">.sh</span> oldboy oldgirl     #&lt;==传入两个字符串参数，但脚本不会接受第二个参数，参数默认是以空格分隔</span><br><span class="line">oldboy                     #&lt;==只输出了oldboy</span><br><span class="line">sh <span class="selector-tag">p</span><span class="selector-class">.sh</span> <span class="string">"oldboy oldgirl"</span>   #&lt;==加引号括起来的内容传参，会作为一个字符串参数</span><br><span class="line">oldboy oldgirl             #&lt;==虽然都打印了，但这些内容是作为一个参数传递给$<span class="number">1</span>的</span><br><span class="line">cat <span class="selector-tag">p</span>.sh</span><br><span class="line">echo $<span class="number">1</span> $<span class="number">2</span>                 #&lt;==打印脚本传递的第一个、第二个参数的值</span><br><span class="line">sh <span class="selector-tag">p</span><span class="selector-class">.sh</span> oldboy oldgirl     #&lt;==同时传入两个字符串参数</span><br><span class="line">oldboy oldgirl</span><br></pre></td></tr></table></figure></p>
+<p><span style="border-bottom:2px dashed red;">当位置参数数字大于9时，需要用大括号将数字括起来</span><br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> <span class="keyword">n</span>.<span class="keyword">sh</span></span><br><span class="line">echo <span class="variable">$1</span> <span class="variable">$2</span> <span class="variable">$3</span> <span class="variable">$4</span> <span class="variable">$5</span> <span class="variable">$6</span> <span class="variable">$7</span> <span class="variable">$8</span> <span class="variable">$9</span> <span class="variable">$&#123;10&#125;</span> <span class="variable">$&#123;11&#125;</span> <span class="variable">$&#123;12&#125;</span> <span class="variable">$&#123;13&#125;</span> <span class="variable">$&#123;14&#125;</span> <span class="variable">$&#123;15&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>(2)$0特殊变量的作用及变量实践<br><span style="border-bottom:2px dashed red;">$0的作用为取出执行脚本的名称（包括路径）。</span>下面是该功能的实践。</p>
+<ul>
+<li><p>获取脚本的名称及路径</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> name.<span class="keyword">sh</span></span><br><span class="line">echo <span class="variable">$0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>若不带路径执行脚本，那么输出结果就是脚本的名字，如下：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sh </span>name.<span class="keyword">sh</span></span><br><span class="line"><span class="keyword">name.sh </span>     <span class="comment">#&lt;==$0获取的值就是脚本的名字</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>若使用全路径执行脚本，那么输出的结果就是全路径叫上脚本的名字，如下：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh <span class="regexp">/home/m</span>engtianhao<span class="regexp">/shellscript/</span>name.sh </span><br><span class="line"><span class="regexp">/home/m</span>engtianhao<span class="regexp">/shellscript/</span>name.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当要执行的脚本为全路径时,$0也会带着路径。此时如果希望单独获取名称或路径，则可用下面的方法。</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dirname <span class="meta-keyword">/home/</span>mengtianhao<span class="meta-keyword">/shellscript/</span>name.sh </span><br><span class="line"><span class="meta-keyword">/home/</span>mengtianhao/shellscript                      <span class="meta">#&lt;==dirname命令的作用是获取脚本的路径</span></span><br><span class="line">basename <span class="meta-keyword">/home/</span>mengtianhao<span class="meta-keyword">/shellscript/</span>name.sh </span><br><span class="line">name.sh                                            <span class="meta">#&lt;==basename命令的作用是获取脚本的名字</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>(3)</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linuxshell/" rel="tag"># Linuxshell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/10/有关Ubuntu17-10中fcitx配置搜狗出错的解决方法/" rel="next" title="有关Ubuntu17.10中fcitx配置搜狗出错的解决方法">
+                <i class="fa fa-chevron-left"></i> 有关Ubuntu17.10中fcitx配置搜狗出错的解决方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tannisi</p>
+              <p class="site-description motion-element" itemprop="description">linux/unix study</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#十三、shell中的特殊且重要的变量"><span class="nav-number">1.</span> <span class="nav-text">十三、shell中的特殊且重要的变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#shell中的特殊位置参数变量"><span class="nav-number">1.1.</span> <span class="nav-text">shell中的特殊位置参数变量</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tannisi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

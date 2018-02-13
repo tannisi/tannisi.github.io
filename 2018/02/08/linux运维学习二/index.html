@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linuxshell," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="坦尼斯" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="十、变量变量的赋值方式   先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
+<meta name="keywords" content="Linuxshell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux运维学习二">
+<meta property="og:url" content="https://tannisi.github.io/2018/02/08/linux运维学习二/index.html">
+<meta property="og:site_name" content="坦尼斯">
+<meta property="og:description" content="十、变量变量的赋值方式   先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://tannisi.github.io/2018/02/08/linux运维学习二/1.jpg">
+<meta property="og:updated_time" content="2018-02-12T07:08:00.646Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux运维学习二">
+<meta name="twitter:description" content="十、变量变量的赋值方式   先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。">
+<meta name="twitter:image" content="https://tannisi.github.io/2018/02/08/linux运维学习二/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://tannisi.github.io/2018/02/08/linux运维学习二/"/>
+
+
+
+
+
+  <title>linux运维学习二 | 坦尼斯</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">坦尼斯</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">默默地接受，并做了自己认为对的事</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tannisi.github.io/2018/02/08/linux运维学习二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tannisi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="坦尼斯">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">linux运维学习二</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-08T10:38:50+08:00">
+                2018-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维学习/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="十、变量"><a href="#十、变量" class="headerlink" title="十、变量"></a>十、变量</h3><h4 id="变量的赋值方式"><a href="#变量的赋值方式" class="headerlink" title="变量的赋值方式"></a>变量的赋值方式</h4><p>   先写变量名称，紧接着是“=”这个字符，最后是值。中间无任何空格，通过echo命令加上$oldboy即可输出oldboy变量的值，变量的内容一般要加双引号，以防止出错。特别是当值里的内容之间有空格时。<br><a id="more"></a><br>    $ oldboy=’I am a boy’</p>
+<pre><code>$ echo $oldboy
+
+I am a boy
+</code></pre><h4 id="shell变量的特性"><a href="#shell变量的特性" class="headerlink" title="shell变量的特性"></a>shell变量的特性</h4><p>   默认情况下，在bash shell中是不会区分变量的类型的。但是如果需要指定shell变量的类型，也可以使用declare显示定义变量的类型。</p>
+<h4 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h4><p>   分为两类：环境变量（全局变量）和普通变量（局部变量）<br>环境变量（全局变量），可以在创建它们的shell及其派生出来的的任意子进程shell中使用，环境变量又可分为自定义环境变量和bash内置的环境变量。<br>普通变量（局部变量）只能在创建他们的shell函数或shell脚本中使用。普通变量一般由开发者在开发脚本程序时创建 。</p>
+<h3 id="十一、环境变量"><a href="#十一、环境变量" class="headerlink" title="十一、环境变量"></a>十一、环境变量</h3><h4 id="环境变量定义"><a href="#环境变量定义" class="headerlink" title="环境变量定义"></a>环境变量定义</h4><p>   环境变量一般是指用export内置命令导出的变量，用于定义shell的运行环境，保证shell命令的正确执行。shell通过环境变量来确定登录用户名、命令路径、终端类型、登录目录等，所有的环境变量都是系统全局变量，可用于所有的子进程中，这包括编辑器、shell 脚本和各类应用。<br>   环境变量可以在命令行中设置和创建，但用户退出命令行时这些变量值就会丢失，因此，如果希望永久保存环境变量，可在用户家目录下的.bash_profile或.bashrc（非用户登录模式特有，例如远程ssh）文件中，或者全局配置/etc/bashrc（非用户登录模式特有，例如远程ssh）或/etc/profile文件中定义。在将环境变量放入上述的文件中后，每次用户登录时这些变量都将被初始化。<br>   按照系统规范，所有环境变量的名字均采用大写形式。在将环境变量应用于用户进程程序之前，都应该用export命令导出定义，例如：正确的环境变量定义方法为export OLDGIRL=1。<br>   有一些环境变量，比如HOME、PATH、SHELL、UID、 USER等，在用户登录之前，就已经被/bin/login程序设置好了。通常环境变量被定义并保存在用户家目录下的.bash_profile文件或全局的配置文件/etc/profile中。<br>常见的环境变量：</p>
+<p> PATH： 决定了shell将到哪些目录中寻找命令或程序<br> ROOTPATH:  这个变量的功能和PATH相同，但它只罗列出超级用户（root）键入命令时所需检查的目录。<br> HOME：  当前用户主目录<br> USER:   查看当前的用户<br> LOGNAME： 查看当前用户的登录名。<br> UID： 当前用户的识别字，取值是由数位构成的字串。<br> SHELL：  是指当前用户用的是哪种Shell。<br> TERM ： 终端的类型。<br> PWD：   当前工作目录的绝对路径名，该变量的取值随cd命令的使用而变化。<br> MAIL： 是指当前用户的邮件存放目录。<br> HISTSIZE： 是指保存历史命令记录的条数<br> HOSTNAME： 是指主机的名称，许多应用程序如果要用到主机名的话，通常是从这个环境变量中来取得的。<br> PS1： 是基本提示符，对于root用户是#，对于普通用户是$，也可以使用一些更复杂的值。<br> PS2： 是附属提示符，默认是“&gt;”。可以通过修改此环境变量来修改当前的命令符，比如下列命令会将提示符<br>       修改成字符串“Hello,My NewPrompt :) ”。# PS1=” Hello,My NewPrompt :)”<br> IFS：   输入域分隔符。当shell读取输入时，用来分隔单词的一组字符，它们通常是空格、制表符和换行符。<br> _=：   上一条命令的最后一个参数</p>
+<p>   在查看设置的变量时，有三个命令可以显示变量的值：set、env和declare（替代早期的typeset）。set命令输出所有的变量，包括全局变量和局部变量；env命令只显示全局变量，declare命令输出所有的变量、函数、整数和已经导出的变量。set -o命令显示bash shell的所有参数配置信息。<br>    $ set -o|tail   #&lt;==tail输出输入文件的后10行</p>
+<pre><code>$ set -o|head   #&lt;==head输出输入文件的前10行
+</code></pre><h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><p>如果要设置环境变量，就要在给变量赋值之后活在设置变量时使用export命令。（带-x选项的declare内置命令也可以完成同样的功能）。<br>export和declare命令的格式如下：<br>    1.export 变量名=value<br>    2.变量名=value ; export 变量名<br>    3.declare -x 变量名=value<br>下面是自定义全局环境变量的示例：<br>    $ grep OLD /etc/profile</p>
+<pre><code>$ export OLDBOY=&apos;oldboy&apos;   #&lt;==编辑/etc/profile,然后输出并保存
+
+$ source /etc/profile   #&lt;==执行使其生效
+
+$ echo $OLDBOY
+
+oldboy
+
+$ env|grep OLDBOY   #&lt;==查看定义结果
+
+OLDBOY=oldboy
+</code></pre><p>   下面来看看让环境变量永久生效的常用设置文件。<br>1）用户的环境变量配置<br>配置如下：<br>    $ ls /root/.bashrc   #&lt;==一定要在root权限下执行</p>
+<pre><code>/root/.bashrc
+
+$ ls /root/.bashrc_profile   #&lt;==在ubuntu中没有.bashrc_profile文件，有.profile文件
+
+/root/.bashrc_profile
+</code></pre><p>2）全局环境变量的配置<br>常见的全局环境变量的配置文件如下：<br>    /etc/profile</p>
+<pre><code>/etc/bashrc   #&lt;==推荐在此文件中优先设置
+
+/etc/profile.d/
+</code></pre><p>   若要在登录后初始化或显示加载内容，则把脚本文件放在/etc/profile.d/下即可（无需加执行权限）。<br>（2）设置登录提示的两种方式<br>第一种是在/etc/motd里增加提示的字符串，如下：<br>    $cat /etc/motd</p>
+<pre><code>welcome to linux shell training.
+</code></pre><p>则登陆后显示内容如下：<br>    Last login : Fri Nov 7 15 :36 : 56 2017 from 10.0.0.100</p>
+<pre><code>welcome to linux shell training
+</code></pre><p>第二种是在/etc/profile.d/下面增加如下脚本：<br>    $ cat /etc/profile.d/oldboy.sh</p>
+<pre><code>echo &quot;Here is a oldboy training&quot;
+</code></pre><p>登陆后显示的内容如下：<br>    Last login : Fri Nov 7 15 :36 : 56 2017 from 10.0.0.100</p>
+<pre><code>Here is a oldboy training
+</code></pre><p>以下是在生产场景下（在Java环境中），自定义环境变量的示例：<br>    export JAVA_HOME=/application/jdk</p>
+<pre><code>export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+
+export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH:$HOME/bin
+
+export RESIN_HOME=/application/resin
+</code></pre><p>   上述的环境变量通常放在/etc/profile全局变量里。如果是写JAVA的脚本，那么最好是把上述Java环境配置放入脚本内重新定义，特别是作为定时任务执行的脚本。</p>
+<h4 id="显示与取消环境变量"><a href="#显示与取消环境变量" class="headerlink" title="显示与取消环境变量"></a>显示与取消环境变量</h4><p>1.通过echo或printf命令打印环境变量<br>常见的系统环境变量：<br>$HOME：用户登录时进入的目录<br>$UID：当前用户的UID（用户标识），相当于id-u<br>$PWD：当前工作目录的绝对路径名<br>$SHELL：当前shell<br>$USER：当前用户<br>   在写shell脚本时可以直接使用系统默认的环境变量，一般情况下是不需要重新定义的，在使用定时任务等执行shell脚本时建议在脚本中重新定义。</p>
+<p>2.用env或set显示默认的环境变量</p>
+<p>3.用unset消除本地变量和环境变量<br>    $ echo $USER</p>
+<pre><code>boyboy
+
+$ unset USER
+
+$ echo $USER
+
+        #&lt;==此处为输出的空行，即消除了环境变量。
+</code></pre><p>环境变量知识小结：</p>
+<ul>
+<li>变量名通常要大写</li>
+<li>变量可以在自身的shell及子shell中使用</li>
+<li>常用export来定义环境变量</li>
+<li>执行env默认可以显示所有的环境变量名称及其对应的值</li>
+<li>输出时用“$变量名”，取消时用“unset变量名”</li>
+<li>书写crond定时任务时要注意，脚本要用到的环境变量最好先在所执行的shell脚本中重新定义</li>
+<li>如果希望环境变量永久生效，则可以将其放在用户环境变量文件或全局环境变量文件中。<h4 id="环境变量初始化与对应文件的生效顺序"><a href="#环境变量初始化与对应文件的生效顺序" class="headerlink" title="环境变量初始化与对应文件的生效顺序"></a>环境变量初始化与对应文件的生效顺序</h4> 在登录Linux系统并启动一个bash shell时，默认情况下bash会在系统环境文件中查找环境变量的设置。bash检查的环境变量文件的情况取决于系统运行shell的方式。系统运行shell的方式一般有3种：<br> 1)通过系统用户登录后默认运行的shell<br> 2）非登录交互式运行shell<br> 3）执行脚本运行非交互式shell<br>当用户登录Linux系统时，shell会作为登录shell启动。此时的登录shell加载环境变量的顺序。<br><img src="/2018/02/08/linux运维学习二/1.jpg" alt="登录shell读取环境变量文件的流程"></li>
+<li>首先加载/etc/profile全局环境变量文件，这是Linux系统上默认的shell主环境变量，系统上每个用户登录时都会加载这个文件</li>
+<li>再执行/etc/profile.d目录下的脚本文件</li>
+<li>然后运行$HOME/.bash_profile(用户环境变量文件)，在这个文件中，又会去找$HOME/.bashrc(用户环境变量文件)，如果有则执行，如果没有，则不执行。在$HOME/.bashrc文件中又会去找/etc/bashrc(全局环境变量文件)，如果有则执行，如果没有则不执行。</li>
+<li>如果用户的shell不是在登录时启动的，那么这种非登录Shell只会加载$HOME/.bashrc(用户环境变量文件),并会去找/etc/bashrc(全局环境变量文件)。</li>
+<li>因此若希望在非登录shell下也可读到设置的环境变的内容，就需要将变量设定等写入$HOME/.bashrc<br>或者/etc/bashrc,而不是$HOME/.bash_profile或/etc/profile。</li>
+</ul>
+<p>以上是在centos中的环境变量启动顺序，在ubuntu系统中：</p>
+<ul>
+<li>/etc/profile：在登录时操作系统定制用户环境时使用的第一个文件，此文件为系统的每个用户设置环境信息。当用户第一次登录时，该文件被执行。</li>
+<li>/etc/environment:在登录时操作系统使用的第二个文件，系统在读取你自己的profile前，设置环境文件的环境变量。</li>
+<li>/etc/bashrc:为每一个运行bash shell的用户执行此文件。当bash shell被打开时，该文件被读取。</li>
+<li>~/.profile:在登录时用到的第三个文件是.profile文件，当用户登录时，该文件仅仅执行一次！默认情况下，执行用户目录下的.bashrc文件，每个用户都可使用该文件输入专用于自己使用的shell信息，修改后使用. .profile使生效。</li>
+<li>~/.bashrc:该文件包含专用于单个用户的bash shell的bash信息，当登录时以及每次打开新的shell时，该文件被读取。修改后使用source .bashrc 使生效。<br>  在ubuntu中设置环境变量：<br> 通常设置环境变量有三种方法：<br>（一）临时设置<br>  <code>$PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH</code><br>（二）当前用户的全局设置<br>打开~/.bashrc，添加行：<br>  <code>export PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH</code><br>使生效：<br>  <code>source .bashrc</code><br>（三）所有用户的全局设置<br>  <code>$ vim /etc/profile</code><br>在里面加入：<br>  <code>export PATH=/home/yan/share/usr/local/arm/3.4.1/bin:$PATH</code><br>使生效<br>  <code>source profile</code><br>测试：<br>  <code>echo $PATH</code><h3 id="十二、普通变量"><a href="#十二、普通变量" class="headerlink" title="十二、普通变量"></a>十二、普通变量</h3><h4 id="定义本地变量"><a href="#定义本地变量" class="headerlink" title="定义本地变量"></a>定义本地变量</h4> 本地变量在用户当前shell生存期的脚本中使用。</li>
+<li>普通变量定义<br>变量名=value<br>变量名=’value’<br>变量名=”value”</li>
+<li>在shell中定义变量名及为变量内容赋值的要求<br> 变量名一般是由字母、数字、下划线组成的，可以以字母或下划线开头。变量的内容可以用单引号或双引号引起来，也可不加引号，但是三者的含义是不同的。</li>
+<li>普通变量的定义及输出的示例<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> a=192.168.1.2</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> b=<span class="string">'192.168.1.2'</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> c=<span class="string">"192.168.1.2"</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="string">"a=<span class="variable">$a</span>"</span></span></span><br><span class="line">a=192.168.1.2</span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="string">"b=<span class="variable">$b</span>"</span></span></span><br><span class="line">b=192.168.1.2</span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="string">"c=<span class="variable">$&#123;c&#125;</span>"</span></span></span><br><span class="line">c=192.168.1.2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>【$变量名表示输出变量，可以用$c和${c}两种用法】<br>   将连续的普通字符串的内容赋值给变量，不管用不用引号，或者不管用什么用引号，它的内容是什么，打印变量时就会输出什么。<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ a=<span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span>-$a</span><br><span class="line">$ b='<span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span>-$a'</span><br><span class="line">$ c=<span class="string">"192.168.1.2-$a"</span></span><br><span class="line">$ echo <span class="string">"a=$a"</span></span><br><span class="line">a=<span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span><span class="number">-192.168</span><span class="number">.1</span><span class="number">.2</span></span><br><span class="line">$ echo <span class="string">"b=$b"</span></span><br><span class="line">b=<span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span>-$a</span><br><span class="line">$ echo <span class="string">"c=$&#123;c&#125;"</span></span><br><span class="line">c=<span class="number">192.168</span><span class="number">.1</span><span class="number">.2</span><span class="number">-192.168</span><span class="number">.1</span><span class="number">.2</span><span class="number">-192.168</span><span class="number">.1</span><span class="number">.2</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>变量定义的基本技巧总结<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">a</span>=<span class="number">192.168</span>.<span class="number">1.2</span>-<span class="variable">$a</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>第一种a定义变量的方式是不加任何引号直接定义变量的内容，当内容为简单连续的数字、字符串、路径名时，<br>就可以这样用。不加引号时，值里有变量的会被解析后再输出。<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">b</span>=<span class="string">'192.168.1.2-$a'</span></span><br></pre></td></tr></table></figure></p>
+<p>第二种输出变量内容时单引号里是什么就输出什么，即使内容中有变量和命令（命令需要反引起来）也会把它们<br>原样输出。这种方式比较适合于定义显示纯字符串的情况，即不希望解析变量、命令等的情形。<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">c</span>=<span class="string">"192.168.1.2-$a"</span></span><br></pre></td></tr></table></figure></p>
+<p>第三种输出变量内容时引号里的变量及命令会经过解析再输出内容，而不是把双引号中的变量名及命令（命令<br>需要反引起来）原样输出。这种方式比较适合于字符串中附带有变量及命令且想将其解析后再输出的变量定义。</p>
+<ul>
+<li>把一个变量的结果作为变量的内容赋值的方法<br>常见的方法有两种：<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">变量名=`ls`	#&lt;==把命令用反引号引起来</span><br><span class="line">变量名=$(ls)	#&lt;==把命令用$()括起来，推荐使用这种方法</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h4 id="局部（普通）变量定义及赋值的小结"><a href="#局部（普通）变量定义及赋值的小结" class="headerlink" title="局部（普通）变量定义及赋值的小结"></a>局部（普通）变量定义及赋值的小结</h4><p>（1）常规普通变量定义</p>
+<ul>
+<li>若变量内容为连续的数字或字符串，赋值时，变量内容两边可以不加引号，例如：a=123</li>
+<li>变量的内容很多时，如果有空格且希望解析内容中的变量，就加双引号。</li>
+<li>希望原样输出变量中的内容时就用单引号引起内容并进行赋值。</li>
+<li>要使用反引号将赋值的命令括起来，例如a=<code>ls</code>；或者用$()括起来，例如：a=$(ls)。<br>（2）变量的输出方法如下：</li>
+<li>使用“$变量名”即可输出变量的内容，常用”echo$变量名“的方式，也可用printf代替echo输出更复杂的格式内容。<br>（3）变量定义的技巧及注意事项</li>
+<li>注意命令变量内容前后的字符``（此字符是键盘上的tab键上面的那个反引号，不是单引号）。</li>
+<li>在变量名前加$可以取得该变量的值，使用echo或printf命令可以显示变量的值。</li>
+<li>用echo等命令输出变量的时候，也可用单引号、双引号、反引号。</li>
+<li>$dbname_tname，当变量后面连接有其他字符的时候，必须给变量加上大括号{},例如：$dbname_tname就要变成${dbname}_tname。这是shell就会认为只有dbname是变量了。<h4 id="变量定义及变量输出说明"><a href="#变量定义及变量输出说明" class="headerlink" title="变量定义及变量输出说明"></a>变量定义及变量输出说明</h4><pre><code>单引号、双引号、反引号与不加引号的知识说明表
+</code></pre></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:center"></th>
+<th style="text-align:right">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">单引号</td>
+<td style="text-align:center"></td>
+<td style="text-align:right">所见即所得，即输出时会将单引号内的所有内容都原样输出，或者描述为单引号里面看到的是什么就会输出什么，这称为强引用</td>
+</tr>
+<tr>
+<td style="text-align:left">双引号(默认)</td>
+<td style="text-align:center"></td>
+<td style="text-align:right">输出双引号内的所有内容；如果内容中有命令（要反引下）、变量、特殊转义符等，会先把变量 、命令、转义字符解析出结果，然后再输出最终的内容，推荐使用，这称为弱引用</td>
+</tr>
+<tr>
+<td style="text-align:left">无引号</td>
+<td style="text-align:center"></td>
+<td style="text-align:right">赋值时，若变量中有空格，则会造成赋值不完整。而在输出内容时，会将含有空格的字符串视为一个整体来输出；如果内容中有命令(要反引下)、变量等，则会先把变量、命令解析出结果，然后输出最终结果；如果字符串中带有空格等特殊字符，则有可能无法完整地输出，因此需要改加双引号。一般连续的字符串、数字、路径等可以不加任何引号进行赋值和输出，不过最好是用双引号替代无引号的情况，特别是对变量赋值时。</td>
+</tr>
+<tr>
+<td style="text-align:left">反引号</td>
+<td style="text-align:center"></td>
+<td style="text-align:right">一般用于引用命令，执行的时候命令会被执行，相当于$()，赋值和输出时都要用反引号将命令引起来</td>
+</tr>
+</tbody>
+</table>
+<p>！这里仅为Linux shell 下的结论，对于awk语言会有点特别，有关awk调用shell变量的详情，请自行查询。不过，在awk取用shell变量时，我们更多地还是喜欢先用echo加符号输出变量，然后通过管道给awk，进而控制变量的输出结果。<br>建议：</p>
+<ul>
+<li>在脚本中定义普通字符串变量时，应尽量把变量的内容用双引号括起来。</li>
+<li>单纯数字的变量内容可以不加引号</li>
+<li>希望变量的内容原样输出时需要加单引号</li>
+<li>希望变量值引用命令并获取命令的结果时就用反引号或$()</li>
+</ul>
+<h4 id="变量定义技巧总结"><a href="#变量定义技巧总结" class="headerlink" title="变量定义技巧总结"></a>变量定义技巧总结</h4><p>（1）变量名及变量内容定义小结</p>
+<ul>
+<li>变量名只能为字母、数字或下划线，只能以字母或下划线开头。</li>
+<li>变量名的定义要有一定的规范，并且要见名知意。</li>
+<li>一般的变量定义、赋值常用双引号；简单连续的字符串可以不加引号；希望原样输出时使用单引号。</li>
+<li>希望变量的内容是命令的解析结果时，要用反引号，或者$()把命令括起来再赋值<br>（2）shell定义变量时使用“=”的知识</li>
+<li>“a=1”里等号是赋值的意思；比较变量是否相等时也可以用“=”或“==”。<br>（3）打印输出及使用变量的知识</li>
+<li>打印输出或使用变量时，变量名前要接$符号；变量名后面紧接其他字符时，要用大括号将变量部分单独括起来；<span style="border-bottom:2px dashed red;">在unset、export、（()）等场景中使用但不打印变量时不加$，这个有些例外。</span></li>
+<li>打印输出或使用变量时，一般加双引号或不加引号；如果是字符串变量，最好加双引号；希望原样输出时使用单引号。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linuxshell/" rel="tag"># Linuxshell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/07/linux运维学习一/" rel="next" title="linux运维学习一">
+                <i class="fa fa-chevron-left"></i> linux运维学习一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/08/网络层次结构/" rel="prev" title="网络层次结构">
+                网络层次结构 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tannisi</p>
+              <p class="site-description motion-element" itemprop="description">linux/unix study</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">Kategorien</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#十、变量"><span class="nav-number">1.</span> <span class="nav-text">十、变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量的赋值方式"><span class="nav-number">1.1.</span> <span class="nav-text">变量的赋值方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#shell变量的特性"><span class="nav-number">1.2.</span> <span class="nav-text">shell变量的特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量类型"><span class="nav-number">1.3.</span> <span class="nav-text">变量类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十一、环境变量"><span class="nav-number">2.</span> <span class="nav-text">十一、环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#环境变量定义"><span class="nav-number">2.1.</span> <span class="nav-text">环境变量定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置环境变量"><span class="nav-number">2.2.</span> <span class="nav-text">设置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示与取消环境变量"><span class="nav-number">2.3.</span> <span class="nav-text">显示与取消环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环境变量初始化与对应文件的生效顺序"><span class="nav-number">2.4.</span> <span class="nav-text">环境变量初始化与对应文件的生效顺序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十二、普通变量"><span class="nav-number">3.</span> <span class="nav-text">十二、普通变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义本地变量"><span class="nav-number">3.1.</span> <span class="nav-text">定义本地变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部（普通）变量定义及赋值的小结"><span class="nav-number">3.2.</span> <span class="nav-text">局部（普通）变量定义及赋值的小结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量定义及变量输出说明"><span class="nav-number">3.3.</span> <span class="nav-text">变量定义及变量输出说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变量定义技巧总结"><span class="nav-number">3.4.</span> <span class="nav-text">变量定义技巧总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tannisi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
