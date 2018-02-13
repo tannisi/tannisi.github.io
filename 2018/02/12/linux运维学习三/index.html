@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
 <meta property="og:description" content="十三、shell中的特殊且重要的变量1.shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
 <meta property="og:image" content="https://tannisi.github.io/2018/02/12/linux运维学习三/1.jpg">
-<meta property="og:updated_time" content="2018-02-13T02:07:16.032Z">
+<meta property="og:updated_time" content="2018-02-13T02:10:36.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维学习三">
 <meta name="twitter:description" content="十三、shell中的特殊且重要的变量1.shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
@@ -62,10 +62,32 @@
 
 
   
+  
+  <div class="site-header-image">
+    <img id="originBg" width="100%" alt="Hike News" src="">
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
+  </div>
+
+  <script>
+        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("originBg").src=imgUrls[random];
+          document.getElementById("blurBg").src=imgUrls[random];
+        } else {
+          document.getElementById("originBg").src='/' + imgUrls[random];
+          document.getElementById("blurBg").src='/' + imgUrls[random];
+        }
+    </script>
+
+
 
 
 <header id="allheader" class="site-header" role="banner" 
-   >
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -157,13 +179,10 @@
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh <span class="regexp">/home/m</span>engtianhao<span class="regexp">/shellscript/</span>name.sh </span><br><span class="line"><span class="regexp">/home/m</span>engtianhao<span class="regexp">/shellscript/</span>name.sh</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>当要执行的脚本为全路径时,$0也会带着路径。此时如果希望单独获取名称或路径，则可用下面的方法。</p>
-<pre><code>dirname /home/mengtianhao/shellscript/name.sh 
-/home/mengtianhao/shellscript                      #&lt;==dirname命令的作用是获取脚本的路径
-basename /home/mengtianhao/shellscript/name.sh 
-name.sh                                            #&lt;==basename命令的作用是获取脚本的名字
-</code></pre><p>(3)</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dirname <span class="meta-keyword">/home/</span>mengtianhao<span class="meta-keyword">/shellscript/</span>name.sh </span><br><span class="line"><span class="meta-keyword">/home/</span>mengtianhao/shellscript                      <span class="meta">#&lt;==dirname命令的作用是获取脚本的路径</span></span><br><span class="line">basename <span class="meta-keyword">/home/</span>mengtianhao<span class="meta-keyword">/shellscript/</span>name.sh </span><br><span class="line">name.sh                                            <span class="meta">#&lt;==basename命令的作用是获取脚本的名字</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<p>(3)</p>
 
       
     </div>
@@ -279,6 +298,9 @@ name.sh                                            #&lt;==basename命令的作�
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
