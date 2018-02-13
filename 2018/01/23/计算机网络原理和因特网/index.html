@@ -1,12 +1,463 @@
-doctype html
-html(lang= theme["han_type"]).han-init
-  head
-    include _head.pug
-    include _mixins.pug
-  body
-    header
-      include _header.pug
-      div.space
-    main
-      include _content.pug
-    include _scripts.pug
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>计算机网络原理和因特网 | 坦尼斯</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MinHow,MinHow's Blog" />
+  
+  <meta name="description" content="一、计算机网络定义1.计算机网络的五大基本元素（1）主机（用户终端、服务器）（2）交换节点 （3）通信链路 （4）拓扑结构 （5）通信软件2.计算机网络的公共特性（1）覆盖范围 ：按网络覆盖地理范围大小加以区分（2）传输方式 ：按网络传输数据方式加以区分（3）交换技术 ：按网络交换数据技术加以区分 二、计算机网络分类概述1.按网络覆盖范围分类个域网、局域网、城域网、广域网2.按网络传输技术分类广播">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络原理和因特网">
+<meta property="og:url" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/index.html">
+<meta property="og:site_name" content="坦尼斯">
+<meta property="og:description" content="一、计算机网络定义1.计算机网络的五大基本元素（1）主机（用户终端、服务器）（2）交换节点 （3）通信链路 （4）拓扑结构 （5）通信软件2.计算机网络的公共特性（1）覆盖范围 ：按网络覆盖地理范围大小加以区分（2）传输方式 ：按网络传输数据方式加以区分（3）交换技术 ：按网络交换数据技术加以区分 二、计算机网络分类概述1.按网络覆盖范围分类个域网、局域网、城域网、广域网2.按网络传输技术分类广播">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络1.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络2.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络3.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络4.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络5.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络6.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络7.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络8.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络9.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络10.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络11.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络12.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络13.PNG">
+<meta property="og:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络14.PNG">
+<meta property="og:updated_time" content="2018-01-23T06:50:45.799Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络原理和因特网">
+<meta name="twitter:description" content="一、计算机网络定义1.计算机网络的五大基本元素（1）主机（用户终端、服务器）（2）交换节点 （3）通信链路 （4）拓扑结构 （5）通信软件2.计算机网络的公共特性（1）覆盖范围 ：按网络覆盖地理范围大小加以区分（2）传输方式 ：按网络传输数据方式加以区分（3）交换技术 ：按网络交换数据技术加以区分 二、计算机网络分类概述1.按网络覆盖范围分类个域网、局域网、城域网、广域网2.按网络传输技术分类广播">
+<meta name="twitter:image" content="https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/计算机网络1.PNG">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+
+<body>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MinHow&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MinHow&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 WEB 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-计算机网络原理和因特网" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      计算机网络原理和因特网
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+              <li>
+                  <i class="fa fa-book"></i>
+                  
+                      <a href="/categories/网络原理/">网络原理</a>
+                  
+              </li>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-01-23
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <h3 id="一、计算机网络定义"><a href="#一、计算机网络定义" class="headerlink" title="一、计算机网络定义"></a>一、计算机网络定义</h3><p>1.计算机网络的五大基本元素<br>（1）主机（用户终端、服务器）（2）交换节点 （3）通信链路 （4）拓扑结构 （5）通信软件<br>2.计算机网络的公共特性<br>（1）覆盖范围 ：按网络覆盖地理范围大小加以区分<br>（2）传输方式 ：按网络传输数据方式加以区分<br>（3）交换技术 ：按网络交换数据技术加以区分</p>
+<h3 id="二、计算机网络分类概述"><a href="#二、计算机网络分类概述" class="headerlink" title="二、计算机网络分类概述"></a>二、计算机网络分类概述</h3><p>1.按网络覆盖范围分类<br>个域网、局域网、城域网、广域网<br>2.按网络传输技术分类<br>广播发送、点-点传播（复杂性较高）<br>3.按数据交换技术分类（数据交换效率越来越高）<br>电路交换（电话）、包交换（计算机网络）<br>4.按传输介质分类（信道访问技术越来越难）<br>有线网络、无线网络<br><a id="more"></a></p>
+<h3 id="三、基于网络覆盖范围的分类"><a href="#三、基于网络覆盖范围的分类" class="headerlink" title="三、基于网络覆盖范围的分类"></a>三、基于网络覆盖范围的分类</h3><p>1.个域网（PAN）：覆盖的地理范围通常围绕着一个人通信用的设备（如无线键盘、无线鼠标等）（可用蓝牙来组网）。<br>2.局域网（LAN）：覆盖的地理范围通常为一个办公室、一个楼层、一座建筑物（组网方式：所有主机都连接在一个网络专用设备（如集线器等），以竞争的方式使用信道）<br>2.1局域网络——无线局域网（WLAN）：通常用在一个办公区域、家居环境、机场、车站等公共区域（一般用WiFi）。<br>无线局域网中（WiFi）的组网方式：所有用户终端通过无线介质连接到一个提供无线接入功能的高性能基站<br>3.城域网（MAN）：覆盖的地理范围通常为一座城市。（组网方式：用户终端通过无线介质连接到一个提供无线接入功能的高性能基站）（一般采用“全球微波互联技术”）<br>4.广域网（WAN）：覆盖的地理范围非常大，可达数百公里或数千公里。组网方式：节点之间通过点-点链路连接成一定拓扑结构的网状形式。</p>
+<h3 id="四、基于网络传输技术的分类"><a href="#四、基于网络传输技术的分类" class="headerlink" title="四、基于网络传输技术的分类"></a>四、基于网络传输技术的分类</h3><p>1.广播网络：广播网络只有一个通信信道（共享介质）。网络上所有的主机/节点共享该信道进行数据通信。<br>（一般有三种方式：单播、广播、组播）一般用总线型结构来表示。<br>介质访问控制（MAC）：负责共享信道带宽的分配和管理。（有两种分配模式：静态分配和动态分配）<br>静态分布：固定分配模式、控制算法简单、资源利用率低<br>动态分布：按需分配模式、控制算法复杂、资源利用率高<br>2.点-点网络————拓扑结构：由许多一对对计算机之间的链路组成。<br>拓扑结构：指计算机网络的物理布局。分为：星型、环型、树型、全连通<br>也有三种模式：点-点单播、点-点广播、点-点组播<br>点-点网络——多跳传输：指信息的传递需要借助其恰当的其他节点辅助才能完成传输。<br>3.（1）小型、地理位置集中的网络多采用广播形式<br>  （2）大型、地理位置分散的网络多采用点到点方式</p>
+<h3 id="五、计算机网络的一般形式"><a href="#五、计算机网络的一般形式" class="headerlink" title="五、计算机网络的一般形式"></a>五、计算机网络的一般形式</h3><p>1.因特网一般形式<br>2.课程展开的主要内容<br>（1）.计算机网络的核心技术<br>（2）.接入网有哪些技术<br>（3）.在同一网络中主机通信<br>（4）.在不同网络中主机通信<br>（5）.在不同主机上进程通信<br>（6）.网络服务/安全怎么做<br>3.在TCP/IP网络体系结构下，自底向上位于第二层的是：网络层</p>
+<h3 id="六、电话网络与电路交换"><a href="#六、电话网络与电路交换" class="headerlink" title="六、电话网络与电路交换"></a>六、电话网络与电路交换</h3><p>1.什么是交换？<br>交换过程：把主叫方的电话线与被叫方的电话线用跳线电缆连接起来的过程。<br>特点：（1）.主叫方和被叫方必须建立一条专用电路<br>      （2）.在通信期间该电路保持连接并不为他人用<br>2.电话系统的扩展性（如两个城市之间的电话通信）<br>（1）.当网络规模增大时通常采用层次型管理模式。<br>（2）.电话接通时间取决于主叫和被叫的距离和途径交换局数目。<br>3.实例：采用电路交换技术<br><img src="/2018/01/23/计算机网络原理和因特网/计算机网络1.PNG" alt="电路交换技术实例"><br>假设：（1）.H1给H6发送查毒为7.5Mbits的文件<br>      （2）.建立电路需要10秒；忽略传播延迟<br>试问：将文件从H1传输到H6需多长时间？<br>解:H1发送文件所需时间=7.5/1.5=5s<br>   传输该文件所需的总时间=连接建立时间+发送文件时间=15s<br>4.电路交换技术本质<br><img src="/2018/01/23/计算机网络原理和因特网/计算机网络2.PNG" alt="电路交换技术本质"><br>(1).发送方H1按固有的发送频率把文件发送到电路上<br>(2).表示文件的信号沿着电路一路传播到目的地H6<br>5.电路交换技术特性<br>优点：实时性好（仅信号传播时延）、稳定的数据传输速率、不存在信道访问延时<br>缺点：不能充分发挥传输介质潜力、长距离电路的建立时间长、扩展性较差（硬件成本）</p>
+<h3 id="七、计算机网路与包交换技术"><a href="#七、计算机网路与包交换技术" class="headerlink" title="七、计算机网路与包交换技术"></a>七、计算机网路与包交换技术</h3><p>1.包交换技术的核心是：存储-转发技术（包/分组：大小固定的数据块）<br>存储-转发：交换节点接受并存储包，然后根据包的目标地址转发该包到通往目的地的出境线路上。<br>2.基于“存储-转发”包交换技术：（1）每个包要指明详细的目的地址（2）交换机根据每个包的目的地址转发<br>  入境线路：报文到达的线路 出境线路：发送报文的线路<br>3.“存储-转发”时延<br><img src="/2018/01/23/计算机网络原理和因特网/计算机网络3.PNG" alt="输出缓冲区示意图"><br>存储转发时延=处理时延（处理时间+发送时间）+排队时延（等待输出的排队时间）<br>4.包交换技术的本质<br>（1）线路上报的顺序是不固定的<br>（2）交换机不必为用户预留资源<br>（3）交换机以及线路等资源按需分配<br>（4）交换机不必记忆每对用户通信状态<br>5.报文与包/分组<br>（1）报文：用户发送的原始数据<br>     包/分组：大小固定的数据块（无完整意义）<br>（2）如果数据报随着用户数据块大小可变：处理时间不确定、小报文的时延大、缓冲区大小无法确定<br>6.实例：采用包交换技术<br><img src="/2018/01/23/计算机网络原理和因特网/计算机网络4.PNG" alt="包交换技术实例"><br>假设：<br>（1）H1给H6发送长度为7.5Mbits的文件<br>（2）包的大小为1500b；忽略传播延迟<br>试问：将文件从H1传播到H6需多长时间？<br>解：第一个包从H1发到S1需要时间1ms<br>    5000ms后最后一个包从H1到达S1<br>    经过三次转发最后一个包到达H6<br>    从H1发送文件到H6总共需要5.003s<br>7.并发传输特性：当第一个包抵达目的地、最后一个包尚未发出时，沿途每个交换机都在并发的传输经过的每个包。<br>8.包交换技术特性<br>优点：（1）将数据分流到不同路径—使得带宽资源利用更加有效（2）若链路出现故障同一个报文剩余包可通过其他路径传送<br>缺点：（1）存储-转发延迟可能会很大（2）排队延迟不确定（与流量成正比）（3）包丢失——报文丢失概率增大</p>
+<h3 id="八、电路交换与包交换"><a href="#八、电路交换与包交换" class="headerlink" title="八、电路交换与包交换"></a>八、电路交换与包交换</h3><p>1.用户<br>电路交换<br>（1）建立电路需要的时间：长短与距离和途径交换机数目有关<br>（2）发送文件需要的时间：长短与文件大小和发送速率有关<br>（3）沿传输介质传播的时间：长短与距离和传输介质有关<br>包交换<br>（1）发送方顺序发送各个包：时间长短与包的大小和发送速率有有关<br>（2）途径交换机“存储-转发”处理：时间长短与处理时延和排队时延有关<br>（3）沿每段传输介质传播：时间长短与该段介质和距离有关<br>2.网络管理者<br><img src="/2018/01/23/计算机网络原理和因特网/计算机网络5.PNG" alt="网络管理者的角度"><br>电路交换机<br>针对每对用户的电路建立：<br>（1）确立通往目的地的路径<br>（2）为每条电路预留资源<br>（3）服务用户数受系统容量限制<br>包交换机<br>针对每个包的存储-转发<br>（1）确定通往目的地路径<br>（2）包排入队列等待发送<br>（3）用户数/流量增大影响包传输时间<br>3.包交换与电路交换的系统容量<br><img src="/2018/01/23/计算机网络原理和因特网/计算机网络6.PNG" alt="系统容量"><br>4.计算机网络采用包交换技术<br>（1）包交换机的处理复杂性低<br>（2）包交换系统资源得到有效利用<br>（3）用户数据流可以并发多路径传输<br>电路交换机：任何时候文件只出现在一个地方——串行传输<br>包交换机：文件被分散在每段线路、每个交换机——并行传输</p>
+<h3 id="九、评价网络性能的指标"><a href="#九、评价网络性能的指标" class="headerlink" title="九、评价网络性能的指标"></a>九、评价网络性能的指标</h3><p>1.信道的传输能力<br>传输能力：指传输数据的能力<br>带宽/吞吐量：信号具有的频带宽度，单位是赫（Hz）<br><img src="/2018/01/23/计算机网络原理和因特网/计算机网络7.PNG" alt="信道允许通过信号频带范围"><br>数据率/比特率：传送数字信号的速率，单位是bps<br><img src="/2018/01/23/计算机网络原理和因特网/计算机网络8.PNG" alt="每秒传输多少个二进制比特"><br>2.（网卡）发送时延/传输时延<br>发送时延：<img src="/2018/01/23/计算机网络原理和因特网/计算机网络9.PNG" alt="发送时延"><br>发送时延指的是数据块从第一个比特开始发送算起，到最后一个比特发送完毕所需要的时间。<br>3.信道传播时延<br>传播时延：信号在信道中传播一定距离而花费的时间<br>传播延迟：<img src="/2018/01/23/计算机网络原理和因特网/计算机网络10.PNG" alt="传播延迟"><br>4.（交换节点）处理/“存储-转发”时延<br>处理/“存储-转发”时延：交换节点为“存储-转发”而进行必要的处理所花费的时间（包的处理、路径的选择、排队等待输出）。<br>发送时延/传输时延：使数据块从节点进入传输介质所需要的时间<br><img src="/2018/01/23/计算机网络原理和因特网/计算机网络11.PNG" alt="处理时延"><br>5.(报文)传输时延<br>时延/延迟：一个报文/包从一个网络（或一条链路）的一端传送到另一端所需要的时间。<br><img src="/2018/01/23/计算机网络原理和因特网/计算机网络12.PNG" alt="报文传输时延"><br>6.丢包率<br>丢包率：丢失的包与发送的全部包的比率<br>丢包原因：（1）交换机的队列长度有限（2）包到达队列为满时将被丢弃（3）被丢弃的包（可能）需要重发<br>7.吞吐量（通常是端到端的）<br>吞吐量：发送者和接收者之间传输数据获得的比特率<br>瞬时速率：在给定点测的的速率<br>平均速率：长期传输拥有的速率<br><img src="/2018/01/23/计算机网络原理和因特网/计算机网络13.PNG" alt=""><br>瓶颈链路：制约着端-端吞吐量的那条链路<br>8.数据发送速率越高传送的越快？<br><img src="/2018/01/23/计算机网络原理和因特网/计算机网络14.PNG" alt=""><br>9.计算机网络性能小结<br>处理时延：存储-转发时延与发送和次数有关<br>传播时延：与距离和介质有关<br>丢包率：与介质和负载有关<br>吞吐量：取决于瓶颈链路的带宽</p>
+
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2018年01月23日 14:50</p>
+        <p>原始链接： <a class="post-url" href="/2018/01/23/计算机网络原理和因特网/" title="计算机网络原理和因特网">https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/</a></p>
+        <footer>
+            <a href="https://tannisi.github.io">
+                <img src="/images/logo.png" alt="tannisi">
+                tannisi
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/&title=《计算机网络原理和因特网》 — 坦尼斯&pic=https://tannisi.github.ioimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/&title=《计算机网络原理和因特网》 — 坦尼斯&source=一、计算机网络定义1.计算机网络的五大基本元素（1）主机（用户终端、服务器）（2）交换节点 （3）通信链路 （4）拓扑结构 （5）通信软件2.计算机网络的..." data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《计算机网络原理和因特网》 — 坦尼斯&url=https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/&via=https://tannisi.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://tannisi.github.io/2018/01/23/计算机网络原理和因特网/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/计算机网络/" class="color1">计算机网络</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一、计算机网络定义"><span class="post-toc-text">一、计算机网络定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、计算机网络分类概述"><span class="post-toc-text">二、计算机网络分类概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三、基于网络覆盖范围的分类"><span class="post-toc-text">三、基于网络覆盖范围的分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四、基于网络传输技术的分类"><span class="post-toc-text">四、基于网络传输技术的分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#五、计算机网络的一般形式"><span class="post-toc-text">五、计算机网络的一般形式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#六、电话网络与电路交换"><span class="post-toc-text">六、电话网络与电路交换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#七、计算机网路与包交换技术"><span class="post-toc-text">七、计算机网路与包交换技术</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#八、电路交换与包交换"><span class="post-toc-text">八、电路交换与包交换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#九、评价网络性能的指标"><span class="post-toc-text">九、评价网络性能的指标</span></a></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2018/01/25/依靠C的世界——编写操作系统/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          依靠C的世界——编写操作系统
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2018/01/19/asc18预赛通知英文原版/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">asc18预赛通知英文原版</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2018 tannisi<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "https://tannisi.github.io",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Linux运维学习/">Linux运维学习</a><a class="category-link" href="/categories/Ubuntu问题/">Ubuntu问题</a><a class="category-link" href="/categories/技术比赛/">技术比赛</a><a class="category-link" href="/categories/搭建blog/">搭建blog</a><a class="category-link" href="/categories/现代操作系统学习/">现代操作系统学习</a><a class="category-link" href="/categories/网络原理/">网络原理</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/Linuxshell/" style="font-size: 20px;">Linuxshell</a> <a href="/tags/Ubuntu中文输入法解决/" style="font-size: 10px;">Ubuntu中文输入法解决</a> <a href="/tags/asc18/" style="font-size: 15px;">asc18</a> <a href="/tags/hexo-github/" style="font-size: 10px;">hexo+github</a> <a href="/tags/操作系统学习小结/" style="font-size: 10px;">操作系统学习小结</a> <a href="/tags/操作系统结构/" style="font-size: 10px;">操作系统结构</a> <a href="/tags/简介编写操作系统的环境/" style="font-size: 10px;">简介编写操作系统的环境</a> <a href="/tags/网络层次结构/" style="font-size: 10px;">网络层次结构</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/进程与线程/" style="font-size: 20px;">进程与线程</a> <a href="/tags/问题解决方案/" style="font-size: 10px;">问题解决方案</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/Linuxshell/" style="font-size: 20px;">Linuxshell</a> <a href="/tags/Ubuntu中文输入法解决/" style="font-size: 10px;">Ubuntu中文输入法解决</a> <a href="/tags/asc18/" style="font-size: 15px;">asc18</a> <a href="/tags/hexo-github/" style="font-size: 10px;">hexo+github</a> <a href="/tags/操作系统学习小结/" style="font-size: 10px;">操作系统学习小结</a> <a href="/tags/操作系统结构/" style="font-size: 10px;">操作系统结构</a> <a href="/tags/简介编写操作系统的环境/" style="font-size: 10px;">简介编写操作系统的环境</a> <a href="/tags/网络层次结构/" style="font-size: 10px;">网络层次结构</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/进程与线程/" style="font-size: 20px;">进程与线程</a> <a href="/tags/问题解决方案/" style="font-size: 10px;">问题解决方案</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
+</body>
+</html>
