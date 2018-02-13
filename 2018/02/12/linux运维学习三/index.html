@@ -15,18 +15,18 @@
     <meta name="baidu-site-verification" content="baidu_verify_98bFO25T0Z.html" />
   
   
-  <meta name="description" content="十三、shell中的特殊且重要的变量1.shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
+  <meta name="description" content="十三、shell中的特殊且重要的变量shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
 <meta name="keywords" content="Linuxshell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux运维学习三">
 <meta property="og:url" content="https://tannisi.github.io/2018/02/12/linux运维学习三/index.html">
 <meta property="og:site_name" content="坦尼斯——龙枪——Linux技术博客">
-<meta property="og:description" content="十三、shell中的特殊且重要的变量1.shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
+<meta property="og:description" content="十三、shell中的特殊且重要的变量shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
 <meta property="og:image" content="https://tannisi.github.io/2018/02/12/linux运维学习三/1.jpg">
-<meta property="og:updated_time" content="2018-02-13T02:10:36.032Z">
+<meta property="og:updated_time" content="2018-02-13T07:06:13.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux运维学习三">
-<meta name="twitter:description" content="十三、shell中的特殊且重要的变量1.shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
+<meta name="twitter:description" content="十三、shell中的特殊且重要的变量shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
 <meta name="twitter:image" content="https://tannisi.github.io/2018/02/12/linux运维学习三/1.jpg">
 <meta name="twitter:creator" content="@true">
 <link rel="publisher" href="true">
@@ -146,7 +146,7 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="十三、shell中的特殊且重要的变量"><a href="#十三、shell中的特殊且重要的变量" class="headerlink" title="十三、shell中的特殊且重要的变量"></a>十三、shell中的特殊且重要的变量</h3><p>1.shell中的特殊位置参数变量<br>   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。<br><a id="more"></a><br>                       常用的特殊位置参数变量表</p>
+        <h3 id="十三、shell中的特殊且重要的变量"><a href="#十三、shell中的特殊且重要的变量" class="headerlink" title="十三、shell中的特殊且重要的变量"></a>十三、shell中的特殊且重要的变量</h3><h4 id="shell中的特殊位置参数变量"><a href="#shell中的特殊位置参数变量" class="headerlink" title="shell中的特殊位置参数变量"></a>shell中的特殊位置参数变量</h4><p>   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。<br><a id="more"></a><br>                       常用的特殊位置参数变量表</p>
 <p><img src="/2018/02/12/linux运维学习三/1.jpg" alt=""><br>（1）$1 $2 $9 $(10)…特殊变量实践<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="selector-tag">p</span>.sh</span><br><span class="line">echo $<span class="number">1</span>                    #&lt;==脚本功能是打印脚本传递的第一个参数的值</span><br><span class="line">sh <span class="selector-tag">p</span><span class="selector-class">.sh</span> oldboy             #&lt;==传入一个oldboy字符串参数，赋值给脚本中的$<span class="number">1</span></span><br><span class="line">oldboy                     #&lt;==把传入的oldboy参数赋值给脚本中的$<span class="number">1</span>并传出，因此输出结果为oldboy</span><br><span class="line">sh <span class="selector-tag">p</span><span class="selector-class">.sh</span> oldboy oldgirl     #&lt;==传入两个字符串参数，但脚本不会接受第二个参数，参数默认是以空格分隔</span><br><span class="line">oldboy                     #&lt;==只输出了oldboy</span><br><span class="line">sh <span class="selector-tag">p</span><span class="selector-class">.sh</span> <span class="string">"oldboy oldgirl"</span>   #&lt;==加引号括起来的内容传参，会作为一个字符串参数</span><br><span class="line">oldboy oldgirl             #&lt;==虽然都打印了，但这些内容是作为一个参数传递给$<span class="number">1</span>的</span><br><span class="line">cat <span class="selector-tag">p</span>.sh</span><br><span class="line">echo $<span class="number">1</span> $<span class="number">2</span>                 #&lt;==打印脚本传递的第一个、第二个参数的值</span><br><span class="line">sh <span class="selector-tag">p</span><span class="selector-class">.sh</span> oldboy oldgirl     #&lt;==同时传入两个字符串参数</span><br><span class="line">oldboy oldgirl</span><br></pre></td></tr></table></figure></p>
 <p><span style="border-bottom:2px dashed red;">当位置参数数字大于9时，需要用大括号将数字括起来</span><br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> <span class="keyword">n</span>.<span class="keyword">sh</span></span><br><span class="line">echo <span class="variable">$1</span> <span class="variable">$2</span> <span class="variable">$3</span> <span class="variable">$4</span> <span class="variable">$5</span> <span class="variable">$6</span> <span class="variable">$7</span> <span class="variable">$8</span> <span class="variable">$9</span> <span class="variable">$&#123;10&#125;</span> <span class="variable">$&#123;11&#125;</span> <span class="variable">$&#123;12&#125;</span> <span class="variable">$&#123;13&#125;</span> <span class="variable">$&#123;14&#125;</span> <span class="variable">$&#123;15&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>(2)$0特殊变量的作用及变量实践<br><span style="border-bottom:2px dashed red;">$0的作用为取出执行脚本的名称（包括路径）。</span>下面是该功能的实践。</p>
@@ -227,7 +227,7 @@
     <div id="toc" class="toc-article">
     <strong class="toc-title">Contents</strong>
     
-      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#十三、shell中的特殊且重要的变量"><span class="nav-number">1.</span> <span class="nav-text">十三、shell中的特殊且重要的变量</span></a></li></ol>
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#十三、shell中的特殊且重要的变量"><span class="nav-number">1.</span> <span class="nav-text">十三、shell中的特殊且重要的变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#shell中的特殊位置参数变量"><span class="nav-number">1.1.</span> <span class="nav-text">shell中的特殊位置参数变量</span></a></li></ol></li></ol>
     
     </div>
   </aside>
