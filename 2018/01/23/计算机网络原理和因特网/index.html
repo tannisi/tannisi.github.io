@@ -10,6 +10,8 @@
   
   
   
+    <meta name="baidu-site-verification" content="baidu_verify_98bFO25T0Z.html" />
+  
   
   <meta name="description" content="一、计算机网络定义1.计算机网络的五大基本元素（1）主机（用户终端、服务器）（2）交换节点 （3）通信链路 （4）拓扑结构 （5）通信软件2.计算机网络的公共特性（1）覆盖范围 ：按网络覆盖地理范围大小加以区分（2）传输方式 ：按网络传输数据方式加以区分（3）交换技术 ：按网络交换数据技术加以区分 二、计算机网络分类概述1.按网络覆盖范围分类个域网、局域网、城域网、广域网2.按网络传输技术分类广播">
 <meta name="keywords" content="计算机网络">
@@ -75,10 +77,32 @@
 
 
   
+  
+  <div class="site-header-image">
+    <img id="originBg" width="100%" alt="Hike News" src="">
+  </div>
+
+  <div id="header-blur" class="site-header-image blur" style="position: absolute; top:0; height: 207px; min-height: 207px; min-width: 100%;">
+    <img id="blurBg" width="100%" style="top: 96%" alt="Hike News" src="">
+  </div>
+
+  <script>
+        var imgUrls = "css/images/pose01.jpg,https://source.unsplash.com/collection/954550/1920x1080,https://source.unsplash.com/collection/954550/1920x1081".split(",");
+        var random = Math.floor((Math.random() * imgUrls.length ));
+        if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+          document.getElementById("originBg").src=imgUrls[random];
+          document.getElementById("blurBg").src=imgUrls[random];
+        } else {
+          document.getElementById("originBg").src='/' + imgUrls[random];
+          document.getElementById("blurBg").src='/' + imgUrls[random];
+        }
+    </script>
+
+
 
 
 <header id="allheader" class="site-header" role="banner" 
-   >
+   style="width: 100%; position: absolute; top:0; background: rgba(255,255,255,.8);"  >
   <div class="clearfix container">
       <div class="site-branding">
 
@@ -288,6 +312,9 @@
 
 
     <!-- headerblur min height -->
+    
+      var headerblur = document.getElementById("header-blur");
+      headerblur.style.minHeight = window.getComputedStyle(document.getElementById("allheader"), null).height;
     
     
 </script>
