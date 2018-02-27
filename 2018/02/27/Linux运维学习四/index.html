@@ -3,25 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>linux运维学习三 | 坦尼斯</title>
+  <title>Linux运维学习四 | 坦尼斯</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="tannisi.blog" />
   
-  <meta name="description" content="十三、shell中的特殊且重要的变量shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
-<meta name="keywords" content="Linuxshell">
+  <meta name="description" content="linux/unix study">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux运维学习三">
-<meta property="og:url" content="http://tannisi.top/2018/02/12/linux运维学习三/index.html">
+<meta property="og:title" content="Linux运维学习四">
+<meta property="og:url" content="http://tannisi.top/2018/02/27/Linux运维学习四/index.html">
 <meta property="og:site_name" content="坦尼斯">
-<meta property="og:description" content="十三、shell中的特殊且重要的变量shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
+<meta property="og:description" content="linux/unix study">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://tannisi.top/2018/02/12/linux运维学习三/1.jpg">
-<meta property="og:updated_time" content="2018-02-13T07:06:13.707Z">
+<meta property="og:updated_time" content="2018-02-27T11:27:00.079Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux运维学习三">
-<meta name="twitter:description" content="十三、shell中的特殊且重要的变量shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。">
-<meta name="twitter:image" content="http://tannisi.top/2018/02/12/linux运维学习三/1.jpg">
+<meta name="twitter:title" content="Linux运维学习四">
+<meta name="twitter:description" content="linux/unix study">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -135,27 +132,20 @@ ga('send', 'pageview');
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-linux运维学习三" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-Linux运维学习四" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      linux运维学习三
+      Linux运维学习四
     </h1>
     <div class="post-title-bar">
       <ul>
           
-              <li>
-                  <i class="fa fa-book"></i>
-                  
-                      <a href="/categories/Linux运维学习/">Linux运维学习</a>
-                  
-              </li>
-          
         <li>
-          <i class="fa fa-calendar"></i>  2018-02-12
+          <i class="fa fa-calendar"></i>  2018-02-27
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -171,30 +161,11 @@ ga('send', 'pageview');
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h3 id="十三、shell中的特殊且重要的变量"><a href="#十三、shell中的特殊且重要的变量" class="headerlink" title="十三、shell中的特殊且重要的变量"></a>十三、shell中的特殊且重要的变量</h3><h4 id="shell中的特殊位置参数变量"><a href="#shell中的特殊位置参数变量" class="headerlink" title="shell中的特殊位置参数变量"></a>shell中的特殊位置参数变量</h4><p>   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置参数变量。要从命令行、函数、脚本执行性等处传递参数时，就需要在shell脚本中使用位置参数变量。<br><a id="more"></a><br>                       常用的特殊位置参数变量表</p>
-<p><img src="/2018/02/12/linux运维学习三/1.jpg" alt=""><br>（1）$1 $2 $9 $(10)…特殊变量实践<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="selector-tag">p</span>.sh</span><br><span class="line">echo $<span class="number">1</span>                    #&lt;==脚本功能是打印脚本传递的第一个参数的值</span><br><span class="line">sh <span class="selector-tag">p</span><span class="selector-class">.sh</span> oldboy             #&lt;==传入一个oldboy字符串参数，赋值给脚本中的$<span class="number">1</span></span><br><span class="line">oldboy                     #&lt;==把传入的oldboy参数赋值给脚本中的$<span class="number">1</span>并传出，因此输出结果为oldboy</span><br><span class="line">sh <span class="selector-tag">p</span><span class="selector-class">.sh</span> oldboy oldgirl     #&lt;==传入两个字符串参数，但脚本不会接受第二个参数，参数默认是以空格分隔</span><br><span class="line">oldboy                     #&lt;==只输出了oldboy</span><br><span class="line">sh <span class="selector-tag">p</span><span class="selector-class">.sh</span> <span class="string">"oldboy oldgirl"</span>   #&lt;==加引号括起来的内容传参，会作为一个字符串参数</span><br><span class="line">oldboy oldgirl             #&lt;==虽然都打印了，但这些内容是作为一个参数传递给$<span class="number">1</span>的</span><br><span class="line">cat <span class="selector-tag">p</span>.sh</span><br><span class="line">echo $<span class="number">1</span> $<span class="number">2</span>                 #&lt;==打印脚本传递的第一个、第二个参数的值</span><br><span class="line">sh <span class="selector-tag">p</span><span class="selector-class">.sh</span> oldboy oldgirl     #&lt;==同时传入两个字符串参数</span><br><span class="line">oldboy oldgirl</span><br></pre></td></tr></table></figure></p>
-<p><span style="border-bottom:2px dashed red;">当位置参数数字大于9时，需要用大括号将数字括起来</span><br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> <span class="keyword">n</span>.<span class="keyword">sh</span></span><br><span class="line">echo <span class="variable">$1</span> <span class="variable">$2</span> <span class="variable">$3</span> <span class="variable">$4</span> <span class="variable">$5</span> <span class="variable">$6</span> <span class="variable">$7</span> <span class="variable">$8</span> <span class="variable">$9</span> <span class="variable">$&#123;10&#125;</span> <span class="variable">$&#123;11&#125;</span> <span class="variable">$&#123;12&#125;</span> <span class="variable">$&#123;13&#125;</span> <span class="variable">$&#123;14&#125;</span> <span class="variable">$&#123;15&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>(2)$0特殊变量的作用及变量实践<br><span style="border-bottom:2px dashed red;">$0的作用为取出执行脚本的名称（包括路径）。</span>下面是该功能的实践。</p>
-<ul>
-<li><p>获取脚本的名称及路径</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> name.<span class="keyword">sh</span></span><br><span class="line">echo <span class="variable">$0</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>若不带路径执行脚本，那么输出结果就是脚本的名字，如下：</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">sh </span>name.<span class="keyword">sh</span></span><br><span class="line"><span class="keyword">name.sh </span>     <span class="comment">#&lt;==$0获取的值就是脚本的名字</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>若使用全路径执行脚本，那么输出的结果就是全路径叫上脚本的名字，如下：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh <span class="regexp">/home/m</span>engtianhao<span class="regexp">/shellscript/</span>name.sh </span><br><span class="line"><span class="regexp">/home/m</span>engtianhao<span class="regexp">/shellscript/</span>name.sh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当要执行的脚本为全路径时,$0也会带着路径。此时如果希望单独获取名称或路径，则可用下面的方法。</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dirname <span class="meta-keyword">/home/</span>mengtianhao<span class="meta-keyword">/shellscript/</span>name.sh </span><br><span class="line"><span class="meta-keyword">/home/</span>mengtianhao/shellscript                      <span class="meta">#&lt;==dirname命令的作用是获取脚本的路径</span></span><br><span class="line">basename <span class="meta-keyword">/home/</span>mengtianhao<span class="meta-keyword">/shellscript/</span>name.sh </span><br><span class="line">name.sh                                            <span class="meta">#&lt;==basename命令的作用是获取脚本的名字</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>(3)</p>
-
+            
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年02月13日 15:06</p>
-        <p>原始链接： <a class="post-url" href="/2018/02/12/linux运维学习三/" title="linux运维学习三">http://tannisi.top/2018/02/12/linux运维学习三/</a></p>
+        <p>最后更新： 2018年02月27日 19:27</p>
+        <p>原始链接： <a class="post-url" href="/2018/02/27/Linux运维学习四/" title="Linux运维学习四">http://tannisi.top/2018/02/27/Linux运维学习四/</a></p>
         <footer>
             <a href="http://tannisi.top">
                 <img src="/images/timp.jpg" alt="tannisi">
@@ -251,7 +222,7 @@ ga('send', 'pageview');
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://tannisi.top/2018/02/12/linux运维学习三/&title=《linux运维学习三》 — 坦尼斯&pic=http://tannisi.topimages/timp.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://tannisi.top/2018/02/27/Linux运维学习四/&title=《Linux运维学习四》 — 坦尼斯&pic=http://tannisi.topimages/timp.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -261,22 +232,22 @@ ga('send', 'pageview');
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://tannisi.top/2018/02/12/linux运维学习三/&title=《linux运维学习三》 — 坦尼斯&source=十三、shell中的特殊且重要的变量shell中的特殊位置参数变量   在shell中存在一些特殊且重要的变量，例如：$0、$1、$#，我们称之为特殊位置..." data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://tannisi.top/2018/02/27/Linux运维学习四/&title=《Linux运维学习四》 — 坦尼斯&source=linux/unix study" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://tannisi.top/2018/02/12/linux运维学习三/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://tannisi.top/2018/02/27/Linux运维学习四/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《linux运维学习三》 — 坦尼斯&url=http://tannisi.top/2018/02/12/linux运维学习三/&via=http://tannisi.top" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux运维学习四》 — 坦尼斯&url=http://tannisi.top/2018/02/27/Linux运维学习四/&via=http://tannisi.top" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://tannisi.top/2018/02/12/linux运维学习三/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://tannisi.top/2018/02/27/Linux运维学习四/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -286,7 +257,7 @@ ga('send', 'pageview');
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://tannisi.top/2018/02/12/linux运维学习三/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://tannisi.top/2018/02/27/Linux运维学习四/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -295,13 +266,6 @@ ga('send', 'pageview');
         <ul class="article-footer-menu">
             
             
-  <li class="article-footer-tags">
-    <i class="fa fa-tags"></i>
-      
-    <a href="/tags/Linuxshell/" class="color1">Linuxshell</a>
-      
-  </li>
-
         </ul>
         
     </footer>
@@ -309,28 +273,12 @@ ga('send', 'pageview');
 </article>
 
 
-    <aside class="post-toc-pos post-toc-top" id="post-toc">
-        <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#十三、shell中的特殊且重要的变量"><span class="post-toc-text">十三、shell中的特殊且重要的变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#shell中的特殊位置参数变量"><span class="post-toc-text">shell中的特殊位置参数变量</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
-    
 
 <nav id="article-nav">
   
-    <a href="/2018/02/27/Linux运维学习四/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          Linux运维学习四
-        
-      </span>
-    </a>
   
-  
-    <a href="/2018/02/10/有关Ubuntu17-10中fcitx配置搜狗出错的解决方法/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">有关Ubuntu17.10中fcitx配置搜狗出错的解决方法</span>
+    <a href="/2018/02/12/linux运维学习三/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">linux运维学习三</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
