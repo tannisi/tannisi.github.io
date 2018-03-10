@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=https://tannisi.top/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=https://tannisi.top">
+<meta name="author" content="tannisi">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>linux运维学习一 - 坦尼斯</title>
+
+<meta name="keywords" content="">
+
+<meta name="description " content="linux/unix study">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="说">说</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">说IT</h1>
+        <h3 class="cover-siteTitle">做产品，写代码</h3>
+        <p class="cover-siteDesc">一个关注技术与人文的IT博客</p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-telegram">
+                <a href="http://t.me/kunyintang" target="_blank" title="telegram" ref="friend">
+                    <i class="fa fa-telegram"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-instagram">
+                <a href="https://www.instagram.com/mtangsir/" target="_blank" title="instagram" ref="friend">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-twitter">
+                <a href="https://twitter.com/tangkunyin" target="_blank" title="twitter" ref="friend">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/tangkunyin" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+            
+                <li class="">
+                    <a href="/categories/big-front-end" data-name="前端">前端</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/server-side" data-name="后台">后台</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/design" data-name="设计">设计</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/resource" data-name="资源">资源</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="" target="_blank">
+                    <img width="48" src="" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="" target="_blank"></a>
+                    <span title="最后编辑于2018-02-07">2018-02-07</span>
+                </p>
+                <p></p>
+            </div>
+            <h2 class="post-title">linux运维学习一</h2>
+            <div class="post-meta">
+                本文总共3923个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h2 id="Linux运维学习"><a href="#Linux运维学习" class="headerlink" title="Linux运维学习"></a>Linux运维学习</h2><h3 id="一、shell脚本"><a href="#一、shell脚本" class="headerlink" title="一、shell脚本"></a>一、shell脚本</h3><p>   当命令或程序语句不在命令行下执行，而是通过一个程序文件来执行时，该程序就被称为shell脚本。<br><a id="more"></a></p>
+<h3 id="二、清除-var-log下messages日志文件的简单命令脚本"><a href="#二、清除-var-log下messages日志文件的简单命令脚本" class="headerlink" title="二、清除/var/log下messages日志文件的简单命令脚本"></a>二、清除/var/log下messages日志文件的简单命令脚本</h3><pre><code>#!/bin/bash
+# 清除日志脚本
+LOG_DIR=/var/log
+ROOT_UID=0 #&lt;==$UID为0的用户，即root用户
+if [ &quot;$UID&quot; -ne &quot;$ROOT_UID&quot; ]
+then
+        echo &quot;MUST be root to run this script.&quot;
+        exit 1
+fi
+cd $LOG_DIR || {
+        echo &quot;Cannot change to necessary directory&quot;
+        exit 1
+}
+cat /dev/null&gt;messages &amp;&amp; {
+        echo &quot;Logs cleaned up.&quot;
+        exit 0
+}
+echo &quot;Logs cleaned up fail.&quot;
+exit 1
+</code></pre><p>上面的脚本设计成了如下几关：<br>第一关：必须是root才能执行脚本，否则会给出友好提示并终止脚本运行<br>第二关：成功切换目录（cd /var/log）,否则给出友好提示并终止脚本运行<br>第三关：清理日志（cat /dev/null&gt;messages），若清理成功，则给出正确提示。<br>第四关：通过或失败，分别给出相应的提示（echo输出）</p>
+<h3 id="三、shell脚本语言是弱类型语言（无需定义变量的类型即可使用），在UNIX-LINUX中主要有两大类shell：Bourne-shell-和-C-shell"><a href="#三、shell脚本语言是弱类型语言（无需定义变量的类型即可使用），在UNIX-LINUX中主要有两大类shell：Bourne-shell-和-C-shell" class="headerlink" title="三、shell脚本语言是弱类型语言（无需定义变量的类型即可使用），在UNIX/LINUX中主要有两大类shell：Bourne shell 和 C shell"></a>三、shell脚本语言是弱类型语言（无需定义变量的类型即可使用），在UNIX/LINUX中主要有两大类shell：Bourne shell 和 C shell</h3><p>（1）查看系统的shell支持情况。$ cat /etc/shells<br>（2）查看系统默认的shell。<br>方法一：echo $SHELL<br>       /bin/bash<br>方法二：grep root /etc/passwd<br>       root:x:0:0:root:/root:/bin/bash</p>
+<h3 id="四、shell脚本的建立"><a href="#四、shell脚本的建立" class="headerlink" title="四、shell脚本的建立"></a>四、shell脚本的建立</h3><p>（1）脚本开头。一个规范的shell脚本会在第一行指出由哪个程序（解释器）来执行脚本中的内容，这一行内容在Linux bash的编程一般为：#!/bin/bash<br>（2）查看系统的bash版本的命令。bash –version<br>（3）检测系统是否存在漏洞的方法。env x=’() { :;}; echo be careful’ bash -c “echo this is a test”<br>如果出现：this is a test 则没有漏洞。否则，则需尽快升级bash了。<br>（4）下面是Linux中常用的脚本开头的写法。</p>
+<pre><code>#!/bin/bash
+#!/bin/sh
+#!/usr/bin/awk
+#!/bin/sed
+#!/usr/bin/tcl
+#!/usr/bin/expect       #&lt;==expect解决交互式的语言开头解释器
+#!/usr/bin/perl         #&lt;==Perl语言解释器
+#!/usr/bin/env python   #&lt;==python语言解释器
+</code></pre><p>如果在脚本开头的第一行不指定解释器，那么就要用对应的解释器来执行脚本。这样才能确保脚本正确执行。例如：<br>如果是shell脚本，就用bash test.sh执行test.sh<br>如果是Python脚本，就用python test.py执行test.py<br>如果是expect脚本，就用expect test.exp执行test.exp<br>（5）脚本注释<br>在shell脚本中，跟在#后面的内容表示注释，用来对脚本进行注释说明。</p>
+<h3 id="五、shell脚本的执行通常采用以下几种方式："><a href="#五、shell脚本的执行通常采用以下几种方式：" class="headerlink" title="五、shell脚本的执行通常采用以下几种方式："></a>五、shell脚本的执行通常采用以下几种方式：</h3><p>（1）bash script-name 或 sh script-name：这是当脚本文件本身没有可执行权限（即文件权限属性x位为-号）时常用的方法，或者脚本文件开头没有指定解释器时需要使用的方法。<br>（2）path/script-name 或 ./script-name ：指在当前路径下执行脚本（脚本需要有执行权限），然后就直接应用了。可以使用chmod命令来变更文件或目录的权限。权限的表示法如下:</p>
+<pre><code>u User，即文件或目录的拥有者；
+g Group，即文件或目录的所属群组；
+o Other，除了文件或目录拥有者或所属群组之外，其他用户皆属于这个范围；
+a All，即全部的用户，包含拥有者，所属群组以及其他用户；
+r 读取权限，数字代号为“4”;
+w 写入权限，数字代号为“2”；
+x 执行或切换权限，数字代号为“1”；
+- 不具任何权限，数字代号为“0”；
+s 特殊功能说明：变更文件或目录的权限。
+</code></pre><p>（3）source script-name 或 . script-name ：这种方法通常是使用source或“.”读入或加载指定的shell脚本文件，然后依次执行指定的shell脚本文件中的所有语句。这些语句将在当前父shell脚本father.sh进程中运行（其他几种模式都会启动新的进程执行子脚本）。因此，使用source或“.”可以将son.sh自身脚本中的变量值或函数等的返回值传递到当前父shell脚本father.sh中使用。<br>（4）sh&lt;script-name或cat script-name|sh：这种方法将所有的字符串拼接为命令的形式，然后经由管道交给bash操作的案例。</p>
+<h3 id="六、给test-sh添加可执行权限"><a href="#六、给test-sh添加可执行权限" class="headerlink" title="六、给test.sh添加可执行权限."></a>六、给test.sh添加可执行权限.</h3><p>   命令如下：chmod u+x test.sh  然后test.sh就拥有了可执行权限了。可以使用上面的第二种方法了。即：. /test.sh</p>
+<h3 id="七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中"><a href="#七、使用第三种方法时会将source或“-”执行的脚本中的变量值传递到当前的shell中" class="headerlink" title="七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中."></a>七、使用第三种方法时会将source或“.”执行的脚本中的变量值传递到当前的shell中.</h3><pre><code>$ echo &apos;userdir=`pwd`&apos; &gt;testsource.sh
+$ cat testsource.sh
+userdir=`pwd`
+$ sh testsource.sh #&lt;==采用sh命令执行脚本
+$ echo $userdir
+        #&lt;==此处为空并没有出现当前路径/home/tianhao/shellscript
+</code></pre><p>通过sh或bash命令执行过的脚本，若在脚本结束之后在当前shell窗口中查看usedir变量的值，会发现值是空的。如果以同样的步骤改用source或“.”执行，然后看userdir变量的值。</p>
+<pre><code>$ source testsource.sh
+$ echo $userdir
+/home/tianhao/shellscript
+</code></pre><p>结论：通过source或“.”加载执行过的脚本，由于是在当前shell中执行脚本，因此在脚本结束之后，脚本中的<br>变量（包括函数）值在当前shell中仍然存在，而sh和bash执行脚本都会启动新的子shell执行，执行完后退回<br>到父shell。因此，变量（包括函数）值等无法保留。在进行shell脚本开发时，如果脚本中有引用或执行其他<br>脚本的内容或配置文件的需求时，最好用“.”或source先加载该脚本或配置文件，处理完之后，再将他们加载到<br>脚本的下面，就可以调用source加载的脚本及配置文件中的变量及函数等内容了。</p>
+<h3 id="八、采用第四种方法来实践："><a href="#八、采用第四种方法来实践：" class="headerlink" title="八、采用第四种方法来实践："></a>八、采用第四种方法来实践：</h3><pre><code>$ cat test.sh
+!#/bin/bash
+echo &quot;I am a good boy&quot;
+$ cat test.sh|bash  #&lt;==这种方法在命令行拼接字符串命令后，需要执行时就会用到
+I am a good boy
+</code></pre><h3 id="九、shell脚本开发的基本规范及习惯。"><a href="#九、shell脚本开发的基本规范及习惯。" class="headerlink" title="九、shell脚本开发的基本规范及习惯。"></a>九、shell脚本开发的基本规范及习惯。</h3><p>基本规范：<br>（1）shell脚本的第一行是指定脚本解释器，通常为：<br>    !#/bin/bash<br>（2）shell脚本的开头会加版本、版权等信息：</p>
+<pre><code># Date:    16:29 2017-12-30
+#Author:   Created by tianhao 
+#Description: This is ...
+#version: 1.1
+</code></pre><p>可修改”~/.vimrc”配置文件vim编辑文件是自动加上以上信息的功能。<br>（3）在shell脚本中尽量不用中文，注释也是如此。<br>如果非要加中文，请根据自身的客户端对系统进行字符集的调整，如：export LANG=”zh_CN.UTF-8”,并在脚本中，重新定义字符集设置，和系统保持一致。<br>（4）shell脚本的命名应以.sh为扩展名。<br>（5）shell脚本应存放在固定的路径下。例如： /server/scripts<br>习惯：<br>（1）成对的符号应尽量一次性写出来，然后退格在符号里增加内容，以防止遗漏。<br>（2）中括号（[]）两端至少要有1个空格，因此，键入中括号时即可留出空格（[ ]），然后再退格键入中间的内容，并确保两端都至少有一个空格。双中括号的写法也是如此。<br>（3）对于流程控制语句，应一次性将格式写完，再添加内容。<br>（4）注意代码缩进。<br>（5）对于常规变量的字符串定义变量值应加双引号，并且等号前后不能有空格，需要强引用的（指所见即所得的字符引用），则用单引号（’’），若是命令的引用，则用反引号(``)。<br>（6）脚本中的单引号、双引号及反引号必须为英文状态下的符号，其实所有的Linux字符及符号都应该是英文状态下的符号。</p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/Linuxshell/">Linuxshell</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about"  title="关于本站">关于本站</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="help" >急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/app" title="App下载">App下载</a>
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        
+
+    </div>
+</footer>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>

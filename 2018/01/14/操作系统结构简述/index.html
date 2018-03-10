@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html class="no-js" lang="zh-CN">
+<!--
+//                            _ooOoo_
+//                           o8888888o
+//                           88" . "88
+//                           (| -_- |)
+//                            O\ = /O
+//                        ____/`---'\____
+//                      .   ' \\| |// `.
+//                       / \\||| : |||// \
+//                     / _||||| -:- |||||- \
+//                       | | \\\ - /// | |
+//                     | \_| ''\---/'' | |
+//                      \ .-\__ `-` ___/-. /
+//                   ___`. .' /--.--\ `. . __
+//                ."" '< `.___\_<|>_/___.' >'"".
+//               | | : `- \`.;`\ _ /`;.`/ - ` : | |
+//                 \ \ `-. \_ __\ /__ _/ .-` / /
+//         ======`-.____`-.___\_____/___.-`____.-'======
+//                            `=---='
+//                 拦截插件累计拦截逗比攻击"1381438"次！
+//         .............................................
+//                  佛祖保佑             永无BUG
+//          佛曰:
+//                  写字楼里写字间，写字间里程序员；
+//                  程序人员写程序，又拿程序换酒钱。
+//                  酒醒只在网上坐，酒醉还来网下眠；
+//                  酒醉酒醒日复日，网上网下年复年。
+//                  但愿老死电脑间，不愿鞠躬老板前；
+//                  奔驰宝马贵者趣，公交自行程序员。
+//                  别人笑我忒疯癫，我笑自己命太贱；
+//                  不见满街漂亮妹，哪个归得程序员？
+-->
+<head>
+    <!--[if lte IE 9]>
+<meta http-equiv="refresh" content="0;url=https://tannisi.top/warn.html">
+<![endif]-->
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<meta http-equiv="mobile-agent" content="format=html5; url=https://tannisi.top">
+<meta name="author" content="tannisi">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/SimpleStyle.min.css">
+
+<link rel="shortcut icon" href="/images/favicon.png">
+
+
+<title>操作系统结构简述 - 坦尼斯</title>
+
+<meta name="keywords" content="">
+
+<meta name="description " content="linux/unix study">
+</head>
+<body>
+<div id="nav">
+    <nav class="nav-menu">
+        <a class="site-name current" href="/" title="说">说</a>
+        <a class="site-index current" href="/"><i class="fa fa-home"></i><span>首页</span></a>
+        <a href="/archives" title="归档"><i class="fa fa-archives"></i><span>归档</span></a>
+        <a href="/tags" title="标签"><i class="fa fa-tags"></i><span>标签</span></a>
+        <!-- custom single page of menus -->
+        
+        
+        <a href="/help" title="帮助">
+            <i class="fa fa-question-circle"></i>
+            <span>帮助</span>
+        </a>
+        
+    </nav>
+</div>
+
+<div class="nav-user">
+    <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+    <a class="btn-read-mode" href="#"><i class="fa fa-sun-o"></i></a>
+    <a class="btn-sns-qr" href="javascript:"><i class="fa fa-telegram"></i></a>
+</div>
+
+<div id="wrapper" class="clearfix">
+    <div id="body">
+        <div class="main" id="main">
+            <div id="cover">
+    <div class="cover-img"></div>
+    <div class="cover-info">
+        
+        <h1 class="cover-siteName">说IT</h1>
+        <h3 class="cover-siteTitle">做产品，写代码</h3>
+        <p class="cover-siteDesc">一个关注技术与人文的IT博客</p>
+        <div class="cover-sns">
+            
+            <div class="btn btn-telegram">
+                <a href="http://t.me/kunyintang" target="_blank" title="telegram" ref="friend">
+                    <i class="fa fa-telegram"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-instagram">
+                <a href="https://www.instagram.com/mtangsir/" target="_blank" title="instagram" ref="friend">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-twitter">
+                <a href="https://twitter.com/tangkunyin" target="_blank" title="twitter" ref="friend">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
+            
+            <div class="btn btn-github">
+                <a href="https://github.com/tangkunyin" target="_blank" title="github" ref="friend">
+                    <i class="fa fa-github"></i>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+            <div class="page-title">
+    <ul>
+        <li><a href="/">最新</a></li>
+        
+            
+                <li class="">
+                    <a href="/categories/big-front-end" data-name="前端">前端</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/server-side" data-name="后台">后台</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/design" data-name="设计">设计</a>
+                </li>
+            
+                <li class="">
+                    <a href="/categories/resource" data-name="资源">资源</a>
+                </li>
+            
+        
+        <li class="page-search">
+    <form id="search" class="search-form">
+        <label for="s" class="sr-only">请输入关键字</label>
+        <input class="search-field" type="text" name="s" class="text" placeholder="请输入关键字" />
+        <button type="submit" class="search-form-submit" title="搜索"><i class="fa fa-search"></i></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+</li>
+
+    </ul>
+</div>
+<div class="main-inner">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div class="post-header">
+            <div class="post-author clearfix">
+                <a class="avatar fleft" href="" target="_blank">
+                    <img width="48" src="" alt="avatar"/>
+                </a>
+                <p><span class="label">作者</span>
+                    <a href="" target="_blank"></a>
+                    <span title="最后编辑于2018-01-14">2018-01-14</span>
+                </p>
+                <p></p>
+            </div>
+            <h2 class="post-title">操作系统结构简述</h2>
+            <div class="post-meta">
+                本文总共5848个字 | 您是第<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>位看到它们的小伙伴
+            </div>
+        </div>
+        <div class="post-content markdown-body">
+            <h3 id="1-单体操作系统"><a href="#1-单体操作系统" class="headerlink" title="1.单体操作系统"></a>1.单体操作系统</h3><p>   在大多数常见的组织中，整个操作系统在内核态以单一程序的方式运行。整个操作系统一过程集合的方式编写，链接成一个大型可执行二进制程序。<br>    使用这种技术，系统中每个过程可以自由调用其他过程，只要后者提供了前者所需要的一些有用的计算工作。<br>调用任何一个你所需要的过程，或许会非常高效，但上千个可以不受限制地彼此调用的过程常常会导致系统笨拙且<br>难于理解。并且任何一个系统的崩溃都会连累整个系统。<br><a id="more"></a><br>   （这里我认为是由于各个过程以集合的方式组织在一起的结构所导致的即集合的性质，不知理解的是否正确！）<br>    在使用这种处理方式构造实际的目标程序时，首先编译所有单个的过程（或者编译包含过程的文件），然后通过系统链接接程序将它们链接成单一的目标文件。<br>    可是即使在单体结构中，也有一些结构存在。可以将参数设置在良好定义的位置（如栈），通过这种方式，向操作系统请求所能提供的服务（系统调用），然后执行一个陷阱指令（将机器从用户态切换到内核态所进行的指令，陷阱指内陷到操作系统内核中）。<br>    对于这类操作系统的基本结构，有着如下结构上的建议：<br>      1.需要一个主程序用来处理服务过程请求。<br>      2.需要一套服务过程，用来执行系统调用。<br>      3.需要一套实用过程，用来辅助服务过程。（如用户程序取数据等）<br><img src="/2018/01/14/操作系统结构简述/简单的单体系统结构模型.jpg" alt="简单的单体系统结构模型"><br>    除了在系统初启时所装载的核心操作系统，许多操作系统支持可装载的扩展，例如：I/O设备驱动和文件系统。在UNIX中他们被叫做共享库（shared library），在Windows中则被称作动态链接库（DLL），他们的扩展类型为.dll，在C:\Windows\system32目录下存在1000多个DLL文件。</p>
+<h3 id="2-层次式系统"><a href="#2-层次式系统" class="headerlink" title="2.层次式系统"></a>2.层次式系统</h3><p>   它的上层软件都是在在下一层软件的基础之上构建的。THE系统（1968）是按此模型构造的第一个操作系统。他是一个简单的批处理操作系统。该系统共分为六层，如下图所示:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">层号</th>
+<th style="text-align:right">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:right">操作员</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:right">用户程序</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:right">输入/输出管理</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:right">操作员——进程通信</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:right">存储器和磁鼓管理</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:right">处理器分配和多道程序设计</td>
+</tr>
+</tbody>
+</table>
+<h4 id="THE操作系统的结构"><a href="#THE操作系统的结构" class="headerlink" title="THE操作系统的结构"></a>THE操作系统的结构</h4><p>第0层：<br>处理器分配在第0层中进行，当中断发生或定时器到期时，由该层进行进程切换。在第0层之上，系统由一些连续的进程所组成，编写这些进程时不再考虑在单处理器上多进程进行的细节。也就是说，在第0层中提供了基本的CPU多道程序设计功能。<br>第1层：<br>内存管理在第1层中进行，它分配进程的主存空间，当内存用完时，则在一个512k字的磁鼓上保留进程的一部分（页面）（我认为这种方法跟交换空间（swap）是差不多的）。在第一层上，进程不用考虑它是在磁鼓上还是在内存中运行。第一层的软件保证一旦需要访问某一页面，该页面必定已在内存中，并在页面不再需要时将其移出。<br>第2层：<br>处理进程与操作员控制台（即用户）之间的通信。在这层的上部，可以认为每个进程都有自己的操作员控制台<br>第3层：<br>管理I/O设备和相关的信息流缓冲区。在第三层上每个进程都与有良好特性的抽象I/O设备打交道，而不必考虑外部设备的物理细节。<br>第4层：<br>用户程序层。用户程序不需要考虑进程、内存、控制台或I/O设备管理等细节。<br>第5层：<br>系统操作员进程。</p>
+<h4 id="下面介绍一下MULTICS系统"><a href="#下面介绍一下MULTICS系统" class="headerlink" title="下面介绍一下MULTICS系统"></a>下面介绍一下MULTICS系统</h4><p>   在MULTICS系统中采用了更进一步的通用层次化概念。MULTICS由许多的通信换构造而成，而不是采用层次化构造，内环比外环有更高的级别（他们实际上是一样的）。当外环的过程欲调用内环的过程时，他必须执行一条等价于系统调用的TRAP指令。在执行该TRAP指令之前，要进行严格的参数合法性检查。在MULTICS中，尽管整个操作系统是各个用户进程的地址空间的一部分，但是应尽仍能对单个过程（实际上是内存中的一个段）的读、写和执行进行保护。<br>比较THE系统和MULTICS系统的不同：<br>THE分层方案只是为设计提供了一些方便，因为该系统的各个部分最终仍然被链接成了完整的单个目标程序。（这里我认为它跟上面的单体系统有些相似）<br>MULTICS系统的环形机制在运行中是实际存在的，而且是由硬件实现的。环形机制的一个优点是很容易扩展，可用以构造用户子系统。<br>举例说明：在一个MULTICS系统中，教授可以写一个程序检查学生编写的程序并给他们打分，在第n个环中运行教授的程序，而在第n+1个环中运行学生的程序，这样学生就无法篡改教授所给出的成绩了。（我认为这主要是靠系统在执行TRAP指令前，要进行严格的参数合法性检查这一行为所实现的。）</p>
+<h3 id="3-微内核"><a href="#3-微内核" class="headerlink" title="3.微内核"></a>3.微内核</h3><p>   在分层设计中，设计者要确定在哪里划分内核-用户的边界。传统上，所有的层都在内核中，但是尽可能减少内核态中功能的做法更好，因为内核中的错误会快速的拖累系统。相反，可把用户进程设置为具有较小的权限，这样某个错误的后果就不会是致命的。（代码错误的密度䚧模块大小、模块寿命等，不过对一个实际的工业系统而言，每千行代码中会有2~10个错误，这意味着在有500万行代码的单体操作系统中，大约有10000~50000个内核错误，但并不是所有的错误都是致命的。）<br>   在微内核设计背后的思想是，为了实现高可靠性，将操作系统划分成小的、良好定义的模块，只有其中一个模块——微内核——运行在内核态，其余的模块由于功能相对弱些，则作为普通用户进程运行。特别地，由于把每个设备驱动和文件系统分别作为普通用户进程，这些模块中的错误虽然会使这些模块崩溃，但是不会使得整个操作系统死机。<br>   但是在单体操作系统中，由于所有的设备驱动都在内核中，一个有故障的音频驱动很容易引起对无效地址的引用，从而造成系统停机。<br>   除了比较著名的基于Mach微内核OS X外，通常的桌面操作系统并不使用微内核。但是微内核在工业中却特别流行，因为微内核具有高度的可靠性。<br>   这里对MINIX3做一简单的介绍，该操作系统把模块化的思想推到了极致，它将大部分操作系统分解成许多独立的用户态进程，其最受POSIX标准。MINIX3微内核只有12000行代码和1400行用于非常低层次功能的汇编代码，诸如捕获中断、进程切换等，C代码管理和调度进程、处理进程间通信（在进程间传送消息）、提供大约40个内核调用，他们似的操作系统的其余部分可以完成其工作。这些调用完成诸如连接中断句柄、在地址空间中移动数据以及为新创建的进程安装新的内存映像等功能。<br>MINIX的进程结构如下图所示：其中内核调用句柄用Sys标记，始终设备驱动也在内核中，因为这个驱动与调度器交互密切。所有的其他设备驱动都作为单独的用户进程运行。<br><img src="/2018/01/14/操作系统结构简述/MINIX3.jpg" alt="MINIX 3系统的结构"><br>在内核的外部，系统的构造有三层进程，他们都在用户态运行。<br>（1）最底层中包含设备驱动器。由于他们在用户态运行，所以不能物理的访问I/O端口空间，也不能直接的发出I/O命令。相反，为了能够对I/O设备编程，驱动器建了一个结构，指明哪个参数值写到哪个I/O端口，并生成一个内核调用，并通知内核完成写操作。<br>（2）在驱动器上面是另一用户层，包含有服务器，它们完成操作系统的多数工作。由一个或多个文件服务器管理着文件系统，进程管理器创建、销毁和管理进程等。通过给服务器发送短消息请求POSIX系统调用的方式，用户程序获得操作系统的服务。<br>（3）有一个有趣的服务器，称为“再生服务器”，其任务是检查其他服务器和驱动器的功能是否正确。一旦检查出了错误，它自动取代之，无需用户的干预。这种方式使得系统具有自我修复的能力，并且获得了较高的可靠性。<br>（4）系统对每个进程的权限有着许多的限制。所有这些权限是让每个驱动和服务器只拥有完成其工作所需要的权限，这样就极大地限制了故障部件可能造成的危害。<br>（5）一个于小内核相关联的思想是内核中的“机制与策略分离的原则”。<br>为了说明这一点，我们考虑进程调度。一个比较简单的调度算法是：对每个进程赋予一个优先级，并让内核执行具有最高优先级的内容。这里，机制（在内核中）就是寻找最高优先级的进程并运行之。而策略（赋予进程优先级）可以有用户态中的进程完成。在这种方式中，机制和策略是分离的，从而使系统内核变得更小。</p>
+<h3 id="4-客户端-服务器模式"><a href="#4-客户端-服务器模式" class="headerlink" title="4. 客户端-服务器模式"></a>4. 客户端-服务器模式</h3><p>   一个微内核思想的略微变体是将进程划分为两类：服务器（每个服务器提供某种服务），客户端（使用这些服务）。这种模式就是客户端——服务器模式。通常在系统最底层的是微内核，但并不是必须这样。这个模式的本质是存在客户端进程和服务器进程。<br>   一般来说服务器客户端之间的通信是“消息传递”。为了获得一个服务，客户端进程构造一段消息，说明所需要的服务，并将其发给合适的服务器。该服务器完成工作，发送回应。<br>   这种思想的一个显然的普遍方式是，客户端和服务器运行在不同的计算机上，它们通过局域网或广域网连接，其结构如下图所示：<br><img src="/2018/01/14/操作系统结构简述/3.jpg" alt="在网络上的客户端——服务器模型"><br>由于客户端通过发送消息与服务器通信，客户端并不需要知道这些消息是在本地计算机上处理，还是通过网络被送到远程计算机上处理。对于客户端而言，这两种情形都是一样的：都是发送请求并得到回应。所以服务器客户端模式是一种可以应用在单机或网络机器上的抽象。（许多web就是以这个方式运行的）</p>
+<h3 id="5-虚拟机"><a href="#5-虚拟机" class="headerlink" title="5.虚拟机"></a>5.虚拟机</h3><h4 id="1-VM-370"><a href="#1-VM-370" class="headerlink" title="1.VM/370"></a>1.VM/370</h4><p>   这个系统最初被命名为CP/CMS，后来改名为VM/370.他是源于如下机敏的观察，即分时系统应该提供这些功能：（1）多道程序（2）一个比裸机更方便，有扩展界面的计算机。而VM/370存在的目的是将两者彻底地隔离开来。<br>   这个系统的核心称为“虚拟机监控程序”，他在逻辑上运行并具备了多道程序功能。该系统向上层提供了若干台虚拟机。这些虚拟机并不那种具有文件等优良特征的扩展计算机。他们仅仅是裸机硬件的精确复制品。这个复制品包括了内核态/用户态、I/O功能、中断及其它真实硬件所应该具有的全部内容。<br>   在早期的VM/370系统上，有一些系统运行OS/360或者其他大型批处理或事务处理操作系统，而另一些虚拟机运行单用户、交互式系统供分时用户使用，这个系统称为“会话监控系统（CMS）”，后者在程序员之间非常流行。<br>   当一个CMS程序执行系统调用时，<u>该调用被陷入到其虚拟机上的操作系统上，而不是VM370上，似乎它运行在实际的机器上，而不是在虚拟机上。</u>CMS然后发出普通的硬件I/O指令读出虚拟磁盘或其他需要执行的调用。这些I/O指令由VM/370陷入，然后作为对实际硬件模拟的一部分，VM/370完成指令。通过对多道程序功能和提供扩展机器二者的完全分离，每个部分变得非常简单、非常灵活且容易维护。<br>   虚拟机的现代化身z/VM通常用于运行多个完整的操作系统，而不是简化成如CMS一样的单用户操作系统。</p>
+<h4 id="2-虚拟机的再次发现"><a href="#2-虚拟机的再次发现" class="headerlink" title="2.虚拟机的再次发现"></a>2.虚拟机的再次发现</h4><p>   首先看需求，传统上，许多公司在不同的计算机上，有时还在不同的操作系统上，运行其邮件服务器、web服务器、FTP服务器以及其他服务器。他们看到可以在同一台机器上实现虚拟化来运行所有的服务器，而不会由于一个服务器崩溃而影响其他系统。虚拟化在web托管世界也很流行。没有虚拟化，Web托管客户端只能共享托管以及独占托管。<br>   虚拟化的另一个用途是，为希望同时运行两个或多个操作系统的最终用户服务，某个偏好的应用程序可运行在一个操作系统上，而其他的应用程序可运行在另一个操作系统上。<br>如下图所示：<br><img src="/2018/01/14/操作系统结构简述/4.jpg" alt="虚拟机管理程序"><br>在这里术语“虚拟机监控程序”已经被重新命名为<u>第一类虚拟机管理程序</u>，<br>在虚拟机的实现上存在问题，为了在一台计算机上运行虚拟机软件，其CPU必须被虚拟化，简言之，存在一个问题，<u>当运行虚拟机（在用户态）的操作系统执行某个特权指令时，比如修改PSW或进行I/O操作，硬件实际上陷入到了虚拟机中，这样有关指令就可以在软件中模拟。</u>在某些CPU上（特别是Pentium和它的后继者及其克隆版中）试图在用户态执行特权指令是，会被忽略掉。这种特性使得在这类硬件中无法实现虚拟机，这也解释了PC界对虚拟机不感兴趣的原因。<br>   一些早期研究项目通过即时翻译大块代码、将其存储到内部高速缓存并在其再次执行时复用的方式提高了Bochs等翻译器的性能，也推动了模拟器的出现，如上图b）所示，该技术被称为“二进制翻译”。改善性能的下一步在于添加分担重担的内核模块，如上图c）所示，事实上，现在所有商用可用的虚拟机管理程序都是用这种混合策略，如VWware工作站。他们被称为<u>第二类虚拟机管理程序</u>.<br>   实际上，第一类虚拟机和第二类虚拟机管理程序的真正区别在于，后者利用宿主操作系统并通过其文件系统创建进程、存储文件等。第一类虚拟机管理程序没有底层支持，所以必须自行实现所有功能。<br>   当第二类虚拟机管理程序启动时，它从CD-ROM安装盘中读入供选择的客户操作系统，并安装在一个虚拟盘上该盘实际上是宿主操作系统的文件系统上的一个大文件。由于没有可以存储文件的操作系统，因此第一类虚拟机管理程序不能采用这种方式。<br>   处理控制指令的一种不同的方式是，修改操作系统，然后删掉他们。这种方式是半虚拟化。</p>
+<h4 id="3-Java虚拟机"><a href="#3-Java虚拟机" class="headerlink" title="3.Java虚拟机"></a>3.Java虚拟机</h4><p>   另一个使用虚拟机的领域，是为了运行Java程序(例如Android就是在Linux内核上使用Java解释器来运行Java程序)，但方式有些不同，在Sun公司发明Java程序设计语言时，也发明了称为JVM的虚拟机（一种体系结构）。<u>Java编译器为JVM生成代码，这些代码以后可以由一个软件JVM解释器执行。</u>这种处理方式的优点在于，JVM代码可以通过Internet传送到任何有JVM解释器的计算机上，并在该机器上执行。使用JVM的另一种优点是，如果解释器正确的完成并不意味着就结束了还要对输入的JVM进行安全性检查，然后在一种保护环境下执行，这样，这些数据就不能偷窃数据或进行其他任何有害的操作。</p>
+<h3 id="6-外核"><a href="#6-外核" class="headerlink" title="6.外核"></a>6.外核</h3><p>   与虚拟机克隆真是极其不同，另一种策略是对机器进行分区。在底层中，一种称为“外核”的程序在内核态中运行。它的任务是为虚拟机分配资源，并检查用这些资源的企图，已确保没有机器会使用他人的资源。每个用户层的虚拟机都可以运行自己的操作系统，但限制只能使用已经申请并获得分配的哪部分资源。<br>   外核机制的优点是（1）减少了映像层，不需要重映像磁盘地址的处理了（2）将多道程序（在外核内）与用户操作系统代码（在用户空间内）加以分离，而且负载并不重，<u>这是因为外核所做的只是保持多个虚拟机彼此不发生冲突。</u></p>
+
+        </div>
+        <div class="post-tool">
+            <a class="btn-thumbs-up" href="javascript:void(0);" data-cid="52" title="95">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> 打赏
+            </a>
+        </div>
+        
+        <div class="post-tags">标签：
+            
+            <a href="/tags/操作系统结构/">操作系统结构</a>
+            
+        </div>
+        
+    </article>
+    
+    <p>本文代表个人观点，内容仅供参考。若有不恰当之处，望不吝赐教！</p>
+    
+    
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div><!-- end #main-->
+    </div><!-- end #body -->
+    <footer class="footer">
+    <div class="footer-inner">
+        <p>
+            <a href="/about"  title="关于本站">关于本站</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <!-- 自定义链接 -->
+            <a href="/help" title="help" >急救中心</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/links" title="友情链接">友情链接</a>&nbsp;&nbsp<em>·</em>&nbsp;&nbsp
+            <a href="/app" title="App下载">App下载</a>
+        </p>
+        <p>
+            本站点采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>，已建立<a href="/timeline" id="siteBuildingTime"></a>天<br/>
+            ©2017 基于<a href="http://hexo.io" target="_blank">Hexo</a>搭建
+            ，主题&nbsp<a href="https://github.com/tangkunyin/hexo-theme-jsimple" target="_blank">JSimple</a>
+            ，作者<a href="https://www.tangkunyin.com" target="_blank">唐先森</a>
+            ，Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+        </p>
+        
+
+    </div>
+</footer>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="/js/InsightSearch.js"></script>
+<script src="/js/SimpleCore.js"></script>
+
+</div>
+<div class="fixed-btn">
+    <a class="btn-gotop" href="javascript:"> <i class="fa fa-angle-up"></i></a>
+</div>
+<script>
+    $(function () {
+        SimpleCore.init({
+            buildingTime: '01/20/2018',
+            current: $('.post-tags').length > 0 ? 'post' : 'archive',
+            snsQRCode: '/images/sns-qrcode.png',
+            donateImg: '/images/donate-qr.png',
+        });
+    });
+</script>
+</body>
+</html>
