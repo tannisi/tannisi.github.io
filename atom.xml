@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://tannisi.top/"/>
-  <updated>2018-03-01T11:57:48.272Z</updated>
+  <updated>2018-03-10T11:40:50.525Z</updated>
   <id>https://tannisi.top/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>理解类Unix系统错误信息</title>
+    <link href="https://tannisi.top/2018/03/10/%E7%90%86%E8%A7%A3%E7%B1%BBUnix%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF/"/>
+    <id>https://tannisi.top/2018/03/10/理解类Unix系统错误信息/</id>
+    <published>2018-03-10T11:11:39.000Z</published>
+    <updated>2018-03-10T11:40:50.525Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="理解错误信息"><a href="#理解错误信息" class="headerlink" title="理解错误信息"></a>理解错误信息</h3><h4 id="解析Unix的错误信息"><a href="#解析Unix的错误信息" class="headerlink" title="解析Unix的错误信息"></a>解析Unix的错误信息</h4><p>　绝大部分Unix上的应用程序都使用相同的方式处理错误信息，但在任意两个程序的输出结果之间可能会存在些微的差别。<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span> ls /dsafsda</span><br><span class="line">ls: cannot acess /dsafsad:<span class="keyword">No</span> such <span class="keyword">file</span> <span class="keyword">or</span> directory</span><br></pre></td></tr></table></figure></p><p>　该消息分为以下三部分：<br>（１）．命令文件名：ls 一些程序不显示命令文件名，这对于脚本调试来说很不方便，但这也不是问题的关键。<br>（２）．命令路径：/dsafsda 这是一条更为具体的信息，而问题就出在这个文件路径上。<br>（３）．错误信息：No such file or directory 这一条信息告诉我们错误处在文件路径名上。</p><h4 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h4><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">No</span> such <span class="keyword">file</span> <span class="keyword">or</span> directory</span><br></pre></td></tr></table></figure><pre><code>这是我们最常见的错误，访问一个不存在的的文件或目录，由于Unix的I/O系统对文件或目录不做区分，所以当你试图访问一个不存在的文件、进入一个不存在的目录，或将文件写入一个不存在的目录时，都会出现这样的错误。</code></pre><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">File</span> <span class="built_in">exists</span></span><br></pre></td></tr></table></figure><pre><code>如果新建的文件名称和现有的文件或目录崇明，都会出现这个错误。    </code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Not <span class="selector-tag">a</span> directory,ls <span class="selector-tag">a</span> drectory</span><br></pre></td></tr></table></figure><pre><code>这个错误出现在当你把文件当做目录或者反之，把目录当做文件的时候。    </code></pre><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No <span class="literal">space</span> left <span class="keyword">on</span> device</span><br></pre></td></tr></table></figure><pre><code>说明磁盘空间不够。</code></pre><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Permission denied</span></span><br></pre></td></tr></table></figure><pre><code>当你试图读写一个没有访问权限的文件或目录时会遇到这个错误，当时试图执行一个你无权执行(即使你有读的权限)的文件时也会出现这个错误。</code></pre><figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Operation <span class="keyword">not</span> permitted.</span><br></pre></td></tr></table></figure><pre><code>当你试图终止一个你无权终止的进程的时候，会出现这个错误。</code></pre><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Segmentation</span> fault,Bus <span class="literal">error</span></span><br></pre></td></tr></table></figure><pre><code>分段故障，总线错误。分段故障这个错误通常是告诉你，你运行的程序出现了问题，可能你的程序试图访问一个他无权访问的内存空间，这是操作系统就会将其终止。总线错误，说明你的程序访问内存的方式有问题，遇到这类问题通常是因为程序的输入数据有问题。</code></pre><h3 id="Linux系统的内核位置"><a href="#Linux系统的内核位置" class="headerlink" title="Linux系统的内核位置"></a>Linux系统的内核位置</h3><pre><code>Linux系统的内核通常存在/vmlinuz或者/boot/vmlinuz中。系统启动时，引导装载程序将这个文件加载到内存并运行。</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;理解错误信息&quot;&gt;&lt;a href=&quot;#理解错误信息&quot; class=&quot;headerlink&quot; title=&quot;理解错误信息&quot;&gt;&lt;/a&gt;理解错误信息&lt;/h3&gt;&lt;h4 id=&quot;解析Unix的错误信息&quot;&gt;&lt;a href=&quot;#解析Unix的错误信息&quot; class=&quot;header
+      
+    
+    </summary>
+    
+    
+      <category term="linux基础" scheme="https://tannisi.top/tags/linux%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux运维学习四</title>
+    <link href="https://tannisi.top/2018/03/10/linux%E8%BF%90%E7%BB%B4%E5%AD%A6%E4%B9%A0%E5%9B%9B/"/>
+    <id>https://tannisi.top/2018/03/10/linux运维学习四/</id>
+    <published>2018-03-10T11:10:37.000Z</published>
+    <updated>2018-03-10T11:10:37.614Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>linux运维学习三</title>

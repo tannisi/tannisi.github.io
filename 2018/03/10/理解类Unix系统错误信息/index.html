@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>现代操作系统学习小结 | 坦尼斯</title>
+  <title>理解类Unix系统错误信息 | 坦尼斯</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
     <meta name="keywords" content="tannisi.blog" />
   
-  <meta name="description" content="引论（1）考察操作系统有两种观点：资源管理观点和扩展的机器观点。在资源管理观点中，操作系统的任务是有效的管理系统的各个部分。在扩展的机器观点中，系统的任务是为用户提供比实际机器更便于运用的抽象。这些抽象包括进程、地址空间以及文件。（2）操作系统的历史很长，从操作系统开始替代操作人员的那天开始到现代多道程序系统，主要包括早期批处理系统、多道程序系统以及个人计算机系统。">
-<meta name="keywords" content="操作系统学习小结">
+  <meta name="description" content="理解错误信息解析Unix的错误信息　绝大部分Unix上的应用程序都使用相同的方式处理错误信息，但在任意两个程序的输出结果之间可能会存在些微的差别。12$ ls /dsafsdals: cannot acess /dsafsad:No such file or directory 　该消息分为以下三部分：（１）．命令文件名：ls 一些程序不显示命令文件名，这对于脚本调试来说很不方便，但这也不是问题的">
+<meta name="keywords" content="linux基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="现代操作系统学习小结">
-<meta property="og:url" content="https://tannisi.top/2018/01/26/现代操作系统学习小结/index.html">
+<meta property="og:title" content="理解类Unix系统错误信息">
+<meta property="og:url" content="https://tannisi.top/2018/03/10/理解类Unix系统错误信息/index.html">
 <meta property="og:site_name" content="坦尼斯">
-<meta property="og:description" content="引论（1）考察操作系统有两种观点：资源管理观点和扩展的机器观点。在资源管理观点中，操作系统的任务是有效的管理系统的各个部分。在扩展的机器观点中，系统的任务是为用户提供比实际机器更便于运用的抽象。这些抽象包括进程、地址空间以及文件。（2）操作系统的历史很长，从操作系统开始替代操作人员的那天开始到现代多道程序系统，主要包括早期批处理系统、多道程序系统以及个人计算机系统。">
+<meta property="og:description" content="理解错误信息解析Unix的错误信息　绝大部分Unix上的应用程序都使用相同的方式处理错误信息，但在任意两个程序的输出结果之间可能会存在些微的差别。12$ ls /dsafsdals: cannot acess /dsafsad:No such file or directory 　该消息分为以下三部分：（１）．命令文件名：ls 一些程序不显示命令文件名，这对于脚本调试来说很不方便，但这也不是问题的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-01-26T05:14:08.418Z">
+<meta property="og:updated_time" content="2018-03-10T11:40:50.525Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="现代操作系统学习小结">
-<meta name="twitter:description" content="引论（1）考察操作系统有两种观点：资源管理观点和扩展的机器观点。在资源管理观点中，操作系统的任务是有效的管理系统的各个部分。在扩展的机器观点中，系统的任务是为用户提供比实际机器更便于运用的抽象。这些抽象包括进程、地址空间以及文件。（2）操作系统的历史很长，从操作系统开始替代操作人员的那天开始到现代多道程序系统，主要包括早期批处理系统、多道程序系统以及个人计算机系统。">
+<meta name="twitter:title" content="理解类Unix系统错误信息">
+<meta name="twitter:description" content="理解错误信息解析Unix的错误信息　绝大部分Unix上的应用程序都使用相同的方式处理错误信息，但在任意两个程序的输出结果之间可能会存在些微的差别。12$ ls /dsafsdals: cannot acess /dsafsad:No such file or directory 　该消息分为以下三部分：（１）．命令文件名：ls 一些程序不显示命令文件名，这对于脚本调试来说很不方便，但这也不是问题的">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -133,27 +133,20 @@ ga('send', 'pageview');
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-现代操作系统学习小结" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-理解类Unix系统错误信息" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="post-title" itemprop="name">
-      现代操作系统学习小结
+      理解类Unix系统错误信息
     </h1>
     <div class="post-title-bar">
       <ul>
           
-              <li>
-                  <i class="fa fa-book"></i>
-                  
-                      <a href="/categories/现代操作系统学习/">现代操作系统学习</a>
-                  
-              </li>
-          
         <li>
-          <i class="fa fa-calendar"></i>  2018-01-26
+          <i class="fa fa-calendar"></i>  2018-03-10
         </li>
         <li>
           <i class="fa fa-eye"></i>
@@ -169,12 +162,28 @@ ga('send', 'pageview');
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <h2 id="引论"><a href="#引论" class="headerlink" title="引论"></a>引论</h2><p>（1）考察操作系统有两种观点：资源管理观点和扩展的机器观点。在资源管理观点中，操作系统的任务是有效的管理系统的各个部分。在扩展的机器观点中，系统的任务是为用户提供比实际机器更便于运用的抽象。这些抽象包括进程、地址空间以及文件。<br>（2）操作系统的历史很长，从操作系统开始替代操作人员的那天开始到现代多道程序系统，主要包括早期批处理系统、多道程序系统以及个人计算机系统。<br><a id="more"></a><br>（3）所有操作系统构建所依赖的基本概念是进程、存储管理、I/O管理、文件管理和安全。<br>（4）任何操作系统的核心是<span style="border-bottom:2px dashed red;">它可处理的系统调用集</span>。这些系统调用真实的说明了操作系统所做的工作。对于UNIX，我们已经考察了四组系统调用。<span style="border-bottom:2px dashed blue;">第一组系统调用同进程的创建和终止有关，第二组用于读写文件，第三组用于目录管理，第四组用于各种杂项调用。</span><br>（5）操作系统的构建方式有多种，最常见的有单体系统、层次化系统、微内核系统、客户端-服务器系统、虚拟机系统以及外核系统。</p>
-
+            <h3 id="理解错误信息"><a href="#理解错误信息" class="headerlink" title="理解错误信息"></a>理解错误信息</h3><h4 id="解析Unix的错误信息"><a href="#解析Unix的错误信息" class="headerlink" title="解析Unix的错误信息"></a>解析Unix的错误信息</h4><p>　绝大部分Unix上的应用程序都使用相同的方式处理错误信息，但在任意两个程序的输出结果之间可能会存在些微的差别。<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span> ls /dsafsda</span><br><span class="line">ls: cannot acess /dsafsad:<span class="keyword">No</span> such <span class="keyword">file</span> <span class="keyword">or</span> directory</span><br></pre></td></tr></table></figure></p>
+<p>　该消息分为以下三部分：<br>（１）．命令文件名：ls 一些程序不显示命令文件名，这对于脚本调试来说很不方便，但这也不是问题的关键。<br>（２）．命令路径：/dsafsda 这是一条更为具体的信息，而问题就出在这个文件路径上。<br>（３）．错误信息：No such file or directory 这一条信息告诉我们错误处在文件路径名上。</p>
+<h4 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h4><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">No</span> such <span class="keyword">file</span> <span class="keyword">or</span> directory</span><br></pre></td></tr></table></figure>
+<pre><code>这是我们最常见的错误，访问一个不存在的的文件或目录，由于Unix的I/O系统对文件或目录不做区分，所以当你试图访问一个不存在的文件、进入一个不存在的目录，或将文件写入一个不存在的目录时，都会出现这样的错误。
+</code></pre><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">File</span> <span class="built_in">exists</span></span><br></pre></td></tr></table></figure>
+<pre><code>如果新建的文件名称和现有的文件或目录崇明，都会出现这个错误。    
+</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Not <span class="selector-tag">a</span> directory,ls <span class="selector-tag">a</span> drectory</span><br></pre></td></tr></table></figure>
+<pre><code>这个错误出现在当你把文件当做目录或者反之，把目录当做文件的时候。    
+</code></pre><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">No <span class="literal">space</span> left <span class="keyword">on</span> device</span><br></pre></td></tr></table></figure>
+<pre><code>说明磁盘空间不够。
+</code></pre><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Permission denied</span></span><br></pre></td></tr></table></figure>
+<pre><code>当你试图读写一个没有访问权限的文件或目录时会遇到这个错误，当时试图执行一个你无权执行(即使你有读的权限)的文件时也会出现这个错误。
+</code></pre><figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Operation <span class="keyword">not</span> permitted.</span><br></pre></td></tr></table></figure>
+<pre><code>当你试图终止一个你无权终止的进程的时候，会出现这个错误。
+</code></pre><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Segmentation</span> fault,Bus <span class="literal">error</span></span><br></pre></td></tr></table></figure>
+<pre><code>分段故障，总线错误。分段故障这个错误通常是告诉你，你运行的程序出现了问题，可能你的程序试图访问一个他无权访问的内存空间，这是操作系统就会将其终止。总线错误，说明你的程序访问内存的方式有问题，遇到这类问题通常是因为程序的输入数据有问题。
+</code></pre><h3 id="Linux系统的内核位置"><a href="#Linux系统的内核位置" class="headerlink" title="Linux系统的内核位置"></a>Linux系统的内核位置</h3><pre><code>Linux系统的内核通常存在/vmlinuz或者/boot/vmlinuz中。系统启动时，引导装载程序将这个文件加载到内存并运行。
+</code></pre>
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年01月26日 13:14</p>
-        <p>原始链接： <a class="post-url" href="/2018/01/26/现代操作系统学习小结/" title="现代操作系统学习小结">https://tannisi.top/2018/01/26/现代操作系统学习小结/</a></p>
+        <p>最后更新： 2018年03月10日 19:40</p>
+        <p>原始链接： <a class="post-url" href="/2018/03/10/理解类Unix系统错误信息/" title="理解类Unix系统错误信息">https://tannisi.top/2018/03/10/理解类Unix系统错误信息/</a></p>
         <footer>
             <a href="https://tannisi.top">
                 <img src="/images/timp.jpg" alt="tannisi">
@@ -227,7 +236,7 @@ ga('send', 'pageview');
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tannisi.top/2018/01/26/现代操作系统学习小结/&title=《现代操作系统学习小结》 — 坦尼斯&pic=https://tannisi.topimages/timp.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://tannisi.top/2018/03/10/理解类Unix系统错误信息/&title=《理解类Unix系统错误信息》 — 坦尼斯&pic=https://tannisi.topimages/timp.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -237,22 +246,22 @@ ga('send', 'pageview');
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tannisi.top/2018/01/26/现代操作系统学习小结/&title=《现代操作系统学习小结》 — 坦尼斯&source=引论（1）考察操作系统有两种观点：资源管理观点和扩展的机器观点。在资源管理观点中，操作系统的任务是有效的管理系统的各个部分。在扩展的机器观点中，系统的任务..." data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://tannisi.top/2018/03/10/理解类Unix系统错误信息/&title=《理解类Unix系统错误信息》 — 坦尼斯&source=linux/unix study" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tannisi.top/2018/01/26/现代操作系统学习小结/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://tannisi.top/2018/03/10/理解类Unix系统错误信息/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《现代操作系统学习小结》 — 坦尼斯&url=https://tannisi.top/2018/01/26/现代操作系统学习小结/&via=https://tannisi.top" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《理解类Unix系统错误信息》 — 坦尼斯&url=https://tannisi.top/2018/03/10/理解类Unix系统错误信息/&via=https://tannisi.top" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tannisi.top/2018/01/26/现代操作系统学习小结/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://tannisi.top/2018/03/10/理解类Unix系统错误信息/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -262,7 +271,7 @@ ga('send', 'pageview');
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://tannisi.top/2018/01/26/现代操作系统学习小结/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://tannisi.top/2018/03/10/理解类Unix系统错误信息/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -274,7 +283,7 @@ ga('send', 'pageview');
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/操作系统学习小结/" class="color4">操作系统学习小结</a>
+    <a href="/tags/linux基础/" class="color3">linux基础</a>
       
   </li>
 
@@ -287,26 +296,16 @@ ga('send', 'pageview');
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引论"><span class="post-toc-text">引论</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#理解错误信息"><span class="post-toc-text">理解错误信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#解析Unix的错误信息"><span class="post-toc-text">解析Unix的错误信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常见错误"><span class="post-toc-text">常见错误</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Linux系统的内核位置"><span class="post-toc-text">Linux系统的内核位置</span></a></li></ol>
         </nav>
     </aside>
     
 
 <nav id="article-nav">
   
-    <a href="/2018/01/26/进程与线程（一）/" id="article-nav-newer" class="article-nav-link-wrap">
-
-      <span class="article-nav-title">
-        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-        
-          进程与线程（一）
-        
-      </span>
-    </a>
   
-  
-    <a href="/2018/01/25/依靠C的世界——编写操作系统/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">依靠C的世界——编写操作系统</span>
+    <a href="/2018/03/10/linux运维学习四/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">linux运维学习四</span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
